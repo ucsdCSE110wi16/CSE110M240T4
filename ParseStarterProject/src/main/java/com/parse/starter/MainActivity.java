@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
@@ -23,22 +24,23 @@ public class MainActivity extends ActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.login);
-
+    setContentView(R.layout.activity_main);
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
+
+    Toast.makeText(getApplicationContext(), "login nub", Toast.LENGTH_LONG).show();
+    loadLoginView();
     //ParseUser currentUser = ParseUser.getCurrentUser();
     /*if (true){//currentUser == null) {
       loadLoginView();
     }*/
 
   }
-    private void loadLoginView() {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-    }
+  private void loadLoginView() {
+    //setContentView(R.layout.login);
+    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+    startActivity(intent);
+  }
   @Override
-
-
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
     getMenuInflater().inflate(R.menu.menu_main, menu);

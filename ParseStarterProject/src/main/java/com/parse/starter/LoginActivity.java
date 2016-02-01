@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -30,7 +32,10 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        setContentView(R.layout.login);
+        Toast.makeText(getApplicationContext(), "login nub", Toast.LENGTH_LONG).show();
+
+        //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
         signUpButton = (Button)findViewById(R.id.signupButton);
         usernameEditText = (EditText)findViewById(R.id.usernameField);
@@ -40,6 +45,8 @@ public class LoginActivity extends ActionBarActivity {
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "bruh sign up", Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
@@ -55,6 +62,7 @@ public class LoginActivity extends ActionBarActivity {
                 password = password.trim();
 
                 if (username.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "bruh its empty", Toast.LENGTH_LONG).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage(R.string.login_error_message)
                             .setTitle(R.string.login_error_title)
@@ -77,6 +85,8 @@ public class LoginActivity extends ActionBarActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             } else {
+                                Toast.makeText(getApplicationContext(), "bruh no", Toast.LENGTH_LONG).show();
+
                                 // Fail
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                                 builder.setMessage(e.getMessage())
@@ -98,9 +108,6 @@ public class LoginActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+        return id == R.id.action_settings || super.onOptionsItemSelected(item);
     }
 }
