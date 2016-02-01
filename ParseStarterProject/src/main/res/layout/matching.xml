@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#1f1fde"
+    android:id="@+id/activity_match">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/profilePicture"
+        android:src="@mipmap/jarnin"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/dislikeImage"
+        android:src="@drawable/k8727547"
+        android:layout_alignTop="@+id/likeImage"
+        android:layout_alignLeft="@+id/profilePicture"
+        android:layout_alignStart="@+id/profilePicture" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/likeImage"
+        android:src="@drawable/exam"
+        android:layout_below="@+id/profilePicture"
+        android:layout_alignRight="@+id/profilePicture"
+        android:layout_alignEnd="@+id/profilePicture"
+        android:layout_marginTop="42dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/dislikeButton"
+        android:visibility="invisible"
+        android:layout_alignBottom="@+id/dislikeImage"
+        android:layout_alignLeft="@+id/dislikeImage"
+        android:layout_alignStart="@+id/dislikeImage"
+        android:layout_alignTop="@+id/dislikeImage" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/newButton"
+        android:layout_alignBottom="@+id/likeImage"
+        android:layout_alignLeft="@+id/likeImage"
+        android:layout_alignStart="@+id/likeImage"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/likeImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Jarnin Fang"
+        android:id="@+id/nameText"
+        android:layout_below="@+id/profilePicture"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFF"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Classes:"
+        android:id="@+id/static_class_text"
+        android:textColor="#FFF"
+        android:textSize="30dp"
+        android:layout_alignTop="@+id/classesText"
+        android:layout_alignRight="@+id/dislikeImage"
+        android:layout_alignEnd="@+id/dislikeImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/classes_text"
+        android:textColor="#FFF"
+        android:textSize="25dp"
+        android:id="@+id/classesText"
+        android:layout_below="@+id/likeImage"
+        android:layout_toRightOf="@+id/dislikeButton"
+        android:layout_toEndOf="@+id/dislikeButton" />
+</RelativeLayout>
+
+

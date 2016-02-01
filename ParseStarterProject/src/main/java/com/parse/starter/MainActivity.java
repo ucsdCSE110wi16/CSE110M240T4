@@ -12,9 +12,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+import android.widget.Button;
+
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.view.MotionEvent;
+import android.view.GestureDetector;
+import android.support.v4.view.GestureDetectorCompat;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
@@ -31,7 +40,19 @@ public class MainActivity extends AppCompatActivity {
     Toast.makeText(getApplicationContext(), "login nub", Toast.LENGTH_LONG).show();
     ParseUser currentUser = ParseUser.getCurrentUser();
       loadLoginView();
-      /*
+
+    Button skipButton = (Button)findViewById(R.id.shortcutButton);
+    skipButton.setOnClickListener(
+            new Button.OnClickListener(){
+              public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MatchActivity.class);
+                setContentView(R.layout.matching);
+                startActivity(intent);
+
+              }
+            }
+    );
+            /*
     if (currentUser == null) {
         ParseUser.logOut();
       loadLoginView();
@@ -42,7 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
 
   }
-    private void loadGotInView() {
+
+  private void loadGotInView() {
         //setContentView(R.layout.login);
         Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
         startActivity(intent);
@@ -50,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
   private void loadLoginView() {
     //setContentView(R.layout.login);
     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+    startActivity(intent);
+  }
+  private void loadMatching() {
+    Intent intent = new Intent(getApplicationContext(), MatchActivity.class);
     startActivity(intent);
   }
   @Override

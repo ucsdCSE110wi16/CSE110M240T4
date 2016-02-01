@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".LoginActivity" >
+    tools:context=".LoginActivity"
+    android:background="#1b1bb9">
 
     <EditText
         android:id="@+id/emailField"
@@ -42,4 +43,4 @@
         android:text="Click Here to get started"
         android:layout_below="@+id/loginButton"/>
 
-</RelativeLayout><!-- From: file:/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/src/main/res/layout/login.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Ken/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/login.xml -->

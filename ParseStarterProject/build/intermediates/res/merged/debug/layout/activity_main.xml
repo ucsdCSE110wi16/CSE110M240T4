@@ -22,5 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_bypass"
+        android:id="@+id/shortcutButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
-<!-- From: file:/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/src/main/res/layout/activity_main.xml -->
+<!-- From: file:/C:/Users/Ken/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/activity_main.xml -->

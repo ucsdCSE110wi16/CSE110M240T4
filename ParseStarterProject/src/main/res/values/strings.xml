@@ -26,4 +26,6 @@
     <string name="login_button_label">Login</string>
     <string name="sign_up_text">Sign Up!</string>
     <string name="logout_label">Logout</string>
+    <string name="login_bypass">Click to skip to matching screen</string>
+    <string name="classes_text">CSE100, CSE110, NMO220</string>
 </resources>
