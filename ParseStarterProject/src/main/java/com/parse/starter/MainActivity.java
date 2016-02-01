@@ -11,6 +11,7 @@ package com.parse.starter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +29,24 @@ public class MainActivity extends ActionBarActivity {
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
     Toast.makeText(getApplicationContext(), "login nub", Toast.LENGTH_LONG).show();
-    loadLoginView();
-    //ParseUser currentUser = ParseUser.getCurrentUser();
-    /*if (true){//currentUser == null) {
+    ParseUser currentUser = ParseUser.getCurrentUser();
       loadLoginView();
+      /*
+    if (currentUser == null) {
+        ParseUser.logOut();
+      loadLoginView();
+    }
+    else{
+        loadGotInView();
     }*/
 
+
   }
+    private void loadGotInView() {
+        //setContentView(R.layout.login);
+        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+        startActivity(intent);
+    }
   private void loadLoginView() {
     //setContentView(R.layout.login);
     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);

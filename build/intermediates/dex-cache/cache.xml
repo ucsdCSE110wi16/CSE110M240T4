@@ -2,46 +2,46 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\nick\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-71d9d4ec16c0c3d1bd3e59c6b5981a1cce0e1236.jar" />
-    </item>
-    <item
-        jar="C:\Users\nick\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.3.0\8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c\bolts-tasks-1.3.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c">
-        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\bolts-tasks-1.3.0-b63af9ee857b6674fdd4e7dae862a5c8abf6fa20.jar" />
-    </item>
-    <item
-        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-6392c01bffddce5d6312d4c9b0e3fbc45d924942.jar" />
-    </item>
-    <item
-        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-f156f87c2d0ecef18a82f2d7563121c316d5ac33.jar" />
-    </item>
-    <item
-        jar="C:\Users\nick\.gradle\caches\modules-2\files-2.1\com.parse\parse-android\1.12.0\34ca297c889cd2023074946c7097d96b30b20891\parse-android-1.12.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="34ca297c889cd2023074946c7097d96b30b20891">
-        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\parse-android-1.12.0-deaee124d571f5864c6c42242db029f031b0773a.jar" />
-    </item>
-    <item
-        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-e3d34ae7a8b7a1c203d621dc348e8063e2b078f6.jar" />
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-b485ca2047da7311f3acc9def888eae1da97b727.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-cb4f6912077a103b833d1268a0ef41a52c5882a9.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-a1f5fa2b18c244c0424584a5756376dd29896c96.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.12.0/34ca297c889cd2023074946c7097d96b30b20891/parse-android-1.12.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="34ca297c889cd2023074946c7097d96b30b20891">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/parse-android-1.12.0-22ac5d3b1c29214235a30c81f6f4316a6284200d.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.3.0/8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c/bolts-tasks-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/bolts-tasks-1.3.0-8c0946a1bcbf56f4131b756e0ff60f8e4c428e13.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-331ced94f9227e30adcc88a2ca7a1861b1f0b5cb.jar" />
     </item>
 
 </items>

@@ -10,7 +10,7 @@
     tools:context=".LoginActivity" >
 
     <EditText
-        android:id="@+id/usernameField"
+        android:id="@+id/emailField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -25,7 +25,7 @@
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        android:layout_below="@+id/usernameField"/>
+        android:layout_below="@+id/emailField"/>
 
     <Button
         android:id="@+id/loginButton"
@@ -42,4 +42,4 @@
         android:text="Click Here to get started"
         android:layout_below="@+id/loginButton"/>
 
-</RelativeLayout><!-- From: file:/C:/Users/nick/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/login.xml -->
+</RelativeLayout><!-- From: file:/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/src/main/res/layout/login.xml -->

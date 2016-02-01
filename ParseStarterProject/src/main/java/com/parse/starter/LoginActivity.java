@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,9 +22,9 @@ import com.parse.ParseUser;
 /**
  * Created by PerryLiu on 1/25/16.
  */
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    protected EditText usernameEditText;
+    protected EditText userEditText;
     protected EditText passwordEditText;
     protected Button loginButton;
 
@@ -38,7 +39,7 @@ public class LoginActivity extends ActionBarActivity {
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 
         signUpButton = (Button)findViewById(R.id.signupButton);
-        usernameEditText = (EditText)findViewById(R.id.usernameField);
+        userEditText = (EditText)findViewById(R.id.emailField);
         passwordEditText = (EditText)findViewById(R.id.passwordField);
         loginButton = (Button)findViewById(R.id.loginButton);
 
@@ -55,13 +56,13 @@ public class LoginActivity extends ActionBarActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = usernameEditText.getText().toString();
+                String user = userEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
 
-                username = username.trim();
+                user = user.trim();
                 password = password.trim();
 
-                if (username.isEmpty() || password.isEmpty()) {
+                if (user.isEmpty() || password.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "bruh its empty", Toast.LENGTH_LONG).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage(R.string.login_error_message)
@@ -73,14 +74,14 @@ public class LoginActivity extends ActionBarActivity {
                 else {
                     setProgressBarIndeterminateVisibility(true);
 
-                    ParseUser.logInInBackground(username, password, new LogInCallback() {
+                    ParseUser.logInInBackground(user, password, new LogInCallback() {
                         @Override
                         public void done(ParseUser user, ParseException e) {
                             setProgressBarIndeterminateVisibility(false);
 
                             if (e == null) {
                                 // Success!
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);

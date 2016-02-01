@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +22,7 @@ import com.parse.SignUpCallback;
 /**
  * Created by PerryLiu on 1/25/16.
  */
-public class SignUpActivity extends ActionBarActivity{
+public class SignUpActivity extends AppCompatActivity{
     protected EditText usernameEditText;
     protected EditText passwordEditText;
     protected EditText emailEditText;
@@ -37,14 +38,13 @@ public class SignUpActivity extends ActionBarActivity{
 
 
         signUpButton = (Button) findViewById(R.id.signupButton);
-        usernameEditText = (EditText) findViewById(R.id.usernameField);
         passwordEditText = (EditText) findViewById(R.id.passwordField);
         emailEditText = (EditText) findViewById(R.id.emailField);
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = usernameEditText.getText().toString();
+                String username = emailEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
                 String email = emailEditText.getText().toString();
 

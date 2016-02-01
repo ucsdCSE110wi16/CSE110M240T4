@@ -9,28 +9,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SignUpActivity" >
 
-    <EditText
-        android:id="@+id/usernameField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:ems="10"
-        android:hint="@string/username_hint"
-        android:layout_marginTop="125dp">
-
-        <requestFocus />
-    </EditText>
 
 
     <EditText
         android:id="@+id/emailField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="@string/email_hint" />
+        android:hint="@string/email_hint"
+        android:layout_marginTop="125dp"/>
 
     <EditText
         android:id="@+id/passwordField"
