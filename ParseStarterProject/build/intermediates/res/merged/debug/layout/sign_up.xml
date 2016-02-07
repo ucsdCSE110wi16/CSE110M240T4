@@ -40,4 +40,4 @@
         android:layout_below="@+id/passwordField"
         android:text="@string/sign_up_button_label" />
 
-</RelativeLayout><!-- From: file:/C:/Users/nick/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/sign_up.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/Arun/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/sign_up.xml -->
