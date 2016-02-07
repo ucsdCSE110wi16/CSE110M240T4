@@ -7,8 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".SignUpActivity"
-    android:background="#1b1bb9">
+    tools:context=".SignUpActivity">
 
 
 
@@ -16,28 +15,106 @@
         android:id="@+id/emailField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:hint="@string/email_hint"
-        android:layout_marginTop="125dp"/>
+        android:layout_below="@+id/firstnamefield"
+        android:layout_alignLeft="@+id/firstnamefield"
+        android:layout_alignStart="@+id/firstnamefield"
+        android:backgroundTint="#6599FF" />
 
     <EditText
         android:id="@+id/passwordField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/emailField"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="@string/password_hint" />
+        android:hint="@string/password_hint"
+        android:layout_below="@+id/emailField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#6599FF" />
 
     <Button
         android:id="@+id/signupButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/emailField"
+        android:text="Sign up"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:textColor="#6599FF"
+        android:background="#FFDE00"
+        android:textSize="30dp"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignEnd="@+id/textView2"
+        android:visibility="visible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Sign up"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="48dp"
+        android:layout_marginTop="32dp"
+        android:textColor="#6599FF"
+        android:textStyle="bold|italic"
+        android:textIsSelectable="false"
+        android:typeface="serif" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Please enter the correct information"
+        android:id="@+id/textView3"
+        android:layout_marginTop="46dp"
+        android:textSize="22dp"
+        android:textColor="#6599FF"
+        android:textStyle="italic"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="First Name"
+        android:ems="10"
+        android:id="@+id/firstnamefield"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:backgroundTint="#6599FF" />
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Last Name"
+        android:ems="10"
+        android:id="@+id/lastnamefield"
+        android:layout_alignTop="@+id/firstnamefield"
+        android:layout_toRightOf="@+id/firstnamefield"
+        android:layout_toEndOf="@+id/firstnamefield"
+        android:backgroundTint="#6599FF" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="Confirm Password"
+        android:backgroundTint="#6599FF"
         android:layout_below="@+id/passwordField"
-        android:text="@string/sign_up_button_label" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout><!-- From: file:/C:/Users/nick/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/sign_up.xml -->

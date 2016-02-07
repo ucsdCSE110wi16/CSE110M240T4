@@ -8,16 +8,21 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LoginActivity"
-    android:background="#1b1bb9">
+    android:background="#FFFFFF">
 
     <EditText
         android:id="@+id/emailField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
         android:ems="10"
         android:hint="@string/email_hint"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="125dp" />
+        android:textColor="#6599FF"
+        android:layout_marginTop="243dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/passwordField"
@@ -26,21 +31,65 @@
         android:ems="10"
         android:hint="@string/password_hint"
         android:inputType="textPassword"
-        android:layout_below="@+id/emailField"/>
+        android:textColor="#6599FF"
+
+        android:layout_below="@+id/emailField"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_button_label"
-        android:layout_alignLeft="@+id/passwordField"
-        android:layout_below="@+id/passwordField"/>
+        android:background="#FFDE00"
+        android:layout_below="@+id/passwordField"
+        android:layout_alignLeft="@+id/Stinder"
+        android:layout_alignStart="@+id/Stinder"
+        android:layout_alignRight="@+id/Stinder"
+        android:layout_alignEnd="@+id/Stinder"
+        android:typeface="serif"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/signupButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click Here to get started"
-        android:layout_below="@+id/loginButton"/>
+        android:layout_alignParentBottom="true"
+        android:background="#FFDE00"
+        android:layout_alignLeft="@+id/loginButton"
+        android:layout_alignStart="@+id/loginButton"
+        android:layout_alignRight="@+id/loginButton"
+        android:layout_alignEnd="@+id/loginButton" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/stinder_logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="97dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginRight="97dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Holo.Widget.TabWidget"
+        android:text="Stinder"
+        android:id="@+id/Stinder"
+        android:nestedScrollingEnabled="false"
+        android:textSize="@dimen/design_fab_size_normal"
+        android:textColor="#6599FF"
+        android:typeface="serif"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textIsSelectable="false"
+        android:textStyle="bold|italic" />
 
 </RelativeLayout><!-- From: file:/C:/Users/nick/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/login.xml -->
