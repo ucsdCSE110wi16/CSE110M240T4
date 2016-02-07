@@ -61,6 +61,15 @@
         android:layout_alignRight="@+id/submitbutton"
         android:layout_alignEnd="@+id/submitbutton" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove class"
+        android:id="@+id/RemoveClass1"
+        android:layout_alignEnd="@+id/PersonName"
+        android:layout_alignRight="@+id/PersonName"
+        android:layout_alignBottom="@id/Class1" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,6 +83,15 @@
         android:layout_marginTop="20dp"
         android:layout_alignRight="@+id/submitbutton"
         android:layout_alignEnd="@+id/submitbutton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove class"
+        android:id="@+id/RemoveClass2"
+        android:layout_alignEnd="@+id/PersonName"
+        android:layout_alignRight="@+id/PersonName"
+        android:layout_alignBottom="@id/Class2" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -89,6 +107,15 @@
         android:layout_alignRight="@+id/submitbutton"
         android:layout_alignEnd="@+id/submitbutton" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove class"
+        android:id="@+id/RemoveClass3"
+        android:layout_alignEnd="@+id/PersonName"
+        android:layout_alignRight="@+id/PersonName"
+        android:layout_alignBottom="@id/Class3" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -102,6 +129,15 @@
         android:layout_marginTop="20dp"
         android:layout_alignRight="@+id/submitbutton"
         android:layout_alignEnd="@+id/submitbutton" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove class"
+        android:id="@+id/RemoveClass4"
+        android:layout_alignEnd="@+id/PersonName"
+        android:layout_alignRight="@+id/PersonName"
+        android:layout_alignBottom="@id/Class4" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -120,12 +156,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Remove class"
+        android:id="@+id/RemoveClass5"
+        android:layout_alignEnd="@+id/PersonName"
+        android:layout_alignRight="@+id/PersonName"
+        android:layout_alignBottom="@id/Class5" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Add class"
         android:id="@+id/AddClass"
         android:layout_alignEnd="@+id/PersonName"
         android:layout_alignRight="@+id/PersonName"
-        android:layout_alignBottom="@id/Class1"
-        />
+        android:layout_alignBottom="@id/Class1" />
 
     <ScrollView
         android:layout_width="wrap_content"
