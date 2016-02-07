@@ -28,4 +28,5 @@
     <string name="login_bypass">Click to skip to matching screen</string>
     <string name="classes_text">CSE100, CSE110, NMO220</string>
     <string name="title_activity_pre_profile">PreProfileActivity</string>
+    <string name="name_hint">Name</string>
 </resources>

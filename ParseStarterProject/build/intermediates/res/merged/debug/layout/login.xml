@@ -43,4 +43,4 @@
         android:text="Click Here to get started"
         android:layout_below="@+id/loginButton"/>
 
-</RelativeLayout><!-- From: file:/Users/ashleyzhao/CSE110M240T4/ParseStarterProject/src/main/res/layout/login.xml -->
+</RelativeLayout><!-- From: file:/C:/Users/nick/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/login.xml -->

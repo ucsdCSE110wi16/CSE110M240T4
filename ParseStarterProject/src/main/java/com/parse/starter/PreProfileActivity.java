@@ -9,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -27,12 +28,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class PreProfileActivity extends AppCompatActivity {
-
-    EditText[] classes = new EditText[5];
+    private int MAX_CLASSES = 5;
+    EditText[] classes = new EditText[MAX_CLASSES];
     Button addClassButton;
     Button submitButton;
     int currentClass = 0;
-    int maxClasses = 5;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -44,9 +44,9 @@ public class PreProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_profile);
 
-        addClassButton = (Button) findViewById(R.id.AddClass);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);        addClassButton = (Button) findViewById(R.id.AddClass);
         classes[0] = (EditText) findViewById(R.id.Class1);
-        for (int i = 1; i < 5; i++) {
+        for (int i = 1; i < MAX_CLASSES; i++) {
             switch (i) {
                 case (1):
                     classes[i] = (EditText) findViewById(R.id.Class2);
@@ -102,18 +102,21 @@ public class PreProfileActivity extends AppCompatActivity {
         addClassButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currentClass + 1 == maxClasses) {
+                if (currentClass == (MAX_CLASSES - 1)) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(PreProfileActivity.this);
                     builder.setMessage("Stahp. No more classes pls.")
                             .setTitle(R.string.login_error_title)
                             .setPositiveButton(android.R.string.ok, null);
                 }
-                classes[++currentClass].setVisibility(View.VISIBLE);
-                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
-                        addClassButton.getLayoutParams();
-                params.addRule(RelativeLayout.BELOW, classes[currentClass].getId());
-                addClassButton.setLayoutParams(params);
-
+                else {
+                    currentClass++;
+                    classes[currentClass].setVisibility(View.VISIBLE);
+                    classes[currentClass].requestFocus();
+                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                            addClassButton.getLayoutParams();
+                    params.addRule(RelativeLayout.ALIGN_BOTTOM, classes[currentClass].getId());
+                    addClassButton.setLayoutParams(params);
+                }
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.

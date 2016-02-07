@@ -2241,12 +2241,12 @@ containing a value of this type.
         public static final int textborder=0x7f02004b;
     }
     public static final class id {
-        public static final int AddClass=0x7f0c0073;
+        public static final int AddClass=0x7f0c0074;
         public static final int Class1=0x7f0c006e;
-        public static final int Class2=0x7f0c006f;
-        public static final int Class3=0x7f0c0070;
-        public static final int Class4=0x7f0c0071;
-        public static final int Class5=0x7f0c0072;
+        public static final int Class2=0x7f0c0070;
+        public static final int Class3=0x7f0c0071;
+        public static final int Class4=0x7f0c0072;
+        public static final int Class5=0x7f0c0073;
         public static final int PersonName=0x7f0c006c;
         public static final int action0=0x7f0c008a;
         public static final int action_bar=0x7f0c005c;
@@ -2377,7 +2377,7 @@ containing a value of this type.
         public static final int static_class_text=0x7f0c0088;
         public static final int status_bar_latest_event_content=0x7f0c008c;
         public static final int submit_area=0x7f0c0067;
-        public static final int submitbutton=0x7f0c0074;
+        public static final int submitbutton=0x7f0c006f;
         public static final int tabMode=0x7f0c000d;
         public static final int text=0x7f0c0094;
         public static final int text2=0x7f0c0092;
@@ -2530,16 +2530,17 @@ containing a value of this type.
         public static final int login_error_message=0x7f06003d;
         public static final int login_error_title=0x7f06003e;
         public static final int logout_label=0x7f06003f;
-        public static final int parse_app_id=0x7f060040;
-        public static final int parse_client_key=0x7f060041;
-        public static final int password_hint=0x7f060042;
-        public static final int sign_up_button_label=0x7f060043;
-        public static final int sign_up_text=0x7f060044;
-        public static final int signup_error_message=0x7f060045;
-        public static final int signup_error_title=0x7f060046;
+        public static final int name_hint=0x7f060040;
+        public static final int parse_app_id=0x7f060041;
+        public static final int parse_client_key=0x7f060042;
+        public static final int password_hint=0x7f060043;
+        public static final int sign_up_button_label=0x7f060044;
+        public static final int sign_up_text=0x7f060045;
+        public static final int signup_error_message=0x7f060046;
+        public static final int signup_error_title=0x7f060047;
         public static final int status_bar_notification_info_overflow=0x7f060031;
-        public static final int title_activity_pre_profile=0x7f060047;
-        public static final int username_hint=0x7f060048;
+        public static final int title_activity_pre_profile=0x7f060048;
+        public static final int username_hint=0x7f060049;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f09007f;
