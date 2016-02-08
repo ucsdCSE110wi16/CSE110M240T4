@@ -57,6 +57,11 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity android:name="com.parse.starter.BlankActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <activity android:name="com.parse.starter.ProfileActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

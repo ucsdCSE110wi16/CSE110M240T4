@@ -37,40 +37,92 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     private TextView name;
     private TextView classes;
     private ImageView profilePicture;
+    private int counter;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
 
+    private int[] nameID;
+    private int[] photoID;
+    private int[] classesID;
+
     protected void onCreate(Bundle savedInstanceState) {
         //Set Content View?
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matching);
-        name = (TextView) findViewById(R.id.nameText);
-        classes = (TextView) findViewById(R.id.classesText);
-        profilePicture = (ImageView) findViewById(R.id.profilePicture);
+        Intent intent = getIntent();
+        counter = 0;
+        counter = intent.getIntExtra("currentCount", 0);
+
+        if(counter >= 2 ) {
+            Intent nextIntent = new Intent(getApplicationContext(), BlankActivity.class);
+            startActivity(nextIntent);
+        }
+        nameID = new int[]{R.id.nameText1, R.id.nameText2, R.id.nameText3};
+        photoID = new int[]{R.id.profilePicture1, R.id.profilePicture2, R.id.profilePicture3};
+        classesID = new int[]{R.id.classesText1, R.id.classesText2, R.id.classesText3};
+
+        name = (TextView) findViewById(nameID[counter]);
+        classes = (TextView) findViewById(classesID[counter]);
+        profilePicture = (ImageView) findViewById(photoID[counter]);
+        name.setVisibility(View.VISIBLE);
+        classes.setVisibility(View.VISIBLE);
+        profilePicture.setVisibility(View.VISIBLE);
         //Set up a method to update basic profile info: name, classes, image for each new profile
         likeButton = (Button) findViewById(R.id.newButton);
         dislikeButton = (Button) findViewById(R.id.dislikeButton);
-        this.gestureDetector = new GestureDetectorCompat(this, this);
+        gestureDetector = new GestureDetectorCompat(this, this);
 
 
-        likeButton.setOnClickListener(
-                new Button.OnClickListener() {
+        //TODO: Possibly split this Match class into two fragments: Bottom Layer: Has Profiles, Top Layer: Has Button/Swipe Function
+
+        likeButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View v) {
                         //Do something when button is clicked
-                        name.setText("Testing1");
-                        likeButton.setText("Yay");
+                        //name.setText("Testing1");
+                        //likeButton.setText("Yay");
+                        Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
+
+                        nameID = null;
+                        classesID = null;
+                        photoID = null;
+
+                        name.setVisibility(View.INVISIBLE);
+                        classes.setVisibility(View.INVISIBLE);
+                        profilePicture.setVisibility(View.INVISIBLE);
+                        //WOW I VIOLATED DRY PRINCIPLE IMMA FAIL CS110
+                        nextIntent.putExtra("currentCount", counter+1);
+                        startActivity(nextIntent);
+                        //TODO: Provide an indicator that the displayed person got liked
+                        //ToDO: Send information that the current user is interested in current displayed person
+                        //ToDO: Figure out data structure to hold profiles, are we going to just add to end of
+                        //TODO: data structure each time? Or are we able to delete viewable profiles?
                     }
                 }
         );
 
-        dislikeButton.setOnClickListener(
-                new Button.OnClickListener() {
+        dislikeButton.setOnClickListener(new View.OnClickListener() {
                     public void onClick(View w) {
                         //Do something when button is clicked
-                        dislikeButton.setText("Yay");
+                        //name.setText("Testing2");
+                        //dislikeButton.setText("Yay");
+                        Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
+
+                        nameID = null;
+                        classesID = null;
+                        photoID = null;
+
+                        name.setVisibility(View.INVISIBLE);
+                        classes.setVisibility(View.INVISIBLE);
+                        profilePicture.setVisibility(View.INVISIBLE);
+
+                        nextIntent.putExtra("currentCount", counter+1);
+                        startActivity(nextIntent);
+                        //TODO: Provide an indicator that the displayed person got disliked
                     }
                 }
         );
@@ -108,6 +160,11 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
 
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return gestureDetector.onTouchEvent(event);
+    }
+
     private static final int SWIPE_THRESHOLD = 100;
     private static final int SWIPE_VELOCITY_THRESHOLD = 100;
 
@@ -119,7 +176,6 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         if (Math.abs(diffX) > Math.abs(diffY)) {
             if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
                 if (diffX > 0) {
-                    //Not sure what direction this is going
                     onSwipeRight();
                 } else {
                     onSwipeLeft();
@@ -131,16 +187,34 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     }
 
     public void onSwipeRight() {
-          name.setText("Testing");
-          Intent intent = new Intent(getApplicationContext(), MatchActivity.class );
-         startActivity(intent);
+         // name.setText("Testing");
+        Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
+
+        nameID = null;
+        classesID = null;
+        photoID = null;
+
+        name.setVisibility(View.INVISIBLE);
+        classes.setVisibility(View.INVISIBLE);
+        profilePicture.setVisibility(View.INVISIBLE);
+
+        nextIntent.putExtra("currentCount", counter+1);
+        startActivity(nextIntent);
     }
 
     public void onSwipeLeft() {
-          name.setText("ReverseTesting");
-          Intent intent = new Intent(getApplicationContext(), MatchActivity.class);
-          startActivity(intent);
+        Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
+        nameID = null;
+        classesID = null;
+        photoID = null;
+
+        name.setVisibility(View.INVISIBLE);
+        classes.setVisibility(View.INVISIBLE);
+        profilePicture.setVisibility(View.INVISIBLE);
+
+        nextIntent.putExtra("currentCount", counter+1);
+        startActivity(nextIntent);
     }
 
     @Override

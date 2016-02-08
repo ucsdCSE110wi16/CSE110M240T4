@@ -5,12 +5,31 @@
     android:id="@+id/activity_match">
 
     <ImageView
+    android:layout_width="300dp"
+    android:layout_height="300dp"
+    android:id="@+id/profilePicture1"
+    android:src="@mipmap/jarnin"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:visibility="invisible" />
+
+    <ImageView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:id="@+id/profilePicture"
-        android:src="@mipmap/jarnin"
+        android:id="@+id/profilePicture2"
+        android:src="@drawable/dianas_best_friend"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:id="@+id/profilePicture3"
+        android:src="@drawable/tree"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
 
     <ImageView
         android:layout_width="100dp"
@@ -18,17 +37,17 @@
         android:id="@+id/dislikeImage"
         android:src="@drawable/k8727547"
         android:layout_alignTop="@+id/likeImage"
-        android:layout_alignLeft="@+id/profilePicture"
-        android:layout_alignStart="@+id/profilePicture" />
+        android:layout_alignLeft="@+id/profilePicture1"
+        android:layout_alignStart="@+id/profilePicture1" />
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:id="@+id/likeImage"
         android:src="@drawable/exam"
-        android:layout_below="@+id/profilePicture"
-        android:layout_alignRight="@+id/profilePicture"
-        android:layout_alignEnd="@+id/profilePicture"
+        android:layout_below="@+id/profilePicture1"
+        android:layout_alignRight="@+id/profilePicture1"
+        android:layout_alignEnd="@+id/profilePicture1"
         android:layout_marginTop="42dp" />
 
     <Button
@@ -36,11 +55,13 @@
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/dislikeButton"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_alignBottom="@+id/dislikeImage"
         android:layout_alignLeft="@+id/dislikeImage"
         android:layout_alignStart="@+id/dislikeImage"
-        android:layout_alignTop="@+id/dislikeImage" />
+        android:layout_alignTop="@+id/dislikeImage"
+        android:clickable="true"
+        android:alpha="0" />
 
     <Button
         android:layout_width="wrap_content"
@@ -50,19 +71,46 @@
         android:layout_alignBottom="@+id/likeImage"
         android:layout_alignLeft="@+id/likeImage"
         android:layout_alignStart="@+id/likeImage"
-        android:visibility="invisible"
-        android:layout_alignTop="@+id/likeImage" />
+        android:visibility="visible"
+        android:layout_alignTop="@+id/likeImage"
+        android:clickable="true"
+        android:alpha="0" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Jarnin Fang"
-        android:id="@+id/nameText"
-        android:layout_below="@+id/profilePicture"
+        android:id="@+id/nameText1"
+        android:layout_below="@+id/profilePicture1"
         android:layout_centerHorizontal="true"
         android:textColor="#FFF"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Nick Wong"
+        android:id="@+id/nameText2"
+        android:layout_below="@+id/profilePicture1"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFF"
+        android:textSize="30dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Vincent Bai"
+        android:id="@+id/nameText3"
+        android:layout_below="@+id/profilePicture1"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FFF"
+        android:textSize="30dp"
+        android:visibility="invisible" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,7 +120,7 @@
         android:id="@+id/static_class_text"
         android:textColor="#FFF"
         android:textSize="30dp"
-        android:layout_alignTop="@+id/classesText"
+        android:layout_alignTop="@+id/classesText1"
         android:layout_alignRight="@+id/dislikeImage"
         android:layout_alignEnd="@+id/dislikeImage" />
 
@@ -80,13 +128,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/classes_text"
+        android:text="@string/classes_text_one"
         android:textColor="#FFF"
-        android:textSize="25dp"
-        android:id="@+id/classesText"
-        android:layout_below="@+id/likeImage"
-        android:layout_toRightOf="@+id/dislikeButton"
-        android:layout_toEndOf="@+id/dislikeButton" />
+        android:textSize="15sp"
+        android:id="@+id/classesText1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/likeImage"
+        android:layout_alignEnd="@+id/likeImage"
+        android:paddingBottom="30dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/classes_text_two"
+        android:textColor="#FFF"
+        android:textSize="15sp"
+        android:id="@+id/classesText2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/likeImage"
+        android:layout_alignEnd="@+id/likeImage"
+        android:paddingBottom="30dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/classes_text_three"
+        android:textColor="#FFF"
+        android:textSize="15sp"
+        android:id="@+id/classesText3"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/likeImage"
+        android:layout_alignEnd="@+id/likeImage"
+        android:paddingBottom="30dp"
+        android:visibility="invisible" />
 </RelativeLayout>
 
 

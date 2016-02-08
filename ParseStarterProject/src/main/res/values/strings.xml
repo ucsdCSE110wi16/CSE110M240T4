@@ -29,4 +29,7 @@
     <string name="classes_text">CSE100, CSE110, NMO220</string>
     <string name="title_activity_pre_profile">PreProfileActivity</string>
     <string name="name_hint">Name</string>
+    <string name="classes_text_one">CSE100, CSE110, NMO220</string>
+    <string name="classes_text_three">CSE101, CSE110, ECON420</string>
+    <string name="classes_text_two">CSE101, CSE110, MCWP50</string>
 </resources>
