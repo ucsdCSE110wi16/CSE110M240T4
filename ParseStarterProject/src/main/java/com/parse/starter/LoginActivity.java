@@ -1,5 +1,6 @@
 package com.parse.starter;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,11 +40,30 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "login nub", Toast.LENGTH_LONG).show();
 
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         signUpButton = (Button)findViewById(R.id.signupButton);
         userEditText = (EditText)findViewById(R.id.emailField);
         passwordEditText = (EditText)findViewById(R.id.passwordField);
         loginButton = (Button)findViewById(R.id.loginButton);
+
+        userEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        passwordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +101,8 @@ public class LoginActivity extends AppCompatActivity {
                         public void done(ParseUser user, ParseException e) {
                             setProgressBarIndeterminateVisibility(false);
                             Intent intent = new Intent(LoginActivity.this, PreProfileActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             /*if (e == null) {
                                 // Success!
@@ -102,6 +126,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override

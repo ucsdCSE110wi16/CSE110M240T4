@@ -1,5 +1,6 @@
 package com.parse.starter;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -32,11 +33,12 @@ import java.io.OutputStream;
 public class PreProfileActivity extends AppCompatActivity {
     private int MAX_CLASSES = 5;
     EditText[] classes = new EditText[MAX_CLASSES];
+    EditText nameText;
     Button addClassButton;
     Button[] removeClasses = new Button[MAX_CLASSES];
     Button submitButton;
     int currentClass = 0;
-    int removeNum = 0;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -48,7 +50,18 @@ public class PreProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_profile);
 
-        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);        addClassButton = (Button) findViewById(R.id.AddClass);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        nameText = (EditText) findViewById(R.id.PersonName);
+        nameText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+
+        addClassButton = (Button) findViewById(R.id.AddClass);
         classes[0] = (EditText) findViewById(R.id.Class1);
         removeClasses[0] = (Button) findViewById(R.id.RemoveClass1);
         removeClasses[0].setVisibility(View.GONE);
@@ -75,17 +88,33 @@ public class PreProfileActivity extends AppCompatActivity {
             removeClasses[i].setVisibility(View.GONE);
         }
 
+        for(int k = 0; k < MAX_CLASSES; k++) {
+            final EditText currClass = classes[k];
+            currClass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) {
+                        hideKeyboard(v);
+                    }
+                }
+            });
+        }
+
         submitButton = (Button) findViewById(R.id.submitbutton);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ParseObject parseClasses = new ParseObject("classes");
-                parseClasses.put("class1", classes[0]);
-                parseClasses.put("class2", classes[1]);
-                parseClasses.put("class3", classes[2]);
-                parseClasses.put("class4", classes[3]);
+                /*ParseObject parseClasses = new ParseObject("classes");
+                for(int i = 0; i < currentClass; i++) {
+                    parseClasses.put("class" + (i + 1), classes[i]);
+                }
                 parseClasses.saveInBackground();
-
+                Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
+                */
+                Intent intent = new Intent(PreProfileActivity.this, MatchActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
         /*try {
@@ -165,6 +194,11 @@ public class PreProfileActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override
