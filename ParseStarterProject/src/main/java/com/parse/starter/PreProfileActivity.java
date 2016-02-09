@@ -21,23 +21,30 @@ import android.widget.Toast;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 public class PreProfileActivity extends AppCompatActivity {
     private int MAX_CLASSES = 5;
     EditText[] classes = new EditText[MAX_CLASSES];
+    boolean newProfile;
     EditText nameText;
     Button addClassButton;
     Button[] removeClasses = new Button[MAX_CLASSES];
     Button submitButton;
     int currentClass = 0;
+    ParseUser user;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -60,6 +67,27 @@ public class PreProfileActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        user = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
+        query.whereEqualTo("user", user);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null){
+                    if(objects.isEmpty()){
+                        newProfile = true;
+
+                    }
+                    else {
+                        nameText.setText(objects.get(0).getString("Name"));
+                        newProfile = false;
+                    }
+                }
+            }
+        });
+
 
         addClassButton = (Button) findViewById(R.id.AddClass);
         classes[0] = (EditText) findViewById(R.id.Class1);
@@ -104,13 +132,37 @@ public class PreProfileActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*ParseObject parseClasses = new ParseObject("classes");
-                for(int i = 0; i < currentClass; i++) {
-                    parseClasses.put("class" + (i + 1), classes[i]);
+                String name = nameText.getText().toString();
+                name = name.trim();
+
+                user = ParseUser.getCurrentUser();
+
+                if(newProfile) {
+
+                    ParseObject profile = new ParseObject("Profile");
+                    addProfileContent(profile, name, user);
+                    newProfile = false;
+
                 }
-                parseClasses.saveInBackground();
-                Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
-                */
+                else{
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
+                    query.whereEqualTo("user", user);
+                    query.findInBackground(new FindCallback<ParseObject>() {
+                        @Override
+                        public void done(List<ParseObject> objects, ParseException e) {
+                            if (e == null) {
+                                String name = nameText.getText().toString();
+                                name = name.trim();
+
+                                ParseObject profile = objects.get(0);
+                                addProfileContent(profile, name, user);
+
+                            }
+                        }
+                    });
+                }
+
+
                 Intent intent = new Intent(PreProfileActivity.this, MatchActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -194,6 +246,19 @@ public class PreProfileActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    public void addProfileContent(ParseObject profile, String name, ParseUser user){
+        for (int i = 0; i < currentClass; i++) {
+            String course = classes[i].getText().toString();
+            course = course.trim();
+            profile.put("class" + (i + 1), course);
+        }
+
+        profile.put("Name",name );
+        profile.put("user", user);
+        profile.saveInBackground();
+        Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
     }
 
     public void hideKeyboard(View view) {
