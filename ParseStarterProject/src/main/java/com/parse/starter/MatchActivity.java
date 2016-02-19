@@ -26,8 +26,15 @@ import android.support.v4.view.GestureDetectorCompat;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseAnalytics;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.List;
 
 public class MatchActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -38,6 +45,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     private TextView classes;
     private ImageView profilePicture;
     private int counter;
+    private ParseObject[] profiles;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -55,10 +63,20 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matching);
         Intent intent = getIntent();
-        counter = 0;
-        counter = intent.getIntExtra("currentCount", 0);
-
-        if(counter >= 2 ) {
+        /*counter = 0;
+        counter = intent.getIntExtra("currentCount", 0);*/
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    for (int i = 0; i < objects.size(); i++) {
+                        profiles[i] = objects.get(i);
+                    }
+                }
+            }
+        });
+        /*if(counter >= 2 ) {
             Intent nextIntent = new Intent(getApplicationContext(), BlankActivity.class);
             startActivity(nextIntent);
         }
@@ -71,7 +89,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         profilePicture = (ImageView) findViewById(photoID[counter]);
         name.setVisibility(View.VISIBLE);
         classes.setVisibility(View.VISIBLE);
-        profilePicture.setVisibility(View.VISIBLE);
+        profilePicture.setVisibility(View.VISIBLE);*/
         //Set up a method to update basic profile info: name, classes, image for each new profile
         likeButton = (Button) findViewById(R.id.newButton);
         dislikeButton = (Button) findViewById(R.id.dislikeButton);
