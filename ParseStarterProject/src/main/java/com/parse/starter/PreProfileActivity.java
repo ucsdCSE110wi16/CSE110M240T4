@@ -23,6 +23,7 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -93,10 +94,29 @@ public class PreProfileActivity extends AppCompatActivity {
                     removeClasses[i] = (Button) findViewById(R.id.RemoveClass5);
                     break;
             }
-            classes[i].setVisibility(View.GONE);
-            removeClasses[i].setVisibility(View.GONE);
         }
+        ParseQuery<ParseObject> classQuery = ParseQuery.getQuery("Profile");
+        classQuery.whereEqualTo("user", user);
+        classQuery.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject object, ParseException e) {
+                if (e == null) {
+                    ParseObject profile = object;
+                    for (int i = 0; i < MAX_CLASSES; i++) {
+                        /*if (profile.getString("classes" + i) == null) {
+                            if (i != 0) {
+                                classes[i].setVisibility(View.GONE);
+                                removeClasses[i].setVisibility(View.GONE);
+                            }
+                        } else {*/
+                            classes[i].setText(profile.getString("class" + i));
+                            removeClasses[i].setVisibility(View.VISIBLE);
+                            if (i < MAX_CLASSES - 1)
+                                classes[i + 1].setVisibility(View.VISIBLE);
+                        //}
+                    }
 
+<<<<<<< HEAD
 
         user = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
@@ -124,6 +144,12 @@ public class PreProfileActivity extends AppCompatActivity {
         });
 
 
+=======
+                }
+            }
+        });
+        // Hide keyboard when clicking outside of EditText box
+>>>>>>> 780a58b4616180351fb9dd1e35a1323b96fd5886
         for(int k = 0; k < MAX_CLASSES; k++) {
             final EditText currClass = classes[k];
             currClass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -135,7 +161,6 @@ public class PreProfileActivity extends AppCompatActivity {
                 }
             });
         }
-
         submitButton = (Button) findViewById(R.id.submitbutton);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -259,10 +284,18 @@ public class PreProfileActivity extends AppCompatActivity {
     }
 
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
+<<<<<<< HEAD
         for (int i = 0; i < currentClass; i++) {
                 String course = classes[i].getText().toString();
                 course = course.trim();
                 profile.put("class" + i, course);
+=======
+        for (int i = 0; i < MAX_CLASSES; i++) {
+            String course = classes[i].getText().toString();
+            course = course.trim();
+            profile.put("class" + i, course);
+
+>>>>>>> 780a58b4616180351fb9dd1e35a1323b96fd5886
         }
 
         profile.put("Name",name );
