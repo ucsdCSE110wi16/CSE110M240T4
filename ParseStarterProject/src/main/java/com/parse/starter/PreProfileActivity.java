@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -44,6 +45,7 @@ public class PreProfileActivity extends AppCompatActivity {
     Button[] removeClasses = new Button[MAX_CLASSES];
     Button submitButton;
     int currentClass = 0;
+    int passedInCurrentClass;
     ParseUser user;
 
     /**
@@ -67,27 +69,6 @@ public class PreProfileActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-        user = ParseUser.getCurrentUser();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
-        query.whereEqualTo("user", user);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null){
-                    if(objects.isEmpty()){
-                        newProfile = true;
-
-                    }
-                    else {
-                        nameText.setText(objects.get(0).getString("Name"));
-                        newProfile = false;
-                    }
-                }
-            }
-        });
-
 
         addClassButton = (Button) findViewById(R.id.AddClass);
         classes[0] = (EditText) findViewById(R.id.Class1);
@@ -115,6 +96,33 @@ public class PreProfileActivity extends AppCompatActivity {
             classes[i].setVisibility(View.GONE);
             removeClasses[i].setVisibility(View.GONE);
         }
+
+
+        user = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
+        query.whereEqualTo("user", user);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    if (objects.isEmpty()) {
+                        newProfile = true;
+
+                    } else {
+                        passedInCurrentClass = objects.get(0).getInt("currentClass");
+
+                        nameText.setText(objects.get(0).getString("Name"));
+                        for (int i = 0; i < passedInCurrentClass; i++) {
+                            classes[i].setText(objects.get(0).getString("class" + i));
+                        }
+
+                        updateContent();
+                        newProfile = false;
+                    }
+                }
+            }
+        });
+
 
         for(int k = 0; k < MAX_CLASSES; k++) {
             final EditText currClass = classes[k];
@@ -163,7 +171,7 @@ public class PreProfileActivity extends AppCompatActivity {
                 }
 
 
-                Intent intent = new Intent(PreProfileActivity.this, MatchActivity.class);
+                Intent intent = new Intent(PreProfileActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -217,6 +225,7 @@ public class PreProfileActivity extends AppCompatActivity {
             });
         }
 
+
         addClassButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,6 +249,7 @@ public class PreProfileActivity extends AppCompatActivity {
                         params.addRule(RelativeLayout.ALIGN_BOTTOM, classes[currentClass].getId());
                         addClassButton.setLayoutParams(params);
                     }
+
                 }
             }
         });
@@ -250,17 +260,32 @@ public class PreProfileActivity extends AppCompatActivity {
 
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
         for (int i = 0; i < currentClass; i++) {
-            String course = classes[i].getText().toString();
-            course = course.trim();
-            profile.put("class" + (i + 1), course);
+                String course = classes[i].getText().toString();
+                course = course.trim();
+                profile.put("class" + i, course);
         }
 
         profile.put("Name",name );
         profile.put("user", user);
+        profile.put("currentClass", currentClass);
         profile.saveInBackground();
         Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
     }
 
+    public void updateContent(){
+        for(int i = 0; i < passedInCurrentClass; i++) {
+            removeClasses[currentClass].setVisibility(View.VISIBLE);
+
+            currentClass++;
+            classes[currentClass].setVisibility(View.VISIBLE);
+            //classes[currentClass].requestFocus();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                    addClassButton.getLayoutParams();
+            params.addRule(RelativeLayout.ALIGN_BOTTOM, classes[currentClass].getId());
+            addClassButton.setLayoutParams(params);
+        }
+        classes[currentClass].requestFocus();
+    }
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
