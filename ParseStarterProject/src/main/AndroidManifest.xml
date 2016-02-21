@@ -71,6 +71,10 @@
         <activity
             android:name=".PreProfileActivity"
             android:label="@string/title_activity_pre_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ImageActivity"
+            android:label="@string/title_activity_image"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

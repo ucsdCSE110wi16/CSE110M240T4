@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CSE110M240T4.iml" filepath="$PROJECT_DIR$/CSE110M240T4.iml" />
       <module fileurl="file://$PROJECT_DIR$/ParseStarterProject/ParseStarterProject.iml" filepath="$PROJECT_DIR$/ParseStarterProject/ParseStarterProject.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Stinder.iml" filepath="$PROJECT_DIR$/Stinder.iml" />
     </modules>
   </component>
 </project>

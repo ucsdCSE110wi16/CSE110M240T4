@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         userEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
+                if (!hasFocus || !passwordEditText.hasFocus()) {
                     hideKeyboard(v);
                 }
             }
@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus) {
+                if (!hasFocus || !userEditText.hasFocus()) {
                     hideKeyboard(v);
                 }
             }

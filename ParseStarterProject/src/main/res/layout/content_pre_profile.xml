@@ -39,7 +39,7 @@
         android:layout_alignParentStart="false"
         android:layout_marginTop="26dp"
         android:baselineAlignBottom="false"
-        android:contextClickable="false"
+        android:contextClickable="true"
         android:background="@drawable/textborder"
         android:src="@drawable/exam"
         android:layout_alignParentEnd="false"
