@@ -33,6 +33,6 @@ public class BlankActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_screen);
 
-        blankText = (TextView)findViewById(R.id.blank_text);
+        blankText = (TextView)findViewById(R.id.textView4);
     }
 }
