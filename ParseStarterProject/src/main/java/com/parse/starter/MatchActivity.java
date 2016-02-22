@@ -71,6 +71,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         /*counter = 0;
         counter = intent.getIntExtra("currentCount", 0);*/
         name = (TextView) findViewById(R.id.nameText);
+        classes = (TextView) findViewById(R.id.classesText1);
         user = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
         profiles = new ArrayList<>();
@@ -100,6 +101,9 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                                 }
                         }
                     }
+                    for(int i = 0; i < profiles.size(); i++) {
+                        System.out.println("1num: " + numClasses[i] + "user " + profiles.get(i));
+                    }
                     //sort the list based on number of classes
                     for (int i = 0; i < profiles.size()-1; i++) {
                         int j;
@@ -123,6 +127,15 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                     //will use same format to show classes and name
                     name.setText(profiles.get(0).getString("Name"));
                     name.setVisibility(View.VISIBLE);
+                    String classesString = "";
+                    int classNum = 0;
+                    while(!profiles.get(0).getString("class" + classNum).equals("")) {
+                        classesString+=profiles.get(0).getString("class"+classNum) + ", ";
+                        classNum++;
+                    }
+                    classesString=classesString.substring(0, classesString.length()-2);
+                    classes.setText(classesString);
+                    classes.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -156,13 +169,13 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                                               //likeButton.setText("Yay");
                                               Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
-                                              nameID = null;
+                                              /*nameID = null;
                                               classesID = null;
                                               photoID = null;
-
+                                              */
                                               name.setVisibility(View.INVISIBLE);
                                               classes.setVisibility(View.INVISIBLE);
-                                              profilePicture.setVisibility(View.INVISIBLE);
+                                              //profilePicture.setVisibility(View.INVISIBLE);
                                               //WOW I VIOLATED DRY PRINCIPLE IMMA FAIL CS110
                                               nextIntent.putExtra("currentCount", counter + 1);
                                               nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -182,13 +195,13 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                                                  //dislikeButton.setText("Yay");
                                                  Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
-                                                 nameID = null;
+                                                 /*nameID = null;
                                                  classesID = null;
-                                                 photoID = null;
+                                                 photoID = null;*/
 
                                                  name.setVisibility(View.INVISIBLE);
                                                  classes.setVisibility(View.INVISIBLE);
-                                                 profilePicture.setVisibility(View.INVISIBLE);
+                                                 //profilePicture.setVisibility(View.INVISIBLE);
 
                                                  nextIntent.putExtra("currentCount", counter + 1);
                                                  nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -261,30 +274,36 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         // name.setText("Testing");
         Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
-        nameID = null;
+        /*nameID = null;
         classesID = null;
-        photoID = null;
+        photoID = null;*/
 
         name.setVisibility(View.INVISIBLE);
         classes.setVisibility(View.INVISIBLE);
-        profilePicture.setVisibility(View.INVISIBLE);
+        //profilePicture.setVisibility(View.INVISIBLE);
 
-        nextIntent.putExtra("currentCount", counter+1);
+        nextIntent.putExtra("currentCount", counter + 1);
+
+        nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        nextIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(nextIntent);
     }
 
     public void onSwipeLeft() {
         Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
-        nameID = null;
+        /*nameID = null;
         classesID = null;
-        photoID = null;
+        photoID = null;*/
 
         name.setVisibility(View.INVISIBLE);
         classes.setVisibility(View.INVISIBLE);
-        profilePicture.setVisibility(View.INVISIBLE);
+        //profilePicture.setVisibility(View.INVISIBLE);
 
-        nextIntent.putExtra("currentCount", counter+1);
+        nextIntent.putExtra("currentCount", counter + 1);
+
+        nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        nextIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(nextIntent);
     }
 
