@@ -171,9 +171,9 @@ public class PreProfileActivity extends AppCompatActivity {
                 }
 
 
-                Intent intent = new Intent(PreProfileActivity.this, LoginActivity.class);
+                Intent intent = new Intent(PreProfileActivity.this, MatchActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
