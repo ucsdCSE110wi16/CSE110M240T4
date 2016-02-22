@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import android.widget.Button;
@@ -44,8 +45,8 @@ import java.util.NoSuchElementException;
 public class MatchActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private GestureDetectorCompat gestureDetector;
-    private Button likeButton;
-    private Button dislikeButton;
+    private ImageButton likeButton;
+    private ImageButton dislikeButton;
     private TextView name;
     private TextView classes;
     private ImageView profilePicture;
@@ -180,8 +181,8 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
        classes.setVisibility(View.VISIBLE);
        profilePicture.setVisibility(View.VISIBLE);*/
         //Set up a method to update basic profile info: name, classes, image for each new profile
-        likeButton = (Button) findViewById(R.id.newButton);
-        dislikeButton = (Button) findViewById(R.id.dislikeButton);
+        likeButton = (ImageButton) findViewById(R.id.likeButton);
+        dislikeButton = (ImageButton) findViewById(R.id.dislikeButton);
         gestureDetector = new GestureDetectorCompat(this, this);
 
 

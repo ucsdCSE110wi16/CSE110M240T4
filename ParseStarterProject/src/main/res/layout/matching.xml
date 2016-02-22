@@ -4,113 +4,35 @@
     android:background="#1f1fde"
     android:id="@+id/activity_match">
 
-    <ImageView
-    android:layout_width="300dp"
-    android:layout_height="300dp"
-    android:id="@+id/profilePicture1"
-    android:src="@mipmap/jarnin"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true"
-    android:visibility="invisible" />
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/profilePicture2"
-        android:src="@drawable/dianas_best_friend"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="invisible" />
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/profilePicture3"
-        android:src="@drawable/tree"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="invisible" />
-
-    <ImageView
+    <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/dislikeImage"
-        android:src="@drawable/k8727547"
-        android:layout_alignTop="@+id/likeImage"
-        android:layout_alignLeft="@+id/profilePicture1"
-        android:layout_alignStart="@+id/profilePicture1" />
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/likeImage"
-        android:src="@drawable/exam"
-        android:layout_below="@+id/profilePicture1"
-        android:layout_alignRight="@+id/profilePicture1"
-        android:layout_alignEnd="@+id/profilePicture1"
-        android:layout_marginTop="42dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/dislikeButton"
+        android:src="@drawable/k8727547"
         android:visibility="visible"
-        android:layout_alignBottom="@+id/dislikeImage"
-        android:layout_alignLeft="@+id/dislikeImage"
-        android:layout_alignStart="@+id/dislikeImage"
-        android:layout_alignTop="@+id/dislikeImage"
         android:clickable="true"
-        android:alpha="0" />
+        android:scaleType="fitCenter"
+        android:layout_alignRight="@+id/static_class_text"
+        android:layout_above="@+id/static_class_text"
+        android:layout_alignTop="@+id/likeButton"
+        android:layout_alignBottom="@+id/likeButton"
+        android:background="#1f1fde" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:text="New Button"
-        android:id="@+id/newButton"
-        android:layout_alignBottom="@+id/likeImage"
-        android:layout_alignLeft="@+id/likeImage"
-        android:layout_alignStart="@+id/likeImage"
+        android:id="@+id/likeButton"
+        android:src="@drawable/exam"
         android:visibility="visible"
-        android:layout_alignTop="@+id/likeImage"
         android:clickable="true"
-        android:alpha="0" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Jarnin Fang"
-        android:id="@+id/nameText"
-        android:layout_below="@+id/profilePicture1"
-        android:layout_centerHorizontal="true"
-        android:textColor="#FFF"
-        android:textSize="30dp"
-        android:visibility="invisible" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Nick Wong"
-        android:id="@+id/nameText2"
-        android:layout_below="@+id/profilePicture1"
-        android:layout_centerHorizontal="true"
-        android:textColor="#FFF"
-        android:textSize="30dp"
-        android:visibility="invisible" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Vincent Bai"
-        android:id="@+id/nameText3"
-        android:layout_below="@+id/profilePicture1"
-        android:layout_centerHorizontal="true"
-        android:textColor="#FFF"
-        android:textSize="30dp"
-        android:visibility="invisible" />
+        android:scaleType="fitCenter"
+        android:layout_above="@+id/classesText1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight= "20dp"
+        android:layout_marginBottom = "20dp"
+        android:background="#1f1fde" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -121,8 +43,7 @@
         android:textColor="#FFF"
         android:textSize="30dp"
         android:layout_alignTop="@+id/classesText1"
-        android:layout_alignRight="@+id/dislikeImage"
-        android:layout_alignEnd="@+id/dislikeImage" />
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -132,39 +53,33 @@
         android:textColor="#FFF"
         android:textSize="15sp"
         android:id="@+id/classesText1"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/likeImage"
-        android:layout_alignEnd="@+id/likeImage"
         android:paddingBottom="30dp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/classes_text_two"
+        android:text="test"
         android:textColor="#FFF"
-        android:textSize="15sp"
-        android:id="@+id/classesText2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/likeImage"
-        android:layout_alignEnd="@+id/likeImage"
-        android:paddingBottom="30dp"
-        android:visibility="invisible" />
+        android:textSize="30dp"
+        android:id="@+id/nameText"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="30dp" />
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/classes_text_three"
-        android:textColor="#FFF"
-        android:textSize="15sp"
-        android:id="@+id/classesText3"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/likeImage"
-        android:layout_alignEnd="@+id/likeImage"
-        android:paddingBottom="30dp"
-        android:visibility="invisible" />
+        android:id="@+id/profilepic"
+        android:layout_below="@+id/nameText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp" />
+
+
 </RelativeLayout>
 
 
