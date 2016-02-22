@@ -23,6 +23,7 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -47,6 +48,7 @@ public class PreProfileActivity extends AppCompatActivity {
     int currentClass = 0;
     int passedInCurrentClass;
     ParseUser user;
+    ParseObject profile;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -99,8 +101,8 @@ public class PreProfileActivity extends AppCompatActivity {
 
 
         user = ParseUser.getCurrentUser();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
-        query.whereEqualTo("user", user);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+        query.whereEqualTo("objectId", user.getObjectId());
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
@@ -146,15 +148,23 @@ public class PreProfileActivity extends AppCompatActivity {
                 user = ParseUser.getCurrentUser();
 
                 if(newProfile) {
-
-                    ParseObject profile = new ParseObject("Profile");
+                    ParseQuery<ParseObject> myQuery = ParseQuery.getQuery("_User");
+                    myQuery.whereEqualTo("objectId", user.getObjectId());
+                    myQuery.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject object, ParseException e) {
+                            if (e == null) {
+                                profile = object;
+                            }
+                        }
+                    });
                     addProfileContent(profile, name, user);
                     newProfile = false;
 
                 }
                 else{
-                    ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
-                    query.whereEqualTo("user", user);
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+                    query.whereEqualTo("objectId", user.getObjectId());
                     query.findInBackground(new FindCallback<ParseObject>() {
                         @Override
                         public void done(List<ParseObject> objects, ParseException e) {
@@ -173,7 +183,7 @@ public class PreProfileActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(PreProfileActivity.this, MatchActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
