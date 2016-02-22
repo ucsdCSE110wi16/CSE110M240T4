@@ -2342,7 +2342,7 @@ containing a value of this type.
         public static final int middle=0x7f0c0031;
         public static final int mini=0x7f0c002f;
         public static final int multiply=0x7f0c0026;
-        public static final int nameText1=0x7f0c0094;
+        public static final int nameText=0x7f0c0094;
         public static final int nameText2=0x7f0c0095;
         public static final int nameText3=0x7f0c0096;
         public static final int navigation_header_container=0x7f0c0080;

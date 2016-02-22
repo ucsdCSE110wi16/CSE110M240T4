@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Jarnin Fang"
-        android:id="@+id/nameText1"
+        android:id="@+id/nameText"
         android:layout_below="@+id/profilePicture1"
         android:layout_centerHorizontal="true"
         android:textColor="#FFF"

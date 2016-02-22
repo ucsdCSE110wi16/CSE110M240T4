@@ -260,9 +260,9 @@ public class PreProfileActivity extends AppCompatActivity {
 
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
         for (int i = 0; i < currentClass; i++) {
-                String course = classes[i].getText().toString();
-                course = course.trim();
-                profile.put("class" + i, course);
+            String course = classes[i].getText().toString();
+            course = course.trim();
+            profile.put("class" + i, course);
         }
 
         profile.put("Name",name );
