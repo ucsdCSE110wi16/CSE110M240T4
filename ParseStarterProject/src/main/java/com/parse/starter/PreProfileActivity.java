@@ -274,6 +274,9 @@ public class PreProfileActivity extends AppCompatActivity {
             course = course.trim();
             profile.put("class" + i, course);
         }
+        for(int i = currentClass; i < MAX_CLASSES; i++) {
+            profile.put("class" + i, "");
+        }
 
         profile.put("Name",name );
         profile.put("user", user);

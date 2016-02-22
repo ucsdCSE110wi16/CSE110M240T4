@@ -90,17 +90,14 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                     numClasses = new int[profiles.size()];
                     for (int i = 0; i < profiles.size(); i++) {
                         for(int k = 0; k < 5; k++) {
-                            String thisClass = user.getString("class" + k).toUpperCase().trim();
-                            for (int j = 0; j < 5; j++) {
-                                try {
-                                    String otherClass = profiles.get(i).getString("class" + j).toUpperCase().trim();
-                                    if (thisClass.equals(otherClass) && !thisClass.equals("")) {
-                                        numClasses[i]++;
-                                    }
+                                String thisClass = user.getString("class" + k).toUpperCase().trim();
+
+                                for (int j = 0; j < 5; j++) {
+                                        String otherClass = profiles.get(i).getString("class" + j).toUpperCase().trim();
+                                        if (thisClass.equals(otherClass) && !thisClass.equals("")) {
+                                            numClasses[i]++;
+                                        }
                                 }
-                                catch(NullPointerException ex) {
-                                }
-                            }
                         }
                     }
                     //sort the list based on number of classes
@@ -124,7 +121,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                     }
                     //shows the user with most classes' username
                     //will use same format to show classes and name
-                    name.setText(profiles.get(0).getString("username"));
+                    name.setText(profiles.get(0).getString("Name"));
                     name.setVisibility(View.VISIBLE);
                 }
 
