@@ -10,12 +10,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -23,7 +23,6 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -46,7 +45,7 @@ public class PreProfileActivity extends AppCompatActivity {
     Button[] removeClasses = new Button[MAX_CLASSES];
     Button submitButton;
     int currentClass = 0;
-    ImageView image;
+    int passedInCurrentClass;
     ParseUser user;
 
     /**
@@ -68,34 +67,6 @@ public class PreProfileActivity extends AppCompatActivity {
                 if (!hasFocus) {
                     hideKeyboard(v);
                 }
-            }
-        });
-
-
-        user = ParseUser.getCurrentUser();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
-        query.whereEqualTo("user", user);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null){
-                    if(objects.isEmpty()){
-                        newProfile = true;
-
-                    }
-                    else {
-                        nameText.setText(objects.get(0).getString("Name"));
-                        newProfile = false;
-                    }
-                }
-            }
-        });
-        image = (ImageView) findViewById(R.id.profileImage);
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PreProfileActivity.this, ImageActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -122,32 +93,37 @@ public class PreProfileActivity extends AppCompatActivity {
                     removeClasses[i] = (Button) findViewById(R.id.RemoveClass5);
                     break;
             }
+            classes[i].setVisibility(View.GONE);
+            removeClasses[i].setVisibility(View.GONE);
         }
-        ParseQuery<ParseObject> classQuery = ParseQuery.getQuery("Profile");
-        classQuery.whereEqualTo("user", user);
-        classQuery.getFirstInBackground(new GetCallback<ParseObject>() {
-            @Override
-            public void done(ParseObject object, ParseException e) {
-                if (e == null) {
-                    ParseObject profile = object;
-                    for (int i = 0; i < MAX_CLASSES; i++) {
-                        /*if (profile.getString("classes" + i) == null) {
-                            if (i != 0) {
-                                classes[i].setVisibility(View.GONE);
-                                removeClasses[i].setVisibility(View.GONE);
-                            }
-                        } else {*/
-                            classes[i].setText(profile.getString("class" + i));
-                            removeClasses[i].setVisibility(View.VISIBLE);
-                            if (i < MAX_CLASSES - 1)
-                                classes[i + 1].setVisibility(View.VISIBLE);
-                        //}
-                    }
 
+
+        user = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
+        query.whereEqualTo("user", user);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    if (objects.isEmpty()) {
+                        newProfile = true;
+
+                    } else {
+                        passedInCurrentClass = objects.get(0).getInt("currentClass");
+
+                        nameText.setText(objects.get(0).getString("Name"));
+                        for (int i = 0; i < passedInCurrentClass; i++) {
+                            classes[i].setText(objects.get(0).getString("class" + i));
+                        }
+
+                        updateContent();
+                        newProfile = false;
+                    }
                 }
             }
         });
-        // Hide keyboard when clicking outside of EditText box
+
+
         for(int k = 0; k < MAX_CLASSES; k++) {
             final EditText currClass = classes[k];
             currClass.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -159,6 +135,7 @@ public class PreProfileActivity extends AppCompatActivity {
                 }
             });
         }
+
         submitButton = (Button) findViewById(R.id.submitbutton);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,7 +173,7 @@ public class PreProfileActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(PreProfileActivity.this, MatchActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -248,6 +225,7 @@ public class PreProfileActivity extends AppCompatActivity {
             });
         }
 
+
         addClassButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,12 +243,13 @@ public class PreProfileActivity extends AppCompatActivity {
                     } else {
                         currentClass++;
                         classes[currentClass].setVisibility(View.VISIBLE);
-                        //classes[currentClass].requestFocus();
+                        classes[currentClass].requestFocus();
                         RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
                                 addClassButton.getLayoutParams();
                         params.addRule(RelativeLayout.ALIGN_BOTTOM, classes[currentClass].getId());
                         addClassButton.setLayoutParams(params);
                     }
+
                 }
             }
         });
@@ -280,19 +259,33 @@ public class PreProfileActivity extends AppCompatActivity {
     }
 
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
-        for (int i = 0; i < MAX_CLASSES; i++) {
-            String course = classes[i].getText().toString();
-            course = course.trim();
-            profile.put("class" + i, course);
-
+        for (int i = 0; i < currentClass; i++) {
+                String course = classes[i].getText().toString();
+                course = course.trim();
+                profile.put("class" + i, course);
         }
 
         profile.put("Name",name );
         profile.put("user", user);
+        profile.put("currentClass", currentClass);
         profile.saveInBackground();
         Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
     }
 
+    public void updateContent(){
+        for(int i = 0; i < passedInCurrentClass; i++) {
+            removeClasses[currentClass].setVisibility(View.VISIBLE);
+
+            currentClass++;
+            classes[currentClass].setVisibility(View.VISIBLE);
+            //classes[currentClass].requestFocus();
+            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams)
+                    addClassButton.getLayoutParams();
+            params.addRule(RelativeLayout.ALIGN_BOTTOM, classes[currentClass].getId());
+            addClassButton.setLayoutParams(params);
+        }
+        classes[currentClass].requestFocus();
+    }
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
