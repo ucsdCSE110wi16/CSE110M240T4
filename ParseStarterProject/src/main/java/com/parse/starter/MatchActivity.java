@@ -101,10 +101,10 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                         }
                     }
                     //sort the list based on number of classes
-                    for (int i = 0; i < profiles.size()-2; i++) {
+                    for (int i = 0; i < profiles.size()-1; i++) {
                         int j;
                         int max = i;
-                        for (j = i + 1; j < profiles.size()-1; j++) {
+                        for (j = i + 1; j < profiles.size(); j++) {
                             if (numClasses[j] > numClasses[max]) {
                                 max = j;
                             }
