@@ -34,6 +34,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MatchActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -45,7 +47,10 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     private TextView classes;
     private ImageView profilePicture;
     private int counter;
-    private ParseObject[] profiles;
+    private ArrayList<ParseObject> profiles = new ArrayList<ParseObject>();
+    private ParseUser user;
+    private int[] numClasses;
+    private ArrayList<String> objIDs = new ArrayList<>();
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -62,20 +67,70 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matching);
-        Intent intent = getIntent();
+        //Intent intent = getIntent();
         /*counter = 0;
         counter = intent.getIntExtra("currentCount", 0);*/
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Profile");
+        name = (TextView) findViewById(R.id.nameText);
+        user = ParseUser.getCurrentUser();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+        profiles = new ArrayList<>();
+        objIDs = new ArrayList<>();
+        //retrieve every user except itself
+        query.whereNotEqualTo("objectId", user.getObjectId());
+        //runs in the background, threaded
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
-                if (e == null) {
-                    for (int i = 0; i < objects.size(); i++) {
-                        profiles[i] = objects.get(i);
+                if (e == null && objects.size() > 0) {
+                    //add all users to array list
+                    for (ParseObject obj : objects) {
+                        profiles.add(obj);
                     }
+                    //count number of classes that are the same
+                    numClasses = new int[profiles.size()];
+                    for (int i = 0; i < profiles.size(); i++) {
+                        for(int k = 0; k < 5; k++) {
+                            String thisClass = user.getString("class" + k).toUpperCase().trim();
+                            for (int j = 0; j < 5; j++) {
+                                try {
+                                    String otherClass = profiles.get(i).getString("class" + j).toUpperCase().trim();
+                                    if (thisClass.equals(otherClass) && !thisClass.equals("")) {
+                                        numClasses[i]++;
+                                    }
+                                }
+                                catch(NullPointerException ex) {
+                                }
+                            }
+                        }
+                    }
+                    //sort the list based on number of classes
+                    for (int i = 0; i < profiles.size()-2; i++) {
+                        int j;
+                        int max = i;
+                        for (j = i + 1; j < profiles.size()-1; j++) {
+                            if (numClasses[j] > numClasses[max]) {
+                                max = j;
+                            }
+                        }
+                        if(max != i) {
+                            Collections.swap(profiles, i, max);
+                            int temp = numClasses[max];
+                            numClasses[max] = numClasses[i];
+                            numClasses[i] = temp;
+                        }
+                    }
+                    for(int i = 0; i < profiles.size(); i++) {
+                        System.out.println("num: " + numClasses[i] + "user " + profiles.get(i));
+                    }
+                    //shows the user with most classes' username
+                    //will use same format to show classes and name
+                    name.setText(profiles.get(0).getString("username"));
+                    name.setVisibility(View.VISIBLE);
                 }
+
             }
         });
+
         /*if(counter >= 2 ) {
             Intent nextIntent = new Intent(getApplicationContext(), BlankActivity.class);
             startActivity(nextIntent);
@@ -84,7 +139,6 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         photoID = new int[]{R.id.profilePicture1, R.id.profilePicture2, R.id.profilePicture3};
         classesID = new int[]{R.id.classesText1, R.id.classesText2, R.id.classesText3};
 
-        name = (TextView) findViewById(nameID[counter]);
         classes = (TextView) findViewById(classesID[counter]);
         profilePicture = (ImageView) findViewById(photoID[counter]);
         name.setVisibility(View.VISIBLE);
@@ -99,50 +153,52 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         //TODO: Possibly split this Match class into two fragments: Bottom Layer: Has Profiles, Top Layer: Has Button/Swipe Function
 
         likeButton.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View v) {
-                        //Do something when button is clicked
-                        //name.setText("Testing1");
-                        //likeButton.setText("Yay");
-                        Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
+                                          public void onClick(View v) {
+                                              //Do something when button is clicked
+                                              //name.setText("Testing1");
+                                              //likeButton.setText("Yay");
+                                              Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
-                        nameID = null;
-                        classesID = null;
-                        photoID = null;
+                                              nameID = null;
+                                              classesID = null;
+                                              photoID = null;
 
-                        name.setVisibility(View.INVISIBLE);
-                        classes.setVisibility(View.INVISIBLE);
-                        profilePicture.setVisibility(View.INVISIBLE);
-                        //WOW I VIOLATED DRY PRINCIPLE IMMA FAIL CS110
-                        nextIntent.putExtra("currentCount", counter+1);
-                        startActivity(nextIntent);
-                        //TODO: Provide an indicator that the displayed person got liked
-                        //ToDO: Send information that the current user is interested in current displayed person
-                        //ToDO: Figure out data structure to hold profiles, are we going to just add to end of
-                        //TODO: data structure each time? Or are we able to delete viewable profiles?
-                    }
-                }
+                                              name.setVisibility(View.INVISIBLE);
+                                              classes.setVisibility(View.INVISIBLE);
+                                              profilePicture.setVisibility(View.INVISIBLE);
+                                              //WOW I VIOLATED DRY PRINCIPLE IMMA FAIL CS110
+                                              nextIntent.putExtra("currentCount", counter + 1);
+                                              nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                              nextIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                              startActivity(nextIntent);                        //TODO: Provide an indicator that the displayed person got liked
+                                              //ToDO: Send information that the current user is interested in current displayed person
+                                              //ToDO: Figure out data structure to hold profiles, are we going to just add to end of
+                                              //TODO: data structure each time? Or are we able to delete viewable profiles?
+                                          }
+                                      }
         );
 
         dislikeButton.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View w) {
-                        //Do something when button is clicked
-                        //name.setText("Testing2");
-                        //dislikeButton.setText("Yay");
-                        Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
+                                             public void onClick(View w) {
+                                                 //Do something when button is clicked
+                                                 //name.setText("Testing2");
+                                                 //dislikeButton.setText("Yay");
+                                                 Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
-                        nameID = null;
-                        classesID = null;
-                        photoID = null;
+                                                 nameID = null;
+                                                 classesID = null;
+                                                 photoID = null;
 
-                        name.setVisibility(View.INVISIBLE);
-                        classes.setVisibility(View.INVISIBLE);
-                        profilePicture.setVisibility(View.INVISIBLE);
+                                                 name.setVisibility(View.INVISIBLE);
+                                                 classes.setVisibility(View.INVISIBLE);
+                                                 profilePicture.setVisibility(View.INVISIBLE);
 
-                        nextIntent.putExtra("currentCount", counter+1);
-                        startActivity(nextIntent);
-                        //TODO: Provide an indicator that the displayed person got disliked
-                    }
-                }
+                                                 nextIntent.putExtra("currentCount", counter + 1);
+                                                 nextIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                 nextIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                 startActivity(nextIntent);                        //TODO: Provide an indicator that the displayed person got disliked
+                                             }
+                                         }
         );
 
 
@@ -205,7 +261,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     }
 
     public void onSwipeRight() {
-         // name.setText("Testing");
+        // name.setText("Testing");
         Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
         nameID = null;
