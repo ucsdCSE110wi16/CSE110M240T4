@@ -71,13 +71,14 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="30dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.parse.ParseImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/profilepic"
         android:layout_below="@+id/nameText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp" />
+        android:layout_marginTop="40dp"
+        android:src="@drawable/default_profpic" />
 
 
 </RelativeLayout>

@@ -30,4 +30,6 @@ dependencies {
     compile 'com.parse:parse-android:1.12.0'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.android.support:design:23.1.1'
+
+    compile project(':ParseUI-Widget')
 }

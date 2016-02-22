@@ -18,6 +18,7 @@ ext {
     compileSdkVersion = 23
     buildToolsVersion = "23.0.2"
 
+    parse = 'com.parse:parse-android:1.12.0'
     minSdkVersion = 9
     targetSdkVersion = 23
 }

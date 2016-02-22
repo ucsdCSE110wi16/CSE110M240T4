@@ -2233,15 +2233,16 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f020044;
         public static final int common_full_open_on_phone=0x7f020045;
         public static final int common_ic_googleplayservices=0x7f020046;
-        public static final int design_fab_background=0x7f020047;
-        public static final int design_snackbar_background=0x7f020048;
-        public static final int dianas_best_friend=0x7f020049;
-        public static final int exam=0x7f02004a;
-        public static final int k8727547=0x7f02004b;
-        public static final int notification_template_icon_bg=0x7f02004f;
-        public static final int stinder_logo=0x7f02004c;
-        public static final int textborder=0x7f02004d;
-        public static final int tree=0x7f02004e;
+        public static final int default_profpic=0x7f020047;
+        public static final int design_fab_background=0x7f020048;
+        public static final int design_snackbar_background=0x7f020049;
+        public static final int dianas_best_friend=0x7f02004a;
+        public static final int exam=0x7f02004b;
+        public static final int k8727547=0x7f02004c;
+        public static final int notification_template_icon_bg=0x7f020050;
+        public static final int stinder_logo=0x7f02004d;
+        public static final int textborder=0x7f02004e;
+        public static final int tree=0x7f02004f;
     }
     public static final class id {
         public static final int AddClass=0x7f0c007b;

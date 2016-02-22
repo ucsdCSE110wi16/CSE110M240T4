@@ -7,8 +7,10 @@ package com.parse.starter;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,8 +31,11 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -49,7 +54,9 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     private ImageButton dislikeButton;
     private TextView name;
     private TextView classes;
-    private ImageView profilePicture;
+    private ParseImageView profilePicture;
+    private ImageView nonParsePic;
+    private ParseFile uploadedPic;
     private int counter;
     private ParseObject[] profiles;
     private int[] matchedClasses;
@@ -84,7 +91,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         classes = (TextView) findViewById(R.id.classesText1);
         user = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-        query.whereNotEqualTo("objectID", user.getObjectId());
+        query.whereNotEqualTo("objectId", user.getObjectId());
         query.findInBackground(new FindCallback<ParseObject>() {
                                    @Override
                                    public void done(List<ParseObject> objects, ParseException e) {
@@ -273,6 +280,23 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
             name.setVisibility(View.VISIBLE);
             classes.setVisibility(View.VISIBLE);
             infinityCheck = 0;
+
+            uploadedPic = shortFilteredProfiles[profileCounter].getParseFile("ProfPic");
+            System.out.println("Am i null? " + (uploadedPic == null));
+            if (uploadedPic != null) {
+                profilePicture = (ParseImageView) findViewById(R.id.profilepic);
+                profilePicture.setParseFile(uploadedPic);
+                profilePicture.loadInBackground(new GetDataCallback() {
+                    public void done(byte[] data, ParseException e) {
+                        System.out.println("yay it loaded");
+                        // The image is loaded and displayed!
+                    }
+                });
+            }
+            else {
+                nonParsePic = (ImageView) findViewById(R.id.profilepic);
+                nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
+            }
         }
         //If person is not visible, go to next person in list
         else{
@@ -439,3 +463,4 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         client.disconnect();
     }
 }
+

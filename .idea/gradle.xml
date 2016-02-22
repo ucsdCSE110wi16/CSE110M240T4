@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/ParseStarterProject" />
+            <option value="$PROJECT_DIR$/ParseUI-Widget" />
           </set>
         </option>
       </GradleProjectSettings>
