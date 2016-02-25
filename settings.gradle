@@ -1,1 +1,1 @@
-include ':ParseStarterProject', ':ParseUI-Widget'
+include ':ParseStarterProject'

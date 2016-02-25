@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="#1f1fde"
-    android:id="@+id/activity_match">
+    android:background="#FFFFFF"
+    android:id="@+id/activity_match"
+    android:clickable="true">
 
     <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="New Button"
         android:id="@+id/dislikeButton"
-        android:src="@drawable/k8727547"
+        android:src="@drawable/Sad-face.jpg"
         android:visibility="visible"
-        android:clickable="true"
+        android:clickable="false"
         android:scaleType="fitCenter"
         android:layout_alignRight="@+id/static_class_text"
         android:layout_above="@+id/static_class_text"
         android:layout_alignTop="@+id/likeButton"
         android:layout_alignBottom="@+id/likeButton"
-        android:background="#1f1fde" />
+        android:tint="#322d2d" />
 
     <ImageButton
         android:layout_width="100dp"
@@ -78,7 +79,7 @@
         android:layout_below="@+id/nameText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:src="@drawable/default_profpic" />
+         />
 
 
 </RelativeLayout>
