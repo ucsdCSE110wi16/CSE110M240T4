@@ -51,6 +51,7 @@ public class MatchedActivity extends AppCompatActivity{
 
     int numMatched;
 
+    Button backButton;
     Button[] profiles = new Button[MAX_PROFILES];
 
     EditText[] classes = new EditText[MAX_CLASSES];
@@ -166,6 +167,17 @@ public class MatchedActivity extends AppCompatActivity{
         });
 
 
+        //Back Button for before viewing profile
+        backButton = (Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MatchedActivity.this, PreProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
     public void updateViewProfile(int j) {
 
@@ -222,7 +234,18 @@ public class MatchedActivity extends AppCompatActivity{
             e.printStackTrace();
         }
 
+        //Back Button for after view profile
+        backButton = (Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MatchedActivity.this, MatchedActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
 
 }
 

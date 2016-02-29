@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="MatchedProfiles"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.21" />
+        android:layout_weight="0.16" />
 
 
     <Button
@@ -20,7 +20,7 @@
         android:ems="10"
         android:id="@+id/name1"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.16" />
+        android:layout_weight="0.14" />
 
     <Button
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
         android:ems="10"
         android:id="@+id/name4"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.08" />
+        android:layout_weight="0.17" />
 
     <Button
         android:layout_width="match_parent"
@@ -60,6 +60,14 @@
         android:id="@+id/name5"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.15" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/backButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.07" />
 
 
 </LinearLayout>
