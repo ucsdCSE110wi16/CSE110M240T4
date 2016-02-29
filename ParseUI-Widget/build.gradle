@@ -1,0 +1,146 @@
+/*
+ *  Copyright (c) 2014, Parse, LLC. All rights reserved.
+ *
+ *  You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
+ *  copy, modify, and distribute this software in source code or binary form for use
+ *  in connection with the web services and APIs provided by Parse.
+ *
+ *  As with any software that integrates with the Parse platform, your use of
+ *  this software is subject to the Parse Terms of Service
+ *  [https://www.parse.com/about/terms]. This copyright notice shall be
+ *  included in all copies or substantial portions of the software.
+ *
+ *  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ *  FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ *  COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ *  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ *  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+import com.android.builder.core.BuilderConstants
+
+apply plugin: 'com.android.library'
+
+version = "0.0.1"
+group = 'com.parse'
+
+dependencies {
+    compile rootProject.ext.parse
+
+    androidTestCompile 'com.crittercism.dexmaker:dexmaker:1.4'
+    androidTestCompile 'com.crittercism.dexmaker:dexmaker-mockito:1.4'
+    androidTestCompile 'com.crittercism.dexmaker:dexmaker-dx:1.4'
+    androidTestCompile 'org.mockito:mockito-core:1.10.19'
+    androidTestCompile ('org.skyscreamer:jsonassert:1.2.3') {
+        exclude module: 'json'
+    }
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionName project.version
+        versionCode 1
+    }
+}
+
+android.libraryVariants.all { variant ->
+    def name = variant.buildType.name
+
+    def javadocTask = task("javadoc${variant.name.capitalize()}", type: Javadoc) {
+        description "Generates Javadoc for $variant.name."
+        source = variant.javaCompile.source
+        ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+        classpath = files(variant.javaCompile.classpath.files) + files(ext.androidJar)
+
+        options.linksOffline("http://d.android.com/reference", "${android.sdkDirectory}/docs/reference")
+        options.links("http://boltsframework.github.io/docs/android/")
+
+        exclude '**/BuildConfig.java'
+        exclude '**/R.java'
+        exclude '**/internal/**'
+        exclude '**/oauth/**'
+    }
+
+    def javadocJarTask = task("javadocJar${variant.name.capitalize()}", type: Jar, dependsOn: "javadoc${variant.name.capitalize()}") {
+        classifier = 'javadoc'
+        from javadocTask.destinationDir
+    }
+
+    if (name.equals(BuilderConstants.RELEASE)) {
+        artifacts.add('archives', javadocJarTask);
+    }
+}
+
+//region Maven
+
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+def isSnapshot = version.endsWith('-SNAPSHOT')
+def ossrhUsername = hasProperty('NEXUS_USERNAME') ? NEXUS_USERNAME : System.getenv('CI_NEXUS_USERNAME')
+def ossrhPassword = hasProperty('NEXUS_PASSWORD') ? NEXUS_PASSWORD : System.getenv('CI_NEXUS_PASSWORD')
+
+uploadArchives {
+    repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+            authentication(userName: ossrhUsername, password: ossrhPassword)
+        }
+
+        snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+            authentication(userName: ossrhUsername, password: ossrhPassword)
+        }
+
+        pom.project {
+            name 'ParseUI-Widget-Android'
+            artifactId = 'parseui-widget-android'
+            packaging 'aar'
+            description 'A library contains ui widgets for building apps with the Parse Android SDK.'
+            url 'https://github.com/ParsePlatform/ParseUI-Android'
+
+            scm {
+                connection 'scm:git@github.com:ParsePlatform/ParseUI-Android.git'
+                developerConnection 'scm:git@github.com:ParsePlatform/ParseUI-Android.git'
+                url 'https://github.com/ParsePlatform/ParseUI-Android'
+            }
+
+            licenses {
+                license {
+                    name 'Platform License'
+                    url 'https://github.com/ParsePlatform/ParseUI-Android/blob/master/LICENSE'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    id 'parse'
+                    name 'Parse'
+                }
+            }
+        }
+    }
+}
+
+signing {
+    required { !isSnapshot && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+
+artifacts {
+    archives androidSourcesJar
+}
+
+//endregion
