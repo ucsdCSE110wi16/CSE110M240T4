@@ -10,6 +10,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -19,6 +21,9 @@ android {
         debug {
             debuggable true
         }
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 
@@ -30,6 +35,8 @@ dependencies {
     compile 'com.parse:parse-android:1.12.0'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.android.support:design:23.1.1'
+    testCompile 'junit:junit:4.12'
 
     compile project(':ParseUI-Widget')
+    compile 'junit:junit:4.12'
 }
