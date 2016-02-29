@@ -311,6 +311,10 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     public void setMatch() {
         visibility[profileCounter] = 0;
         matchedList.add(filteredProfiles[profileCounter]);
+
+        user.add("MatchedProfiles", filteredProfiles[profileCounter]);
+        user.saveInBackground();
+
     }
 
 

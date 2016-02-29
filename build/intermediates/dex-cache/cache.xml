@@ -2,95 +2,95 @@
 <items version="2" >
 
     <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-40792cd89f72869c4b38d5358c64daed12502b18.jar" />
-    </item>
-    <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-c36f288b95bfe5ae349c9bc0681ced42f7b96d5b.jar" />
-    </item>
-    <item
-        jar="/home/jarnin/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.12.0/34ca297c889cd2023074946c7097d96b30b20891/parse-android-1.12.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="34ca297c889cd2023074946c7097d96b30b20891">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/parse-android-1.12.0-96257a62cfcb34ff057190124af2441b983606fa.jar" />
-    </item>
-    <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-0a12c33fb16a592f24cbf37520d76a5e6cbec5bd.jar" />
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-66be1bab73e756f886ab14e7292182f67fb87156.jar" />
     </item>
     <item
-        jar="/home/jarnin/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-8fbec9f2fa3631e809ffc1d3f5dd06c09e1a231b.jar" />
-    </item>
-    <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-54b2dd4a9264fe34813decaa42874c3a74dac9d8.jar" />
-    </item>
-    <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="379471b2bd17d9737c050345c08e8c7d16589784">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-78da4cade2f04c2bbdca8bc96726c3abbd7f9560.jar" />
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-74b65bc7673091756ba034cd88afbad82f7dda26.jar" />
     </item>
     <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-168b3926fc675047ac4ad36c06110d503e6c5691.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-83bf27f5c5ad11bf97a4d44e6ef8c3e171986e9e.jar" />
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/internal_impl-23.1.1-12725cebef3971da906e446aceb0806e7a3c82e7.jar" />
     </item>
     <item
-        jar="/home/jarnin/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar"
+        jar="/Users/PerryLiu/.gradle/caches/modules-2/files-2.1/com.parse/parse-android/1.12.0/34ca297c889cd2023074946c7097d96b30b20891/parse-android-1.12.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/hamcrest-core-1.3-3a18adcb110bde82e0d35b2251baeccc010c899f.jar" />
+        sha1="34ca297c889cd2023074946c7097d96b30b20891">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/parse-android-1.12.0-22ac5d3b1c29214235a30c81f6f4316a6284200d.jar" />
     </item>
     <item
-        jar="/home/jarnin/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar"
+        jar="/Users/PerryLiu/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/support-annotations-23.1.1-813fe2eed79478971cc27fa4c6765ef01dfd030c.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-53fd9f27d310fad518fb646d4d54b5384253543a.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-eee52e3fb6f61ca400907a97e14d64593983f1dc.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/junit-4.12-94a28d65679b5069e055ef4e6fc5e6febb946c57.jar" />
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/junit-4.12-8bc4e462f56dfef2a168ad44b2e4a4404a8d950c.jar" />
     </item>
     <item
-        jar="/home/jarnin/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.3.0/8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c/bolts-tasks-1.3.0.jar"
+        jar="/Users/PerryLiu/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/hamcrest-core-1.3-6d3845ad9681f3592fbf53570ce263472938c34e.jar" />
+    </item>
+    <item
+        jar="/Users/PerryLiu/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.3.0/8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c/bolts-tasks-1.3.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/bolts-tasks-1.3.0-9dd72cdcc29a69a2507fbacb16049bdd43fa21ac.jar" />
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/bolts-tasks-1.3.0-8c0946a1bcbf56f4131b756e0ff60f8e4c428e13.jar" />
     </item>
     <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars/classes.jar"
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-44c59d72a48394d2ea64d75b7225eee4a86e1f2c.jar" />
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-537df04cb404b87b87cb46729c36b19f9e99899d.jar" />
     </item>
     <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.parse/ParseUI-Widget/0.0.1/jars/classes.jar"
+        jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.parse/ParseUI-Widget/0.0.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="f87faed7ca18fa4df82a1d51c1915c6f93e8a387">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-64aa84b25a3a60d030eb662c3ee38126ccf4903b.jar" />
+        sha1="83a3a142b3ded8321b345611dc2c81e2668b2e62">
+        <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-8bb38cdb6433ec722986f19b6d20f4198ff1b8fa.jar" />
     </item>
 
 </items>

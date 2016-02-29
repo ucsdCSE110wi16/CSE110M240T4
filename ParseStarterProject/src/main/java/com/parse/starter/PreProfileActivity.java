@@ -49,6 +49,7 @@ public class PreProfileActivity extends AppCompatActivity {
     boolean newProfile;
     EditText nameText;
     Button addClassButton;
+    Button matchButton;
     Button[] removeClasses = new Button[MAX_CLASSES];
     Button submitButton;
     int currentClass = 0;
@@ -227,6 +228,20 @@ public class PreProfileActivity extends AppCompatActivity {
             });
         }
 
+        matchButton = (Button) findViewById(R.id.matchbutton);
+        matchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                user = ParseUser.getCurrentUser();
+
+
+                Intent intent = new Intent(PreProfileActivity.this, MatchedActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
         addClassButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -309,6 +324,7 @@ public class PreProfileActivity extends AppCompatActivity {
         }
     }
 
+    //adds content to each profile
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
         for (int i = 0; i < currentClass; i++) {
             String course = classes[i].getText().toString();
@@ -326,6 +342,7 @@ public class PreProfileActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
     }
 
+    //fixes the layout of the program given number of classes
     public void updateContent(){
         for(int i = 0; i < passedInCurrentClass; i++) {
             removeClasses[currentClass].setVisibility(View.VISIBLE);
