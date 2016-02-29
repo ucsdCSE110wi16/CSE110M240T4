@@ -5,34 +5,26 @@ package com.parse.starter;
  */
 
 
-
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageButton;
-import android.widget.Toast;
-
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.ImageView;
 import android.view.MotionEvent;
-import android.view.GestureDetector;
-import android.support.v4.view.GestureDetectorCompat;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.GetDataCallback;
-import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseImageView;
@@ -40,12 +32,8 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
 
 public class MatchActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -311,10 +299,6 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     public void setMatch() {
         visibility[profileCounter] = 0;
         matchedList.add(filteredProfiles[profileCounter]);
-
-        user.add("MatchedProfiles", filteredProfiles[profileCounter]);
-        user.saveInBackground();
-
     }
 
 
