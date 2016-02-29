@@ -20,7 +20,7 @@
         android:ems="10"
         android:id="@+id/name1"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.21" />
+        android:layout_weight="0.16" />
 
     <Button
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         android:text="Name2"
         android:ems="10"
         android:id="@+id/name2"
-        android:layout_weight="0.21" />
+        android:layout_weight="0.12" />
 
     <Button
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
         android:ems="10"
         android:id="@+id/name3"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.21" />
+        android:layout_weight="0.14" />
 
     <Button
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
         android:ems="10"
         android:id="@+id/name4"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.21" />
+        android:layout_weight="0.08" />
 
     <Button
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
         android:ems="10"
         android:id="@+id/name5"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.21" />
+        android:layout_weight="0.15" />
 
 
 </LinearLayout>

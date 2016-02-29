@@ -187,7 +187,17 @@
         android:text="Submit"
         android:id="@+id/submitbutton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignLeft="@+id/profileImage"
+        android:layout_alignStart="@+id/profileImage" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Matched Profiles"
+        android:id="@+id/matchbutton"
+        android:layout_alignTop="@+id/submitbutton"
+        android:layout_toRightOf="@+id/submitbutton"
+        android:layout_toEndOf="@+id/submitbutton" />
 
 
 </RelativeLayout>

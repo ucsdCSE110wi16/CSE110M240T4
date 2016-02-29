@@ -103,7 +103,7 @@ public class MatchedActivity extends AppCompatActivity{
 
 
             //Goes into each Profile of the Matched profile list
-            for (int i = 0; i < matchedList.size(); i++) {
+            for (int i = 0; i < MAX_PROFILES; i++) {
 
                 try {
 

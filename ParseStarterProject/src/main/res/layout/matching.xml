@@ -44,10 +44,9 @@
         android:textSize="15sp"
         android:id="@+id/classesText1"
         android:paddingBottom="30dp"
-        android:visibility="invisible"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp" />
+        android:layout_marginRight="30dp"
+        android:layout_alignParentBottom="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,7 +56,6 @@
         android:textColor="#FFF"
         android:textSize="30dp"
         android:id="@+id/nameText"
-        android:visibility="invisible"
         android:layout_centerHorizontal="true"
         android:paddingTop="30dp" />
 

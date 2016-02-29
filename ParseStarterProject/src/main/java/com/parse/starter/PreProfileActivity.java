@@ -2,6 +2,7 @@ package com.parse.starter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -9,7 +10,11 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -31,6 +36,11 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 public class PreProfileActivity extends AppCompatActivity {
@@ -39,6 +49,7 @@ public class PreProfileActivity extends AppCompatActivity {
     boolean newProfile;
     EditText nameText;
     Button addClassButton;
+    Button matchButton;
     Button[] removeClasses = new Button[MAX_CLASSES];
     Button submitButton;
     int currentClass = 0;
@@ -217,6 +228,20 @@ public class PreProfileActivity extends AppCompatActivity {
             });
         }
 
+        matchButton = (Button) findViewById(R.id.matchbutton);
+        matchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                user = ParseUser.getCurrentUser();
+
+
+                Intent intent = new Intent(PreProfileActivity.this, MatchedActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
 
         addClassButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -299,6 +324,7 @@ public class PreProfileActivity extends AppCompatActivity {
         }
     }
 
+    //adds content to each profile
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
         for (int i = 0; i < currentClass; i++) {
             String course = classes[i].getText().toString();
@@ -316,6 +342,7 @@ public class PreProfileActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
     }
 
+    //fixes the layout of the program given number of classes
     public void updateContent(){
         for(int i = 0; i < passedInCurrentClass; i++) {
             removeClasses[currentClass].setVisibility(View.VISIBLE);
