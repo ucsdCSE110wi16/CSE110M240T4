@@ -19,6 +19,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name="com.parse.starter.StarterApplication"
@@ -82,9 +85,14 @@
             android:label="@string/title_activity_pre_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.parse.starter.ImageActivity"
-            android:label="@string/title_activity_image"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name="com.parse.starter.ListUsersActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name="com.parse.starter.MessageService" />
+
+        <activity
+            android:name="com.parse.starter.MessagingActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

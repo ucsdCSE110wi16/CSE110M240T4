@@ -18,9 +18,11 @@ import android.widget.Button;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
+import com.sinch.android.rtc.SinchClient;
 
 
 public class MainActivity extends AppCompatActivity {
+    private SinchClient sinchClient = null;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
     ParseUser currentUser = ParseUser.getCurrentUser();
-      loadLoginView();
+    loadLoginView();
 
     Button skipButton = (Button)findViewById(R.id.shortcutButton);
     skipButton.setOnClickListener(

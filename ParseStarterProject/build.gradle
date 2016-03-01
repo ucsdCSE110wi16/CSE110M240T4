@@ -24,13 +24,12 @@ android {
 }
 
 dependencies {
-
-
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.parse.bolts:bolts-tasks:1.3.0'
     compile 'com.parse:parse-android:1.12.0'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.android.support:design:23.1.1'
-
     compile project(':ParseUI-Widget')
+    compile files('C:/Users/nick/AndroidStudioProjects/CSE110M240T4/libs/sinch-android-rtc-3.9.2.jar')
+    compile files('src/main/jniLibs/sinch-android-rtc-3.9.2.jar')
 }
