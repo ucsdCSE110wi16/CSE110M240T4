@@ -236,7 +236,7 @@ public class PreProfileActivity extends AppCompatActivity {
                 user = ParseUser.getCurrentUser();
 
 
-                Intent intent = new Intent(PreProfileActivity.this, MatchedActivity.class);
+                Intent intent = new Intent(PreProfileActivity.this, MatchActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);

@@ -2,6 +2,7 @@
 <items version="2" >
 
     <item
+<<<<<<< Updated upstream
         jar="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
@@ -77,6 +78,90 @@
         revision="23.0.2"
         sha1="379471b2bd17d9737c050345c08e8c7d16589784">
         <dex dex="/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-74b65bc7673091756ba034cd88afbad82f7dda26.jar" />
+=======
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\src\main\jniLibs\sinch-android-rtc-3.9.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="52b8589e5b73b007315a91b40e8038ab4d74636c">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\sinch-android-rtc-3.9.2-6b225af8d8c927474da5bed1a6079fcf1d6319c3.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\.gradle\caches\modules-2\files-2.1\com.parse\parse-android\1.12.0\34ca297c889cd2023074946c7097d96b30b20891\parse-android-1.12.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="34ca297c889cd2023074946c7097d96b30b20891">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\parse-android-1.12.0-deaee124d571f5864c6c42242db029f031b0773a.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-07e8c7607ad8850339e22d745d658f3be542c494.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-344b6342e8eb6ca4187bdfdd9d4a0f4a0a8f81e1.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-fb4e0662e5ed31bef6f8de6017fabe2993ece175.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\internal_impl-23.1.1-1fcae08b38ba3f31b027047dd3a95e96e75b3885.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\support-annotations-23.1.1-17e954acf1d3a819e77cba094a50a64f51c9b56f.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-2f0ae0bedb6970e9519099066a0c242cfe7aac98.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.3.0\8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c\bolts-tasks-1.3.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8a62fd16fcc1c06f284fc98e6cbded2a5af1dd4c">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\bolts-tasks-1.3.0-b63af9ee857b6674fdd4e7dae862a5c8abf6fa20.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-5922370f65f90474d24351df98fc3dabe159c6f6.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.parse\ParseUI-Widget\0.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2d0145ed5780d75db26af42824f65dbb3539d036">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-686dbc833bfabcc1abba647f09a563801af3c53a.jar" />
+    </item>
+    <item
+        jar="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\nick\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-0469236896024de4360eb171be1c18be3f505baf.jar" />
+>>>>>>> Stashed changes
     </item>
 
 </items>
