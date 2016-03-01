@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -300,9 +299,6 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     public void setMatch() {
         visibility[profileCounter] = 0;
         matchedList.add(filteredProfiles[profileCounter]);
-
-        user.add("MatchedProfiles", filteredProfiles[profileCounter]);
-        user.saveInBackground();
     }
 
 
