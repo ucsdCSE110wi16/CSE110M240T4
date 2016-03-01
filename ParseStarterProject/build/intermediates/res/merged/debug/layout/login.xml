@@ -45,13 +45,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_button_label"
-        android:background="#FFDE00"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/matchbutton"
         android:layout_below="@+id/passwordField"
         android:layout_alignLeft="@+id/Stinder"
         android:layout_alignStart="@+id/Stinder"
         android:layout_alignRight="@+id/Stinder"
         android:layout_alignEnd="@+id/Stinder"
-        android:typeface="serif"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginTop="20dp" />
@@ -62,7 +62,8 @@
         android:layout_height="wrap_content"
         android:text="Click Here to get started"
         android:layout_alignParentBottom="true"
-        android:background="#FFDE00"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/matchbutton"
         android:layout_alignLeft="@+id/loginButton"
         android:layout_alignStart="@+id/loginButton"
         android:layout_alignRight="@+id/loginButton"
@@ -89,10 +90,10 @@
         android:nestedScrollingEnabled="false"
         android:textSize="@dimen/design_fab_size_normal"
         android:textColor="#6599FF"
-        android:typeface="serif"
+        android:typeface="sans"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:textIsSelectable="false"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold" />
 
 </RelativeLayout><!-- From: file:/C:/Users/nick/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/src/main/res/layout/login.xml -->
