@@ -10,6 +10,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -29,6 +31,10 @@ dependencies {
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
     compile 'com.android.support:design:23.1.1'
     compile project(':ParseUI-Widget')
-    compile files('C:/Users/nick/AndroidStudioProjects/CSE110M240T4/libs/sinch-android-rtc-3.9.2.jar')
+   // compile files('C:/Users/nick/AndroidStudioProjects/CSE110M240T4/libs/sinch-android-rtc-3.9.2.jar')
     compile files('src/main/jniLibs/sinch-android-rtc-3.9.2.jar')
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+    androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support:support-annotations:23.1.1'
+
 }
