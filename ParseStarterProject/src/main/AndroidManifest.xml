@@ -65,7 +65,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".MatchedActivity">
+        <activity android:name=".MatchedPortfolio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>

@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="@string/login_button_label"
         android:textColor="#FFFFFF"
-        android:background="@drawable/matchbutton"
+        android:background="@drawable/messagebutton"
         android:layout_below="@+id/passwordField"
         android:layout_alignLeft="@+id/Stinder"
         android:layout_alignStart="@+id/Stinder"
@@ -63,7 +63,7 @@
         android:text="Click Here to get started"
         android:layout_alignParentBottom="true"
         android:textColor="#FFFFFF"
-        android:background="@drawable/matchbutton"
+        android:background="@drawable/messagebutton"
         android:layout_alignLeft="@+id/loginButton"
         android:layout_alignStart="@+id/loginButton"
         android:layout_alignRight="@+id/loginButton"
@@ -96,4 +96,4 @@
         android:textIsSelectable="false"
         android:textStyle="bold" />
 
-</RelativeLayout><!-- From: file:/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/src/main/res/layout/login.xml -->
+</RelativeLayout><!-- From: file:/Users/ashleyzhao/CSE110M240T4/CSE110M240T4/ParseStarterProject/src/main/res/layout/login.xml -->
