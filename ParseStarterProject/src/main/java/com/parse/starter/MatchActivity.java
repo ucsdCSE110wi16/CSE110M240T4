@@ -5,25 +5,21 @@ package com.parse.starter;
  */
 
 
-
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ImageView;
-import android.view.MotionEvent;
-import android.view.GestureDetector;
-import android.support.v4.view.GestureDetectorCompat;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -37,19 +33,14 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.NoSuchElementException;
 
 public class MatchActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     private GestureDetectorCompat gestureDetector;
     private Button likeButton;
     private Button dislikeButton;
-    private Button messageButton;
     private TextView name;
     private TextView classes;
     private ParseImageView profilePicture;
@@ -161,6 +152,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                                        for (int i = 0; i < filteredCounter; i++) {
                                            visibility[i] = 1; //All users are initially visible
                                        }
+
                                        displayNextProfile();
                                    }
                                }
@@ -177,7 +169,6 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
        nameID = new int[]{R.id.nameText1, R.id.nameText2, R.id.nameText3};
        photoID = new int[]{R.id.profilePicture1, R.id.profilePicture2, R.id.profilePicture3};
        classesID = new int[]{R.id.classesText1, R.id.classesText2, R.id.classesText3};
-
        name = (TextView) findViewById(nameID[counter]);
        classes = (TextView) findViewById(classesID[counter]);
        profilePicture = (ImageView) findViewById(photoID[counter]);
@@ -188,7 +179,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         likeButton = (Button) findViewById(R.id.likeButton);
         dislikeButton = (Button) findViewById(R.id.dislikeButton);
         gestureDetector = new GestureDetectorCompat(this, this);
-        messageButton = (Button) findViewById(R.id.messageButton);
+
 
         //TODO: Possibly split this Match class into two fragments: Bottom Layer: Has Profiles, Top Layer: Has Button/Swipe Function
 
@@ -219,36 +210,29 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         );
 
         dislikeButton.setOnClickListener(new View.OnClickListener() {
-             public void onClick(View w) {
-                 //Do something when button is clicked
-                 //name.setText("Testing2");
-                 //dislikeButton.setText("Yay");
-                 //Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
+                                             public void onClick(View w) {
+                                                 //Do something when button is clicked
+                                                 //name.setText("Testing2");
+                                                 //dislikeButton.setText("Yay");
+                                                 //Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
 
-                 //nameID = null;
-                 //classesID = null;
-                 //photoID = null;
-                 profileCounter++;
-                 displayNextProfile();
-                 //name.setVisibility(View.INVISIBLE);
-                 //classes.setVisibility(View.INVISIBLE);
-                 //profilePicture.setVisibility(View.INVISIBLE);
+                                                 //nameID = null;
+                                                 //classesID = null;
+                                                 //photoID = null;
+                                                 profileCounter++;
+                                                 displayNextProfile();
+                                                 //name.setVisibility(View.INVISIBLE);
+                                                 //classes.setVisibility(View.INVISIBLE);
+                                                 //profilePicture.setVisibility(View.INVISIBLE);
 
-                 //nextIntent.putExtra("currentCount", counter+1);
-                 //startActivity(nextIntent);
-                 //TODO: Provide an indicator that the displayed person got disliked
-             }
-        });
+                                                 //nextIntent.putExtra("currentCount", counter+1);
+                                                 //startActivity(nextIntent);
+                                                 //TODO: Provide an indicator that the displayed person got disliked
+                                             }
+                                         }
+        );
 
-        messageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Intent intent = new Intent(getApplicationContext(), ListUsersActivity.class);
-                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
-                startActivity(intent);
-                startService(serviceIntent);
-            }
-        });
+
 
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -257,69 +241,58 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     }
 
     public void displayNextProfile() {
-        boolean matched = false;
-        for(int i = 0; i<matchedClasses.length; i++) {
-            if(matchedClasses[i] != 0) {
-                matched = true;
-                break;
-            }
+        //If we are at the end of the list, go to beginning
+        if( profileCounter >= visibility.length) {
+            profileCounter = 0;
         }
-        if(!matched || infinityCheck == visibility.length) {
+        //If we check the whole list, go to blank page
+        if( infinityCheck == visibility.length) {
             Intent intent = new Intent(this, BlankActivity.class);
             startActivity(intent);
         }
-        else {
-            //If we are at the end of the list, go to beginning
-            if (profileCounter >= visibility.length) {
-                profileCounter = 0;
+        //If the next person is visible, display the person
+        if( visibility[profileCounter] == 1 ) {
+            //name.setVisibility(View.INVISIBLE);
+            //classes.setVisibility(View.INVISIBLE);
+            //System.err.println("profilecount" + profileCounter);
+            //System.err.println(shortFilteredProfiles[profileCounter]);
+            String linkedClasses = "";
+            for( int i = 0; i < shortFilteredProfiles[profileCounter].getInt("currentClass"); i++ ) {
+                linkedClasses += shortFilteredProfiles[profileCounter].getString("class" + i);
+                linkedClasses += ", ";
             }
-            //If we check the whole list, go to blank page
-        /*if( infinityCheck == visibility.length) {
-            Intent intent = new Intent(this, BlankActivity.class);
-            startActivity(intent);
-        }*/
-            //If the next person is visible, display the person
-            if (visibility[profileCounter] == 1) {
-                //name.setVisibility(View.INVISIBLE);
-                //classes.setVisibility(View.INVISIBLE);
-                //System.err.println("profilecount" + profileCounter);
-                //System.err.println(shortFilteredProfiles[profileCounter]);
-                String linkedClasses = "";
-                for (int i = 0; i < shortFilteredProfiles[profileCounter].getInt("currentClass"); i++) {
-                    linkedClasses += shortFilteredProfiles[profileCounter].getString("class" + i);
-                    linkedClasses += ", ";
-                }
-                //System.err.println( "linkedClasses is" + linkedClasses);
-                String shortenedLinkedClasses = linkedClasses.substring(0, linkedClasses.length() - 2);
-                name.setText(shortFilteredProfiles[profileCounter].getString("Name"));
-                classes.setText(shortenedLinkedClasses);
-                name.setVisibility(View.VISIBLE);
-                classes.setVisibility(View.VISIBLE);
-                infinityCheck = 0;
+            //System.err.println( "linkedClasses is" + linkedClasses);
+            String shortenedLinkedClasses = linkedClasses.substring(0, linkedClasses.length()-2);
+            name.setText(shortFilteredProfiles[profileCounter].getString("Name") );
+            classes.setText(shortenedLinkedClasses);
+            name.setVisibility(View.VISIBLE);
+            classes.setVisibility(View.VISIBLE);
+            infinityCheck = 0;
 
-                uploadedPic = shortFilteredProfiles[profileCounter].getParseFile("ProfPic");
-                System.out.println("Am i null? " + (uploadedPic == null));
-                if (uploadedPic != null) {
-                    profilePicture = (ParseImageView) findViewById(R.id.profilepic);
-                    profilePicture.setParseFile(uploadedPic);
-                    profilePicture.loadInBackground(new GetDataCallback() {
-                        public void done(byte[] data, ParseException e) {
-                            System.out.println("yay it loaded");
-                            // The image is loaded and displayed!
-                        }
-                    });
-                } else {
-                    nonParsePic = (ImageView) findViewById(R.id.profilepic);
-                    nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
-                }
+            uploadedPic = shortFilteredProfiles[profileCounter].getParseFile("ProfPic");
+            System.out.println("Am i null? " + (uploadedPic == null));
+            if (uploadedPic != null) {
+                profilePicture = (ParseImageView) findViewById(R.id.profilepic);
+                profilePicture.setParseFile(uploadedPic);
+                profilePicture.loadInBackground(new GetDataCallback() {
+                    public void done(byte[] data, ParseException e) {
+                        System.out.println("yay it loaded");
+                        // The image is loaded and displayed!
+                    }
+                });
             }
-            //If person is not visible, go to next person in list
             else {
-                profileCounter++;
-                infinityCheck++;
-                displayNextProfile();
+                nonParsePic = (ImageView) findViewById(R.id.profilepic);
+                nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
             }
         }
+        //If person is not visible, go to next person in list
+        else{
+            profileCounter++;
+            infinityCheck++;
+            displayNextProfile();
+        }
+
     }
 
     //Move a person to the matched list and set their flag to not visible
@@ -386,15 +359,12 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     public void onSwipeRight() {
         // name.setText("Testing");
         /*Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
-
         nameID = null;
         classesID = null;
         photoID = null;
-
         name.setVisibility(View.INVISIBLE);
         classes.setVisibility(View.INVISIBLE);
         profilePicture.setVisibility(View.INVISIBLE);
-
         nextIntent.putExtra("currentCount", counter+1);
         startActivity(nextIntent);
         */
@@ -405,15 +375,12 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
 
     public void onSwipeLeft() {
         /*Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
-
         nameID = null;
         classesID = null;
         photoID = null;
-
         name.setVisibility(View.INVISIBLE);
         classes.setVisibility(View.INVISIBLE);
         profilePicture.setVisibility(View.INVISIBLE);
-
         nextIntent.putExtra("currentCount", counter+1);
         startActivity(nextIntent);*/
         profileCounter++;
@@ -480,10 +447,4 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
-    @Override
-    public void onDestroy() {
-        stopService(new Intent(this, MessageService.class));
-        super.onDestroy();
-    }
 }
-

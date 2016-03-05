@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
     ParseUser currentUser = ParseUser.getCurrentUser();
+    ParseUser.logOut();
     loadLoginView();
 
     Button skipButton = (Button)findViewById(R.id.shortcutButton);
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
               }
             }
     );
-            /*
+
+    /*
     if (currentUser == null) {
         ParseUser.logOut();
       loadLoginView();
