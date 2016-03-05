@@ -94,13 +94,13 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void done(ParseUser user, ParseException e) {
                             setProgressBarIndeterminateVisibility(false);
-                            Intent intent = new Intent(LoginActivity.this, PreProfileActivity.class);
+                            /*Intent intent = new Intent(LoginActivity.this, PreProfileActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                            /*if (e == null) {
+                            startActivity(intent);*/
+                            if (e == null) {
                                 // Success!
-                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, PreProfileActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .setPositiveButton(android.R.string.ok, null);
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
-                            }*/
+                            }
                         }
                     });
                 }

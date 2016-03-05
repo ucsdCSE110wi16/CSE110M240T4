@@ -7,6 +7,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:windowSoftInputMode="adjustResize"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
     tools:context=".SignUpActivity">
 
 
@@ -100,15 +103,15 @@
         android:hint="Last Name"
         android:ems="10"
         android:id="@+id/lastnamefield"
-        android:layout_alignTop="@+id/firstnamefield"
-        android:layout_toRightOf="@+id/firstnamefield"
-        android:layout_toEndOf="@+id/firstnamefield"
-        android:backgroundTint="#6599FF" />
+        android:backgroundTint="#6599FF"
+        android:layout_above="@+id/emailField"
+        android:layout_alignRight="@+id/emailField"
+        android:layout_alignEnd="@+id/emailField" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/confirmPassword"
         android:inputType="textPassword"
         android:hint="Confirm Password"
         android:backgroundTint="#6599FF"
@@ -118,4 +121,4 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-</RelativeLayout><!-- From: file:/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/src/main/res/layout/sign_up.xml -->
+</RelativeLayout><!-- From: file:/Users/PerryLiu/Downloads/Stinder/ParseStarterProject/src/main/res/layout/sign_up.xml -->
