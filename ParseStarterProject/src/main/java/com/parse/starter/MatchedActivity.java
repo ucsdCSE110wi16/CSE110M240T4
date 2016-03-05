@@ -196,7 +196,7 @@ public class MatchedActivity extends AppCompatActivity {
         ID = objectId[j];
 
         //Switching to view only profile
-        Intent intent = new Intent(MatchedActivity.this, PreProfileActivity.class);
+        Intent intent = new Intent(MatchedActivity.this, ViewActivity.class);
         intent.putExtra("ID", ID);
         startActivity(intent);
 
