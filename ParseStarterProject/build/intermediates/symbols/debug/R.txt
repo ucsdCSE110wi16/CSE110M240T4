@@ -640,6 +640,7 @@ int id classesText1 0x7f0c00a4
 int id clip_horizontal 0x7f0c002b
 int id clip_vertical 0x7f0c002c
 int id collapseActionView 0x7f0c0035
+int id confirmPassword 0x7f0c00bd
 int id contentPanel 0x7f0c004c
 int id custom 0x7f0c0052
 int id customPanel 0x7f0c0051
@@ -652,7 +653,6 @@ int id design_navigation_view 0x7f0c0089
 int id disableHome 0x7f0c000e
 int id dislikeButton 0x7f0c00a7
 int id divider 0x7f0c006f
-int id editText 0x7f0c00bd
 int id edit_query 0x7f0c005e
 int id emailField 0x7f0c008d
 int id end 0x7f0c0020

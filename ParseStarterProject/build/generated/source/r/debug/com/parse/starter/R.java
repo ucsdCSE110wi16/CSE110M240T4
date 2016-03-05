@@ -2311,6 +2311,7 @@ containing a value of this type.
         public static final int clip_horizontal=0x7f0c002b;
         public static final int clip_vertical=0x7f0c002c;
         public static final int collapseActionView=0x7f0c0035;
+        public static final int confirmPassword=0x7f0c00bd;
         public static final int contentPanel=0x7f0c004c;
         public static final int custom=0x7f0c0052;
         public static final int customPanel=0x7f0c0051;
@@ -2323,7 +2324,6 @@ containing a value of this type.
         public static final int disableHome=0x7f0c000e;
         public static final int dislikeButton=0x7f0c00a7;
         public static final int divider=0x7f0c006f;
-        public static final int editText=0x7f0c00bd;
         public static final int edit_query=0x7f0c005e;
         public static final int emailField=0x7f0c008d;
         public static final int end=0x7f0c0020;

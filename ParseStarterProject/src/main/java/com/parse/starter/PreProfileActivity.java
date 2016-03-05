@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -29,8 +30,10 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -56,7 +59,10 @@ public class PreProfileActivity extends AppCompatActivity {
     int passedInCurrentClass;
     ParseUser user;
     ParseObject profile;
-    ImageView profilePic;
+    private ParseImageView profilePicture;
+    private ImageView nonParsePic;
+    private ParseFile uploadedPic;
+
     int SELECT_PHOTO = 1;
 
     /**
@@ -156,7 +162,7 @@ public class PreProfileActivity extends AppCompatActivity {
 
                 user = ParseUser.getCurrentUser();
 
-                if(newProfile) {
+                if (newProfile) {
                     ParseQuery<ParseObject> myQuery = ParseQuery.getQuery("_User");
                     myQuery.whereEqualTo("objectId", user.getObjectId());
                     myQuery.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -170,8 +176,7 @@ public class PreProfileActivity extends AppCompatActivity {
                     addProfileContent(profile, name, user);
                     newProfile = false;
 
-                }
-                else{
+                } else {
                     ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
                     query.whereEqualTo("objectId", user.getObjectId());
                     query.findInBackground(new FindCallback<ParseObject>() {
@@ -202,8 +207,8 @@ public class PreProfileActivity extends AppCompatActivity {
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    for(int j = 0; j < MAX_CLASSES; j++) {
-                        if(removeClasses[j].getId() == v.getId()) {
+                    for (int j = 0; j < MAX_CLASSES; j++) {
+                        if (removeClasses[j].getId() == v.getId()) {
                             for (int k = j; k < currentClass; k++) {
                                 classes[k].setText(classes[k + 1].getText());
                                 classes[k + 1].setText("");
@@ -211,8 +216,7 @@ public class PreProfileActivity extends AppCompatActivity {
                             if (addClassButton.getVisibility() == View.INVISIBLE) {
                                 addClassButton.setVisibility(View.VISIBLE);
                                 removeClasses[currentClass].setVisibility(View.INVISIBLE);
-                            }
-                            else {
+                            } else {
                                 removeClasses[currentClass - 1].setVisibility(View.INVISIBLE);
                                 classes[currentClass].setVisibility(View.INVISIBLE);
                                 currentClass--;
@@ -271,8 +275,25 @@ public class PreProfileActivity extends AppCompatActivity {
             }
         });
 
-        profilePic = (ImageView) findViewById(R.id.profileImage);
-        profilePic.setOnClickListener(new View.OnClickListener() {
+        uploadedPic = user.getParseFile("ProfPic");
+        System.out.println("Am i null? " + (uploadedPic == null));
+        if (uploadedPic != null) {
+            profilePicture = (ParseImageView) findViewById(R.id.profileImage);
+            profilePicture.setParseFile(uploadedPic);
+            profilePicture.loadInBackground(new GetDataCallback() {
+                public void done(byte[] data, ParseException e) {
+                    System.out.println("yay it loaded");
+                    // The image is loaded and displayed!
+                }
+            });
+        }
+        else {
+            nonParsePic = (ImageView) findViewById(R.id.profileImage);
+            nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
+        }
+
+        profilePicture = (ParseImageView) findViewById(R.id.profileImage);
+        profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
