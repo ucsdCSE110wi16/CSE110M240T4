@@ -40,6 +40,8 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     private GestureDetectorCompat gestureDetector;
     private Button likeButton;
     private Button dislikeButton;
+    private ImageView backButton;
+    private ImageView messageButton;
     private TextView name;
     private TextView classes;
     private ParseImageView profilePicture;
@@ -76,7 +78,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
        /*counter = 0;
        counter = intent.getIntExtra("currentCount", 0);*/
         name = (TextView) findViewById(R.id.nameText);
-        classes = (TextView) findViewById(R.id.classesText1);
+        classes = (TextView) findViewById(R.id.classesList);
         user = ParseUser.getCurrentUser();
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
         query.whereNotEqualTo("objectId", user.getObjectId());
@@ -178,7 +180,8 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         likeButton = (Button) findViewById(R.id.likeButton);
         dislikeButton = (Button) findViewById(R.id.dislikeButton);
         gestureDetector = new GestureDetectorCompat(this, this);
-
+        backButton = (ImageView) findViewById(R.id.backButton);
+        messageButton = (ImageView) findViewById(R.id.MessageButton);
 
         //TODO: Possibly split this Match class into two fragments: Bottom Layer: Has Profiles, Top Layer: Has Button/Swipe Function
 
@@ -237,6 +240,20 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MatchActivity.this, PreProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MatchActivity.this, MatchedPortfolio.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void displayNextProfile() {

@@ -2265,6 +2265,7 @@ containing a value of this type.
         public static final int Class3=0x7f0c007e;
         public static final int Class4=0x7f0c0080;
         public static final int Class5=0x7f0c0082;
+        public static final int MessageButton=0x7f0c00a8;
         public static final int PersonName=0x7f0c0077;
         public static final int RemoveClass1=0x7f0c007b;
         public static final int RemoveClass2=0x7f0c007d;
@@ -2307,7 +2308,7 @@ containing a value of this type.
         public static final int center_vertical=0x7f0c001f;
         public static final int checkbox=0x7f0c0054;
         public static final int chronometer=0x7f0c00b3;
-        public static final int classesText1=0x7f0c00a4;
+        public static final int classesList=0x7f0c00a5;
         public static final int clip_horizontal=0x7f0c002b;
         public static final int clip_vertical=0x7f0c002c;
         public static final int collapseActionView=0x7f0c0035;
@@ -2322,7 +2323,7 @@ containing a value of this type.
         public static final int design_menu_item_text=0x7f0c008a;
         public static final int design_navigation_view=0x7f0c0089;
         public static final int disableHome=0x7f0c000e;
-        public static final int dislikeButton=0x7f0c00a7;
+        public static final int dislikeButton=0x7f0c00a6;
         public static final int divider=0x7f0c006f;
         public static final int edit_query=0x7f0c005e;
         public static final int emailField=0x7f0c008d;
@@ -2353,7 +2354,7 @@ containing a value of this type.
         public static final int item_touch_helper_previous_elevation=0x7f0c0005;
         public static final int lastnamefield=0x7f0c00bc;
         public static final int left=0x7f0c0022;
-        public static final int likeButton=0x7f0c00a2;
+        public static final int likeButton=0x7f0c00a7;
         public static final int line1=0x7f0c00b1;
         public static final int line3=0x7f0c00b5;
         public static final int listMessages=0x7f0c006e;
@@ -2364,7 +2365,6 @@ containing a value of this type.
         public static final int matchbutton=0x7f0c0085;
         public static final int media_actions=0x7f0c00af;
         public static final int messageBodyField=0x7f0c0071;
-        public static final int messageButton=0x7f0c00a8;
         public static final int middle=0x7f0c0031;
         public static final int mini=0x7f0c002f;
         public static final int multiply=0x7f0c0026;
@@ -2373,7 +2373,7 @@ containing a value of this type.
         public static final int name3=0x7f0c009b;
         public static final int name4=0x7f0c009d;
         public static final int name5=0x7f0c009f;
-        public static final int nameText=0x7f0c00a5;
+        public static final int nameText=0x7f0c00a3;
         public static final int navigation_header_container=0x7f0c0088;
         public static final int never=0x7f0c0037;
         public static final int none=0x7f0c0010;
@@ -2383,7 +2383,7 @@ containing a value of this type.
         public static final int passwordField=0x7f0c008e;
         public static final int pin=0x7f0c001b;
         public static final int profileImage=0x7f0c0078;
-        public static final int profilepic=0x7f0c00a6;
+        public static final int profilepic=0x7f0c00a2;
         public static final int progress_circular=0x7f0c0006;
         public static final int progress_horizontal=0x7f0c0007;
         public static final int radio=0x7f0c0056;
@@ -2422,7 +2422,7 @@ containing a value of this type.
         public static final int src_in=0x7f0c0029;
         public static final int src_over=0x7f0c002a;
         public static final int start=0x7f0c0024;
-        public static final int static_class_text=0x7f0c00a3;
+        public static final int static_class_text=0x7f0c00a4;
         public static final int status_bar_latest_event_content=0x7f0c00ae;
         public static final int submit_area=0x7f0c0067;
         public static final int submitbutton=0x7f0c007a;
