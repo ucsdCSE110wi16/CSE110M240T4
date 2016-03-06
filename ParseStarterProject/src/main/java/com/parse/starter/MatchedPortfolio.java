@@ -2,13 +2,17 @@ package com.parse.starter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -47,21 +51,24 @@ import java.util.List;
  * Created by ashleyzhao on 2/28/16.
  */
 public class MatchedPortfolio extends AppCompatActivity {
-        private int MAX_PROFILES = 5;
+    private int MAX_PROFILES = 5;
 
-        int numMatched;
+    int numMatched;
 
-        private ParseFile uploadedPic;
+    private ParseFile uploadedPic;
 
-        Button backButton;
+    Button backButton;
 
-        //Created image and button arrays
-        Button[] profiles = new Button[MAX_PROFILES];
-        ParseImageView[] pictures = new ParseImageView[MAX_PROFILES];
-        ImageView[] nonPictures = new ImageView[MAX_PROFILES];
+    //Created image and button arrays
+    Button[] profiles = new Button[MAX_PROFILES];
+    ParseImageView[] pictures = new ParseImageView[MAX_PROFILES];
+    ImageView[] nonPictures = new ImageView[MAX_PROFILES];
 
-        String[] objectId = new String[MAX_PROFILES];
-        String ID;
+    String[] objectId = new String[MAX_PROFILES];
+    String ID;
+
+    private ProgressDialog progressDialog;
+    private BroadcastReceiver receiver = null;
 
         List<ParseObject> matchedList = new ArrayList<ParseObject>();
         /**
@@ -76,6 +83,7 @@ public class MatchedPortfolio extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.matched_portfolio);
 
+            showSpinner();
 
             //Makes every profile invisible
             for (int i = 0; i < MAX_PROFILES; i++) {
@@ -252,9 +260,6 @@ public class MatchedPortfolio extends AppCompatActivity {
             Intent intent = new Intent(MatchedPortfolio.this, ViewActivity.class);
             intent.putExtra("ID", ID);
             startActivity(intent);
-
-
-
         }
 
 
@@ -278,6 +283,26 @@ public class MatchedPortfolio extends AppCompatActivity {
             AppIndex.AppIndexApi.start(client, viewAction);
         }
 
+    //show a loading spinner while the sinch client starts
+    private void showSpinner() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.show();
+
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Boolean success = intent.getBooleanExtra("success", false);
+                progressDialog.dismiss();
+                if (!success) {
+                    Toast.makeText(getApplicationContext(), "Messaging service failed to start", Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver, new IntentFilter("com.parse.starter.ViewActivity"));
+    }
         @Override
         public void onStop() {
             super.onStop();

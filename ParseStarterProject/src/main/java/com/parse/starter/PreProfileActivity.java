@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -236,14 +237,10 @@ public class PreProfileActivity extends AppCompatActivity {
         matchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                user = ParseUser.getCurrentUser();
-
-
-                Intent intent = new Intent(PreProfileActivity.this, MatchedPortfolio.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                final Intent intent = new Intent(getApplicationContext(), MatchedPortfolio.class);
+                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
                 startActivity(intent);
+                startService(serviceIntent);
             }
         });
 
@@ -301,6 +298,20 @@ public class PreProfileActivity extends AppCompatActivity {
                 startActivityForResult(photoPickerIntent, SELECT_PHOTO);
             }
         });
+
+        // If the user has not matched with anyone, do not show matched button
+        List<ParseObject> file = (List<ParseObject>) user.get("MatchedProfiles");
+        if(file == null) {
+            matchButton.setVisibility(View.INVISIBLE);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams
+                    (RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.removeRule(RelativeLayout.ALIGN_LEFT);
+            layoutParams.removeRule(RelativeLayout.ALIGN_START);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+            submitButton.setLayoutParams(layoutParams);
+        }
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();

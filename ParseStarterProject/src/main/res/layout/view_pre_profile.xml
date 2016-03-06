@@ -14,7 +14,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
 >
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
@@ -34,13 +34,13 @@
         android:layout_height="200dp"
         android:id="@+id/profileImage"
         android:baselineAlignBottom="false"
-        android:contextClickable="true"
+        android:contextClickable="false"
         android:background="@drawable/textborder"
         android:src="@drawable/exam"
         android:layout_alignTop="@+id/scrollView"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -54,7 +54,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -66,7 +66,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
 
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="Class"
@@ -78,7 +78,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
 
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="Class"
@@ -90,7 +90,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
 
-    <EditText
+    <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="Class"
@@ -112,7 +112,7 @@
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="69dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/backButton"
         android:background="@drawable/backbutton"
@@ -120,5 +120,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="message"
+        android:id="@+id/messageButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

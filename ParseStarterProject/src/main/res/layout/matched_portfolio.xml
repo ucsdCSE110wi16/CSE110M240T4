@@ -149,13 +149,18 @@
             android:layout_alignLeft="@id/image5"
             android:background="@drawable/messagebutton"/>
     </LinearLayout>
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="69dp"
+    <RelativeLayout
         android:layout_height="wrap_content"
-        android:id="@+id/backButton"
-        android:background="@drawable/backbutton"/>
+        android:layout_width="wrap_content">
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backButton"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/backbutton"/> >
 
+    </RelativeLayout>
 </LinearLayout>
+
 
