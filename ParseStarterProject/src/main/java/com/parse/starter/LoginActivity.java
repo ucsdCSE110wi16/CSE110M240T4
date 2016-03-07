@@ -102,7 +102,9 @@ public class LoginActivity extends AppCompatActivity {
                                 // Success!
                                 Intent intent = new Intent(LoginActivity.this, PreProfileActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
                                 startActivity(intent);
+                                startService(serviceIntent);
                             } else {
                                 Toast.makeText(getApplicationContext(), "bruh no", Toast.LENGTH_LONG).show();
 
