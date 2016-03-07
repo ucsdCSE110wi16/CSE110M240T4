@@ -64,118 +64,92 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
      */
     private GoogleApiClient client;
 
-    private int[] nameID;
-    private int[] photoID;
-    private int[] classesID;
-
-
     protected void onCreate(Bundle savedInstanceState) {
         //Set Content View?
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matching);
-        Intent intent = getIntent();
-       /*counter = 0;
-       counter = intent.getIntExtra("currentCount", 0);*/
+
         name = (TextView) findViewById(R.id.nameText);
         classes = (TextView) findViewById(R.id.classesList);
         user = ParseUser.getCurrentUser();
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
         query.whereNotEqualTo("objectId", user.getObjectId());
         query.findInBackground(new FindCallback<ParseObject>() {
                                    @Override
                                    public void done(List<ParseObject> objects, ParseException e) {
-                                       //System.err.println(objects.size());
-                                       profiles = new ParseObject[objects.size()];
-                                       matchedClasses = new int[objects.size()];
-                                       filteredProfiles = new ParseObject[objects.size()];
-                                       if (e == null && objects.size() > 0) {
-                                           for (int i = 0; i < objects.size(); i++) {
-                                               profiles[i] = objects.get(i);
-                                               //System.err.println(objects.get(i));
-                                               //System.err.println("profiles[i]=" + profiles[i] );
-                                           }
-                                       }
+           profiles = new ParseObject[objects.size()];
+           matchedClasses = new int[objects.size()];
+           filteredProfiles = new ParseObject[objects.size()];
+           if (e == null && objects.size() > 0) {
+               for (int i = 0; i < objects.size(); i++) {
+                   profiles[i] = objects.get(i);
+                   //System.err.println(objects.get(i));
+                   //System.err.println("profiles[i]=" + profiles[i] );
+               }
+           }
 
-                                       counter = 0;
-                                       //Loop over every user in the array
-                                       while (counter < objects.size()) {
-                                           int match = 0;
-                                           int totalClasses = user.getInt("currentClass");
-                                           //System.err.println(totalClasses);
-                                           //For each user, loop over each of our classes to compare strings
-                                           while (totalClasses > 0) {
-                                               //For each of our strings, loop over each of their strings to check
-                                               //for same classes
-                                               String currentClass = user.getString("class" + (totalClasses - 1));
-                                               int classesToCheck = profiles[counter].getInt("currentClass");
-                                               //System.err.println(currentClass);
-                                               for (int i = 0; i < classesToCheck; i++) {
-                                                   String matchingClass = profiles[counter].getString("class" + ((classesToCheck - i)-1));
-                                                   //System.err.println("matchingClass =" + matchingClass);
-                                                   if (currentClass.trim().equalsIgnoreCase(matchingClass.trim())) {
-                                                       match++;
-                                                   }
+           counter = 0;
+           //Loop over every user in the array
+           while (counter < objects.size()) {
+               int match = 0;
+               int totalClasses = user.getInt("currentClass");
+               //System.err.println(totalClasses);
+               //For each user, loop over each of our classes to compare strings
+               while (totalClasses > 0) {
+                   //For each of our strings, loop over each of their strings to check
+                   //for same classes
+                   String currentClass = user.getString("class" + (totalClasses - 1));
+                   int classesToCheck = profiles[counter].getInt("currentClass");
+                   for (int i = 0; i < classesToCheck; i++) {
+                       String matchingClass = profiles[counter].getString("class" + ((classesToCheck - i)-1));
+                       if (currentClass.trim().equalsIgnoreCase(matchingClass.trim())) {
+                           match++;
+                       }
 
-                                               }
-                                               totalClasses--;
-                                           }
-                                           //After checking all their classes against all our classes, store in array
-                                           matchedClasses[counter] = match;
-                                           //System.err.println("match#" + match + " totalClasses = " + totalClasses );
-                                           match = 0;
-                                           counter++;
-                                       }
+                   }
+                   totalClasses--;
+               }
+               //After checking all their classes against all our classes, store in array
+               matchedClasses[counter] = match;
+               //System.err.println("match#" + match + " totalClasses = " + totalClasses );
+               match = 0;
+               counter++;
+           }
 
-                                       //Now we have the array of matched classes corresponding to the parse user array
+           //Now we have the array of matched classes corresponding to the parse user array
 
-                                       counter = 0;
-                                       int filteredCounter = 0;
-                                       int totalClasses = user.getInt("currentClass");
-                                       //Loop to find users with 3 classes in common, then 2, then 1, etc.
-                                       while (totalClasses > 0) {
-                                           //Loop over every user to find their corresponding number
-                                           for (int i = 0; i < objects.size(); i++) {
-                                               if (matchedClasses[i] == totalClasses) {
-                                                   filteredProfiles[filteredCounter] = profiles[i];
-                                                   filteredCounter++;
-                                               }
-                                           }
-                                           totalClasses--;
-                                       }
-                                       //Trims the array
-                                       shortFilteredProfiles = new ParseObject[filteredCounter];
-                                       System.arraycopy(filteredProfiles, 0, shortFilteredProfiles, 0, filteredCounter);
+           counter = 0;
+           int filteredCounter = 0;
+           int totalClasses = user.getInt("currentClass");
+           //Loop to find users with 3 classes in common, then 2, then 1, etc.
+           while (totalClasses > 0) {
+               //Loop over every user to find their corresponding number
+               for (int i = 0; i < objects.size(); i++) {
+                   if (matchedClasses[i] == totalClasses) {
+                       filteredProfiles[filteredCounter] = profiles[i];
+                       filteredCounter++;
+                   }
+               }
+               totalClasses--;
+           }
+           //Trims the array
+           shortFilteredProfiles = new ParseObject[filteredCounter];
+           System.arraycopy(filteredProfiles, 0, shortFilteredProfiles, 0, filteredCounter);
 
-                                       //Now we have an array of filtered profiles
-                                       visibility = new int[filteredCounter];
-                                       //And a blank array of flags to be set
-                                       for (int i = 0; i < filteredCounter; i++) {
-                                           visibility[i] = 1; //All users are initially visible
-                                       }
+           //Now we have an array of filtered profiles
+           visibility = new int[filteredCounter];
+           //And a blank array of flags to be set
+           for (int i = 0; i < filteredCounter; i++) {
+               visibility[i] = 1; //All users are initially visible
+           }
 
-                                       displayNextProfile();
-                                   }
-                               }
+           displayNextProfile();
+       }
+   }
         );
 
-
-
-
-
-       /*if(counter >= 2 ) {
-           Intent nextIntent = new Intent(getApplicationContext(), BlankActivity.class);
-           startActivity(nextIntent);
-       }
-       nameID = new int[]{R.id.nameText1, R.id.nameText2, R.id.nameText3};
-       photoID = new int[]{R.id.profilePicture1, R.id.profilePicture2, R.id.profilePicture3};
-       classesID = new int[]{R.id.classesText1, R.id.classesText2, R.id.classesText3};
-       name = (TextView) findViewById(nameID[counter]);
-       classes = (TextView) findViewById(classesID[counter]);
-       profilePicture = (ImageView) findViewById(photoID[counter]);
-       name.setVisibility(View.VISIBLE);
-       classes.setVisibility(View.VISIBLE);
-       profilePicture.setVisibility(View.VISIBLE);*/
         //Set up a method to update basic profile info: name, classes, image for each new profile
         likeButton = (Button) findViewById(R.id.likeButton);
         dislikeButton = (Button) findViewById(R.id.dislikeButton);
@@ -261,54 +235,62 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         if( profileCounter >= visibility.length) {
             profileCounter = 0;
         }
+        boolean matched = false;
+        for(int i = 0; i< matchedClasses.length; i++) {
+            if(matchedClasses[i] != 0) {
+                matched = true;
+                break;
+            }
+        }
+
         //If we check the whole list, go to blank page
-        if( infinityCheck == visibility.length) {
+        if(!matched || infinityCheck == visibility.length) {
             Intent intent = new Intent(this, BlankActivity.class);
             startActivity(intent);
         }
-        //If the next person is visible, display the person
-        if( visibility[profileCounter] == 1 ) {
-            //name.setVisibility(View.INVISIBLE);
-            //classes.setVisibility(View.INVISIBLE);
-            //System.err.println("profilecount" + profileCounter);
-            //System.err.println(shortFilteredProfiles[profileCounter]);
-            String linkedClasses = "";
-            for( int i = 0; i < shortFilteredProfiles[profileCounter].getInt("currentClass"); i++ ) {
-                linkedClasses += shortFilteredProfiles[profileCounter].getString("class" + i);
-                linkedClasses += ", ";
-            }
-            //System.err.println( "linkedClasses is" + linkedClasses);
-            String shortenedLinkedClasses = linkedClasses.substring(0, linkedClasses.length()-2);
-            name.setText(shortFilteredProfiles[profileCounter].getString("Name") );
-            classes.setText(shortenedLinkedClasses);
-            name.setVisibility(View.VISIBLE);
-            classes.setVisibility(View.VISIBLE);
-            infinityCheck = 0;
+        else {
+            //If the next person is visible, display the person
+            if (visibility[profileCounter] == 1) {
+                //name.setVisibility(View.INVISIBLE);
+                //classes.setVisibility(View.INVISIBLE);
+                //System.err.println("profilecount" + profileCounter);
+                //System.err.println(shortFilteredProfiles[profileCounter]);
+                String linkedClasses = "";
+                for (int i = 0; i < shortFilteredProfiles[profileCounter].getInt("currentClass"); i++) {
+                    linkedClasses += shortFilteredProfiles[profileCounter].getString("class" + i);
+                    linkedClasses += ", ";
+                }
+                //System.err.println( "linkedClasses is" + linkedClasses);
+                String shortenedLinkedClasses = linkedClasses.substring(0, linkedClasses.length() - 2);
+                name.setText(shortFilteredProfiles[profileCounter].getString("Name"));
+                classes.setText(shortenedLinkedClasses);
+                name.setVisibility(View.VISIBLE);
+                classes.setVisibility(View.VISIBLE);
+                infinityCheck = 0;
 
-            uploadedPic = shortFilteredProfiles[profileCounter].getParseFile("ProfPic");
-            System.out.println("Am i null? " + (uploadedPic == null));
-            if (uploadedPic != null) {
-                profilePicture = (ParseImageView) findViewById(R.id.profilepic);
-                profilePicture.setParseFile(uploadedPic);
-                profilePicture.loadInBackground(new GetDataCallback() {
-                    public void done(byte[] data, ParseException e) {
-                        System.out.println("yay it loaded");
-                        // The image is loaded and displayed!
-                    }
-                });
+                uploadedPic = shortFilteredProfiles[profileCounter].getParseFile("ProfPic");
+                System.out.println("Am i null? " + (uploadedPic == null));
+                if (uploadedPic != null) {
+                    profilePicture = (ParseImageView) findViewById(R.id.profilepic);
+                    profilePicture.setParseFile(uploadedPic);
+                    profilePicture.loadInBackground(new GetDataCallback() {
+                        public void done(byte[] data, ParseException e) {
+                            System.out.println("yay it loaded");
+                            // The image is loaded and displayed!
+                        }
+                    });
+                } else {
+                    nonParsePic = (ImageView) findViewById(R.id.profilepic);
+                    nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
+                }
             }
+            //If person is not visible, go to next person in list
             else {
-                nonParsePic = (ImageView) findViewById(R.id.profilepic);
-                nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
+                profileCounter++;
+                infinityCheck++;
+                displayNextProfile();
             }
         }
-        //If person is not visible, go to next person in list
-        else{
-            profileCounter++;
-            infinityCheck++;
-            displayNextProfile();
-        }
-
     }
 
     //Move a person to the matched list and set their flag to not visible
@@ -370,32 +352,11 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     }
 
     public void onSwipeRight() {
-        // name.setText("Testing");
-        /*Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
-        nameID = null;
-        classesID = null;
-        photoID = null;
-        name.setVisibility(View.INVISIBLE);
-        classes.setVisibility(View.INVISIBLE);
-        profilePicture.setVisibility(View.INVISIBLE);
-        nextIntent.putExtra("currentCount", counter+1);
-        startActivity(nextIntent);
-        */
         setMatch();
         displayNextProfile();
-
     }
 
     public void onSwipeLeft() {
-        /*Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
-        nameID = null;
-        classesID = null;
-        photoID = null;
-        name.setVisibility(View.INVISIBLE);
-        classes.setVisibility(View.INVISIBLE);
-        profilePicture.setVisibility(View.INVISIBLE);
-        nextIntent.putExtra("currentCount", counter+1);
-        startActivity(nextIntent);*/
         profileCounter++;
         displayNextProfile();
     }
