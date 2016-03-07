@@ -80,109 +80,116 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         name = (TextView) findViewById(R.id.nameText);
         classes = (TextView) findViewById(R.id.classesList);
         user = ParseUser.getCurrentUser();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
-        query.whereNotEqualTo("objectId", user.getObjectId());
-        query.findInBackground(new FindCallback<ParseObject>() {
-                                   @Override
-                                   public void done(List<ParseObject> objects, ParseException e) {
-                                       //System.err.println(objects.size());
-                                       profiles = new ParseObject[objects.size()];
-                                       matchedClasses = new int[objects.size()];
-                                       filteredProfiles = new ParseObject[objects.size()];
-                                       if (e == null && objects.size() > 0) {
-                                           for (int i = 0; i < objects.size(); i++) {
-                                               profiles[i] = objects.get(i);
-                                               //System.err.println(objects.get(i));
-                                               //System.err.println("profiles[i]=" + profiles[i] );
+        //Null check for matchedprofiles
+        List<ParseObject> file = (List<ParseObject>) user.get("MatchedProfiles");
+        if(file == null) {
+            Intent blankIntent = new Intent(this, BlankActivity.class);
+            startActivity(blankIntent);
+        }
+        else {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
+            query.whereNotEqualTo("objectId", user.getObjectId());
+            query.findInBackground(new FindCallback<ParseObject>() {
+                                       @Override
+                                       public void done(List<ParseObject> objects, ParseException e) {
+                                           //System.err.println(objects.size());
+                                           profiles = new ParseObject[objects.size()];
+                                           matchedClasses = new int[objects.size()];
+                                           filteredProfiles = new ParseObject[objects.size()];
+                                           if (e == null && objects.size() > 0) {
+                                               for (int i = 0; i < objects.size(); i++) {
+                                                   profiles[i] = objects.get(i);
+                                                   //System.err.println(objects.get(i));
+                                                   //System.err.println("profiles[i]=" + profiles[i] );
+                                               }
                                            }
-                                       }
 
-                                       counter = 0;
-                                       //Loop over every user in the array
-                                       while (counter < objects.size()) {
-                                           int match = 0;
-                                           int totalClasses = user.getInt("currentClass");
-                                           //System.err.println(totalClasses);
-                                           //For each user, loop over each of our classes to compare strings
-                                           while (totalClasses > 0) {
-                                               //For each of our strings, loop over each of their strings to check
-                                               //for same classes
-                                               String currentClass = user.getString("class" + (totalClasses - 1));
-                                               int classesToCheck = profiles[counter].getInt("currentClass");
-                                               //System.err.println(currentClass);
-                                               for (int i = 0; i < classesToCheck; i++) {
-                                                   String matchingClass = profiles[counter].getString("class" + ((classesToCheck - i)-1));
-                                                   //System.err.println("matchingClass =" + matchingClass);
-                                                   if (currentClass.trim().equalsIgnoreCase(matchingClass.trim())) {
-                                                       match++;
+                                           counter = 0;
+                                           //Loop over every user in the array
+                                           while (counter < objects.size()) {
+                                               int match = 0;
+                                               int totalClasses = user.getInt("currentClass");
+                                               //System.err.println(totalClasses);
+                                               //For each user, loop over each of our classes to compare strings
+                                               while (totalClasses > 0) {
+                                                   //For each of our strings, loop over each of their strings to check
+                                                   //for same classes
+                                                   String currentClass = user.getString("class" + (totalClasses - 1));
+                                                   int classesToCheck = profiles[counter].getInt("currentClass");
+                                                   //System.err.println(currentClass);
+                                                   for (int i = 0; i < classesToCheck; i++) {
+                                                       String matchingClass = profiles[counter].getString("class" + ((classesToCheck - i) - 1));
+                                                       //System.err.println("matchingClass =" + matchingClass);
+                                                       if (currentClass.trim().equalsIgnoreCase(matchingClass.trim())) {
+                                                           match++;
+                                                       }
+
                                                    }
+                                                   totalClasses--;
+                                               }
+                                               //After checking all their classes against all our classes, store in array
+                                               matchedClasses[counter] = match;
+                                               //System.err.println("match#" + match + " totalClasses = " + totalClasses );
+                                               match = 0;
+                                               counter++;
+                                           }
 
+                                           //Now we have the array of matched classes corresponding to the parse user array
+
+                                           counter = 0;
+                                           int filteredCounter = 0;
+                                           int totalClasses = user.getInt("currentClass");
+                                           //Loop to find users with 3 classes in common, then 2, then 1, etc.
+                                           while (totalClasses > 0) {
+                                               //Loop over every user to find their corresponding number
+                                               for (int i = 0; i < objects.size(); i++) {
+                                                   if (matchedClasses[i] == totalClasses) {
+                                                       filteredProfiles[filteredCounter] = profiles[i];
+                                                       filteredCounter++;
+                                                   }
                                                }
                                                totalClasses--;
                                            }
-                                           //After checking all their classes against all our classes, store in array
-                                           matchedClasses[counter] = match;
-                                           //System.err.println("match#" + match + " totalClasses = " + totalClasses );
-                                           match = 0;
-                                           counter++;
-                                       }
+                                           //Trims the array
+                                           shortFilteredProfiles = new ParseObject[filteredCounter];
+                                           System.arraycopy(filteredProfiles, 0, shortFilteredProfiles, 0, filteredCounter);
 
-                                       //Now we have the array of matched classes corresponding to the parse user array
-
-                                       counter = 0;
-                                       int filteredCounter = 0;
-                                       int totalClasses = user.getInt("currentClass");
-                                       //Loop to find users with 3 classes in common, then 2, then 1, etc.
-                                       while (totalClasses > 0) {
-                                           //Loop over every user to find their corresponding number
-                                           for (int i = 0; i < objects.size(); i++) {
-                                               if (matchedClasses[i] == totalClasses) {
-                                                   filteredProfiles[filteredCounter] = profiles[i];
-                                                   filteredCounter++;
-                                               }
-                                           }
-                                           totalClasses--;
-                                       }
-                                       //Trims the array
-                                       shortFilteredProfiles = new ParseObject[filteredCounter];
-                                       System.arraycopy(filteredProfiles, 0, shortFilteredProfiles, 0, filteredCounter);
-
-                                       //Now we have an array of filtered profiles
-                                       visibility = new int[filteredCounter];
-                                       //And a blank array of flags to be set
-                                       for (int i = 0; i < filteredCounter; i++) {
-                                           visibility[i] = 1; //All users are initially visible
-                                       }
-
-                                       int numMatched = 0;
-                                       ParseQuery<ParseObject> myQuery = ParseQuery.getQuery("_User");
-                                       myQuery.whereEqualTo("objectId", user.getObjectId());
-                                       try {
-                                           ParseObject userContent = myQuery.getFirst();
-
-                                           //Stores the Matched Profiles list of the Current Profile
-                                           matchedList = (List<ParseObject>) userContent.get("MatchedProfiles");
-                                           numMatched = matchedList.size();
-
-
-                                       } catch (ParseException e1) {
-                                           e1.printStackTrace();
-                                       }
-
-                                       for( int i = 0; i < filteredCounter; i++) {
-                                           for(int k = 0; k < numMatched; k++){
-                                               if( shortFilteredProfiles[i].getObjectId() == matchedList.get(k).getObjectId()) {
-                                                   visibility[i] = 0;
-                                               }
+                                           //Now we have an array of filtered profiles
+                                           visibility = new int[filteredCounter];
+                                           //And a blank array of flags to be set
+                                           for (int i = 0; i < filteredCounter; i++) {
+                                               visibility[i] = 1; //All users are initially visible
                                            }
 
-                                       }
+                                           int numMatched = 0;
+                                           ParseQuery<ParseObject> myQuery = ParseQuery.getQuery("_User");
+                                           myQuery.whereEqualTo("objectId", user.getObjectId());
+                                           try {
+                                               ParseObject userContent = myQuery.getFirst();
 
-                                       displayNextProfile();
+                                               //Stores the Matched Profiles list of the Current Profile
+                                               matchedList = (List<ParseObject>) userContent.get("MatchedProfiles");
+                                               numMatched = matchedList.size();
+
+
+                                           } catch (ParseException e1) {
+                                               e1.printStackTrace();
+                                           }
+
+                                           for (int i = 0; i < filteredCounter; i++) {
+                                               for (int k = 0; k < numMatched; k++) {
+                                                   if (shortFilteredProfiles[i].getObjectId() == matchedList.get(k).getObjectId()) {
+                                                       visibility[i] = 0;
+                                                   }
+                                               }
+
+                                           }
+
+                                           displayNextProfile();
+                                       }
                                    }
-                               }
-        );
-
+            );
+        }
 
 
 
