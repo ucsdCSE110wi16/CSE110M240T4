@@ -27,7 +27,7 @@
         android:name="com.parse.starter.StarterApplication"
         android:allowBackup="true"
         android:debuggable="true"
-        android:icon="@mipmap/jarnin"
+        android:icon="@mipmap/stinder_logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         >
