@@ -340,7 +340,7 @@ public class PreProfileActivity extends AppCompatActivity {
             // Compress image to lower quality scale 1 - 100
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] image = stream.toByteArray();
-
+            profilePicture.setImageBitmap(bitmap);
             // Create the ParseFile
             ParseFile file = new ParseFile("profpic.png", image);
             // Upload the image into Parse Cloud
