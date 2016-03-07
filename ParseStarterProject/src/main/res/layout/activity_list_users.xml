@@ -14,24 +14,29 @@
         android:background="@color/dark_gray"
         android:textSize="24sp"
         android:padding="15dp"
-        android:textColor="@color/sinch_purple" />
+        android:textColor="@color/sinch_purple"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/backButton"
+        android:layout_toRightOf="@+id/backButton" />
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/backButton"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:background="@drawable/backbutton"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <ListView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
         android:background="@color/off_white"
         android:id="@+id/usersListView"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/logoutButton">
     </ListView>
 </RelativeLayout>
