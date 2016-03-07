@@ -154,6 +154,30 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                                            visibility[i] = 1; //All users are initially visible
                                        }
 
+                                       int numMatched = 0;
+                                       ParseQuery<ParseObject> myQuery = ParseQuery.getQuery("_User");
+                                       myQuery.whereEqualTo("objectId", user.getObjectId());
+                                       try {
+                                           ParseObject userContent = myQuery.getFirst();
+
+                                           //Stores the Matched Profiles list of the Current Profile
+                                           matchedList = (List<ParseObject>) userContent.get("MatchedProfiles");
+                                           numMatched = matchedList.size();
+
+
+                                       } catch (ParseException e1) {
+                                           e1.printStackTrace();
+                                       }
+
+                                       for( int i = 0; i < filteredCounter; i++) {
+                                           for(int k = 0; k < numMatched; k++){
+                                               if( shortFilteredProfiles[i].getObjectId() == matchedList.get(k).getObjectId()) {
+                                                   visibility[i] = 0;
+                                               }
+                                           }
+
+                                       }
+
                                        displayNextProfile();
                                    }
                                }
@@ -315,6 +339,9 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     public void setMatch() {
         visibility[profileCounter] = 0;
         matchedList.add(filteredProfiles[profileCounter]);
+
+        user.add("MatchedProfiles", filteredProfiles[profileCounter]);
+        user.saveInBackground();
     }
 
 
