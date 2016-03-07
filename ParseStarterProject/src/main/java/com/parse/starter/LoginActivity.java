@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        Toast.makeText(getApplicationContext(), "login nub", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "PLease Login", Toast.LENGTH_LONG).show();
 
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 password = password.trim();
 
                 if (user.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "bruh its empty", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_LONG).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage(R.string.login_error_message)
                             .setTitle(R.string.login_error_title)
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 startService(serviceIntent);
                             } else {
-                                Toast.makeText(getApplicationContext(), "bruh no", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_LONG).show();
 
                                 // Fail
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);

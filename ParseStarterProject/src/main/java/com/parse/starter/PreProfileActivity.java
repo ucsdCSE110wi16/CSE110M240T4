@@ -246,13 +246,13 @@ public class PreProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(classes[currentClass].getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "bruh its empty", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "The Class is Empty", Toast.LENGTH_LONG).show();
                 }
                 else {
                     removeClasses[currentClass].setVisibility(View.VISIBLE);
                     if (currentClass == (MAX_CLASSES - 1)) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(PreProfileActivity.this);
-                        builder.setMessage("Stahp. No more classes pls.")
+                        builder.setMessage("Limit is 5 class.")
                                 .setTitle(R.string.login_error_title)
                                 .setPositiveButton(android.R.string.ok, null);
                         addClassButton.setVisibility(View.INVISIBLE);
@@ -369,7 +369,7 @@ public class PreProfileActivity extends AppCompatActivity {
         profile.put("user", user);
         profile.put("currentClass", currentClass);
         profile.saveInBackground();
-        Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Fill out your Profile", Toast.LENGTH_SHORT).show();
     }
 
     //fixes the layout of the program given number of classes

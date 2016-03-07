@@ -82,7 +82,7 @@ public class MessagingActivity extends Activity {
             @Override
             public void done(List<ParseObject> messageList, com.parse.ParseException e) {
                 if (e == null) {
-                    Toast.makeText(MessagingActivity.this, "" + messageList.size(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(MessagingActivity.this, "" + messageList.size(), Toast.LENGTH_LONG).show();
 
                     for (int i = 0; i < messageList.size(); i++) {
                         WritableMessage message = new WritableMessage(messageList.get(i).get("recipientId").toString(), messageList.get(i).get("messageText").toString());

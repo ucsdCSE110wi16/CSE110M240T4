@@ -79,7 +79,7 @@ public class ViewActivity extends Activity{
 
         //Get the Id from MatchedActivity
         otherID = getIntent().getExtras().getString("ID");
-        Toast.makeText(getApplicationContext(), otherID, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), otherID, Toast.LENGTH_LONG).show();
 
 
         //Then assign each Id to the respective button
