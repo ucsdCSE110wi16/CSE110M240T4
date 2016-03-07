@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +21,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +31,10 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -54,6 +58,12 @@ public class ViewActivity extends Activity{
 
     private Button backButton;
     private Button messageButton;
+
+    private ParseObject matchedProfile;
+
+    private ParseImageView profilePicture;
+    private ImageView nonParsePic;
+    private ParseFile uploadedPic;
 
     private TextView[] classes = new TextView[MAX_CLASSES];
     private TextView nameText;
@@ -104,7 +114,7 @@ public class ViewActivity extends Activity{
 
 
         try {
-            ParseObject matchedProfile = query.getFirst();
+            matchedProfile = query.getFirst();
 
             //Initialize the Text Fields
             nameText.setText(matchedProfile.getString("Name"));
@@ -135,6 +145,23 @@ public class ViewActivity extends Activity{
                 openConversation(otherID);
             }
         });
+
+        uploadedPic = matchedProfile.getParseFile("ProfPic");
+        System.out.println("Am i null? " + (uploadedPic == null));
+        if (uploadedPic != null) {
+            profilePicture = (ParseImageView) findViewById(R.id.profileImage);
+            profilePicture.setParseFile(uploadedPic);
+            profilePicture.loadInBackground(new GetDataCallback() {
+                public void done(byte[] data, ParseException e) {
+                    System.out.println("yay it loaded");
+                    // The image is loaded and displayed!
+                }
+            });
+        }
+        else {
+            nonParsePic = (ImageView) findViewById(R.id.profileImage);
+            nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
+        }
     }
 
     //open a conversation with one person

@@ -617,7 +617,7 @@ int id action_menu_presenter 0x7f0c0003
 int id action_mode_bar 0x7f0c0059
 int id action_mode_bar_stub 0x7f0c0058
 int id action_mode_close_button 0x7f0c003e
-int id action_settings 0x7f0c00bf
+int id action_settings 0x7f0c00c0
 int id activity_chooser_view_content 0x7f0c003f
 int id activity_match 0x7f0c00a1
 int id adjust_height 0x7f0c0032
@@ -694,6 +694,7 @@ int id logoutButton 0x7f0c006b
 int id matchbutton 0x7f0c0085
 int id media_actions 0x7f0c00af
 int id messageBodyField 0x7f0c0071
+int id messageButton 0x7f0c00bf
 int id middle 0x7f0c0031
 int id mini 0x7f0c002f
 int id multiply 0x7f0c0026

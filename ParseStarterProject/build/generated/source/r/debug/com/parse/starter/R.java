@@ -2288,7 +2288,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0c0059;
         public static final int action_mode_bar_stub=0x7f0c0058;
         public static final int action_mode_close_button=0x7f0c003e;
-        public static final int action_settings=0x7f0c00bf;
+        public static final int action_settings=0x7f0c00c0;
         public static final int activity_chooser_view_content=0x7f0c003f;
         public static final int activity_match=0x7f0c00a1;
         public static final int adjust_height=0x7f0c0032;
@@ -2365,6 +2365,7 @@ containing a value of this type.
         public static final int matchbutton=0x7f0c0085;
         public static final int media_actions=0x7f0c00af;
         public static final int messageBodyField=0x7f0c0071;
+        public static final int messageButton=0x7f0c00bf;
         public static final int middle=0x7f0c0031;
         public static final int mini=0x7f0c002f;
         public static final int multiply=0x7f0c0026;
