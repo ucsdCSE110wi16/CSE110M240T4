@@ -285,54 +285,63 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         if( profileCounter >= visibility.length) {
             profileCounter = 0;
         }
+        boolean matched = false;
+        for(int i = 0; i< matchedClasses.length; i++) {
+            if(matchedClasses[i] != 0) {
+                matched = true;
+                break;
+            }
+        }
+
         //If we check the whole list, go to blank page
-        if( infinityCheck == visibility.length) {
+        if(!matched || infinityCheck == visibility.length) {
             Intent intent = new Intent(this, BlankActivity.class);
             startActivity(intent);
         }
-        //If the next person is visible, display the person
-        if( visibility[profileCounter] == 1 ) {
-            //name.setVisibility(View.INVISIBLE);
-            //classes.setVisibility(View.INVISIBLE);
-            //System.err.println("profilecount" + profileCounter);
-            //System.err.println(shortFilteredProfiles[profileCounter]);
-            String linkedClasses = "";
-            for( int i = 0; i < shortFilteredProfiles[profileCounter].getInt("currentClass"); i++ ) {
-                linkedClasses += shortFilteredProfiles[profileCounter].getString("class" + i);
-                linkedClasses += ", ";
+        else {
+            //If the next person is visible, display the person
+            if( visibility[profileCounter] == 1 ) {
+                //name.setVisibility(View.INVISIBLE);
+                //classes.setVisibility(View.INVISIBLE);
+                //System.err.println("profilecount" + profileCounter);
+                //System.err.println(shortFilteredProfiles[profileCounter]);
+                String linkedClasses = "";
+                for( int i = 0; i < shortFilteredProfiles[profileCounter].getInt("currentClass"); i++ ) {
+                    linkedClasses += shortFilteredProfiles[profileCounter].getString("class" + i);
+                    linkedClasses += ", ";
+                }
+                //System.err.println( "linkedClasses is" + linkedClasses);
+                String shortenedLinkedClasses = linkedClasses.substring(0, linkedClasses.length()-2);
+                name.setText(shortFilteredProfiles[profileCounter].getString("Name") );
+                classes.setText(shortenedLinkedClasses);
+                name.setVisibility(View.VISIBLE);
+                classes.setVisibility(View.VISIBLE);
+                infinityCheck = 0;
+    
+                uploadedPic = shortFilteredProfiles[profileCounter].getParseFile("ProfPic");
+                System.out.println("Am i null? " + (uploadedPic == null));
+                if (uploadedPic != null) {
+                    profilePicture = (ParseImageView) findViewById(R.id.profilepic);
+                    profilePicture.setParseFile(uploadedPic);
+                    profilePicture.loadInBackground(new GetDataCallback() {
+                        public void done(byte[] data, ParseException e) {
+                            System.out.println("yay it loaded");
+                            // The image is loaded and displayed!
+                        }
+                    });
+                }
+                else {
+                    nonParsePic = (ImageView) findViewById(R.id.profilepic);
+                    nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
+                }
             }
-            //System.err.println( "linkedClasses is" + linkedClasses);
-            String shortenedLinkedClasses = linkedClasses.substring(0, linkedClasses.length()-2);
-            name.setText(shortFilteredProfiles[profileCounter].getString("Name") );
-            classes.setText(shortenedLinkedClasses);
-            name.setVisibility(View.VISIBLE);
-            classes.setVisibility(View.VISIBLE);
-            infinityCheck = 0;
-
-            uploadedPic = shortFilteredProfiles[profileCounter].getParseFile("ProfPic");
-            System.out.println("Am i null? " + (uploadedPic == null));
-            if (uploadedPic != null) {
-                profilePicture = (ParseImageView) findViewById(R.id.profilepic);
-                profilePicture.setParseFile(uploadedPic);
-                profilePicture.loadInBackground(new GetDataCallback() {
-                    public void done(byte[] data, ParseException e) {
-                        System.out.println("yay it loaded");
-                        // The image is loaded and displayed!
-                    }
-                });
-            }
-            else {
-                nonParsePic = (ImageView) findViewById(R.id.profilepic);
-                nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
+            //If person is not visible, go to next person in list
+            else{
+                profileCounter++;
+                infinityCheck++;
+                displayNextProfile();
             }
         }
-        //If person is not visible, go to next person in list
-        else{
-            profileCounter++;
-            infinityCheck++;
-            displayNextProfile();
-        }
-
     }
 
     //Move a person to the matched list and set their flag to not visible
