@@ -169,6 +169,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
                }
            }
            displayNextProfile();
+           makeUIVisible();
        }
    }
         );
@@ -252,6 +253,14 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         });
     }
 
+    public void makeUIVisible() {
+        likeButton.setVisibility(View.VISIBLE);
+        dislikeButton.setVisibility(View.VISIBLE);
+        backButton.setVisibility(View.VISIBLE);
+        messageButton.setVisibility(View.VISIBLE);
+
+    }
+
     public void displayNextProfile() {
         //If we are at the end of the list, go to beginning
         if( profileCounter >= visibility.length) {
@@ -268,6 +277,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         //If we check the whole list, go to blank page
         if(!matched || infinityCheck == visibility.length) {
             Intent intent = new Intent(this, BlankActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
         else {
@@ -325,6 +335,13 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         user.saveInBackground();
     }
 
+    public ParseObject[] getFilteredList() {
+        return shortFilteredProfiles;
+    }
+
+    public int getProfileCounter() {
+        return profileCounter;
+    }
 
     @Override
     public boolean onDown(MotionEvent e) {
