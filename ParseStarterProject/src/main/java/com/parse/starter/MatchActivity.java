@@ -268,6 +268,7 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         //If we check the whole list, go to blank page
         if(!matched || infinityCheck == visibility.length) {
             Intent intent = new Intent(this, BlankActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         }
         else {

@@ -238,9 +238,7 @@ public class PreProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final Intent intent = new Intent(getApplicationContext(), MatchedPortfolio.class);
-                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
                 startActivity(intent);
-                startService(serviceIntent);
             }
         });
 
