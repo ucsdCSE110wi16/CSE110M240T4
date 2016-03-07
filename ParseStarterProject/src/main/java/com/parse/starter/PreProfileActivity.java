@@ -360,7 +360,7 @@ public class PreProfileActivity extends AppCompatActivity {
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
         for (int i = 0; i < currentClass; i++) {
             String course = classes[i].getText().toString();
-            course = course.trim();
+            course = course.replaceAll("\\s+", "").toUpperCase();
             profile.put("class" + i, course);
         }
         for(int i = currentClass; i < MAX_CLASSES; i++) {
