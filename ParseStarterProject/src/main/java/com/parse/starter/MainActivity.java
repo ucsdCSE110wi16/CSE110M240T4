@@ -31,47 +31,17 @@ public class MainActivity extends AppCompatActivity {
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
     ParseUser currentUser = ParseUser.getCurrentUser();
-    ParseUser.logOut();
+    currentUser.logOut();
     loadLoginView();
-
-    Button skipButton = (Button)findViewById(R.id.shortcutButton);
-    skipButton.setOnClickListener(
-            new Button.OnClickListener(){
-              public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MatchActivity.class);
-                setContentView(R.layout.matching);
-                startActivity(intent);
-
-              }
-            }
-    );
-
-    /*
-    if (currentUser == null) {
-        ParseUser.logOut();
-      loadLoginView();
-    }
-    else{
-        loadGotInView();
-    }*/
-
-
+    finish();
   }
-
-  private void loadGotInView() {
-        //setContentView(R.layout.login);
-        Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-        startActivity(intent);
-    }
   private void loadLoginView() {
     //setContentView(R.layout.login);
     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
     startActivity(intent);
   }
-  private void loadMatching() {
-    Intent intent = new Intent(getApplicationContext(), MatchActivity.class);
-    startActivity(intent);
-  }
+
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {
     // Inflate the menu; this adds items to the action bar if it is present.
