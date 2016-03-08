@@ -39,8 +39,16 @@ public class SignUpTest {
         @Rule
         public ActivityTestRule<SignUpActivity> mActivityRule = new ActivityTestRule(SignUpActivity.class);
 
+        /* TESTING FOR IF SIGNING UP WITH EMAIL THAT'S ALREADY TAKEN SHOWS A DIALOG WITH TEXT
+         * SAYING THAT THE EMAIL IS TAKEN
+         */
         @Test
         public void enterInformationAndSignUp() {
+                try {
+                        Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
                 onView(withId(R.id.firstnamefield)).perform(click()).perform(typeText("Bob"));
                 onView(withId(R.id.firstnamefield)).perform(closeSoftKeyboard());
                 onView(withId(R.id.lastnamefield)).perform(click()).perform(typeText("Smith"));
@@ -49,17 +57,22 @@ public class SignUpTest {
                 onView(withId(R.id.emailField)).perform(closeSoftKeyboard());
                 onView(withId(R.id.passwordField)).perform(click()).perform(typeText("abcd"));
                 onView(withId(R.id.passwordField)).perform(closeSoftKeyboard());
-                onView(withId(R.id.editText)).perform(click()).perform(typeText("abcd"));
-                onView(withId(R.id.editText)).perform(closeSoftKeyboard());
+                onView(withId(R.id.confirmPassword)).perform(click()).perform(typeText("abcd"));
+                onView(withId(R.id.confirmPassword)).perform(closeSoftKeyboard());
                 onView(withId(R.id.signupButton)).perform(click());
                 //intended(hasComponent(new ComponentName(getTargetContext(), LoginActivity.class)));
                 //intended(toPackage("com.parse.starter.LoginActivity"));
-                for (int i = 0; i < 5; i++) {
+                /*for (int i = 0; i < 5; i++) {
                         SystemClock.sleep(1000);
-                }
+                }*/
 
                 //Supposed to stay here because email has already been used
-                onView(withId(R.id.signupButton)).check(matches(isDisplayed()));
-
+                //onView(withId(R.id.signupButton)).check(matches(isDisplayed()));
+                try {
+                        Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+                onView(withText("username abcd14@ucsd.edu already taken")).check(matches(isDisplayed()));
         }
 }
