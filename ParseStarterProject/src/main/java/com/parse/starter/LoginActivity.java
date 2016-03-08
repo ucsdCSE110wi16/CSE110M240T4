@@ -33,7 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        Toast.makeText(getApplicationContext(), "login nub", Toast.LENGTH_LONG).show();
+
+        Toast.makeText(getApplicationContext(), "Please Login", Toast.LENGTH_LONG).show();
 
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -79,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 password = password.trim();
 
                 if (user.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "bruh its empty", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_LONG).show();
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                     builder.setMessage(R.string.login_error_message)
                             .setTitle(R.string.login_error_title)
@@ -94,18 +95,17 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void done(ParseUser user, ParseException e) {
                             setProgressBarIndeterminateVisibility(false);
-                            Intent intent = new Intent(LoginActivity.this, PreProfileActivity.class);
+                            /*Intent intent = new Intent(LoginActivity.this, PreProfileActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                            /*if (e == null) {
+                            startActivity(intent);*/
+                            if (e == null) {
                                 // Success!
-                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, PreProfileActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                             } else {
-                                Toast.makeText(getApplicationContext(), "bruh no", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_LONG).show();
 
                                 // Fail
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
                                         .setPositiveButton(android.R.string.ok, null);
                                 AlertDialog dialog = builder.create();
                                 dialog.show();
-                            }*/
+                            }
                         }
                     });
                 }
@@ -133,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+        return id == R.id.action_logout || super.onOptionsItemSelected(item);
     }
     @Override
     public void onDestroy() {

@@ -12,9 +12,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -29,8 +33,10 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -56,7 +62,10 @@ public class PreProfileActivity extends AppCompatActivity {
     int passedInCurrentClass;
     ParseUser user;
     ParseObject profile;
-    ImageView profilePic;
+    private ParseImageView profilePicture;
+    private ImageView nonParsePic;
+    private ParseFile uploadedPic;
+
     int SELECT_PHOTO = 1;
 
     /**
@@ -68,7 +77,7 @@ public class PreProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pre_profile);
+        setContentView(R.layout.preprofile);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         nameText = (EditText) findViewById(R.id.PersonName);
@@ -156,7 +165,7 @@ public class PreProfileActivity extends AppCompatActivity {
 
                 user = ParseUser.getCurrentUser();
 
-                if(newProfile) {
+                if (newProfile) {
                     ParseQuery<ParseObject> myQuery = ParseQuery.getQuery("_User");
                     myQuery.whereEqualTo("objectId", user.getObjectId());
                     myQuery.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -170,8 +179,7 @@ public class PreProfileActivity extends AppCompatActivity {
                     addProfileContent(profile, name, user);
                     newProfile = false;
 
-                }
-                else{
+                } else {
                     ParseQuery<ParseObject> query = ParseQuery.getQuery("_User");
                     query.whereEqualTo("objectId", user.getObjectId());
                     query.findInBackground(new FindCallback<ParseObject>() {
@@ -202,8 +210,8 @@ public class PreProfileActivity extends AppCompatActivity {
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    for(int j = 0; j < MAX_CLASSES; j++) {
-                        if(removeClasses[j].getId() == v.getId()) {
+                    for (int j = 0; j < MAX_CLASSES; j++) {
+                        if (removeClasses[j].getId() == v.getId()) {
                             for (int k = j; k < currentClass; k++) {
                                 classes[k].setText(classes[k + 1].getText());
                                 classes[k + 1].setText("");
@@ -211,8 +219,7 @@ public class PreProfileActivity extends AppCompatActivity {
                             if (addClassButton.getVisibility() == View.INVISIBLE) {
                                 addClassButton.setVisibility(View.VISIBLE);
                                 removeClasses[currentClass].setVisibility(View.INVISIBLE);
-                            }
-                            else {
+                            } else {
                                 removeClasses[currentClass - 1].setVisibility(View.INVISIBLE);
                                 classes[currentClass].setVisibility(View.INVISIBLE);
                                 currentClass--;
@@ -232,14 +239,10 @@ public class PreProfileActivity extends AppCompatActivity {
         matchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                user = ParseUser.getCurrentUser();
-
-
-                Intent intent = new Intent(PreProfileActivity.this, MatchActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                final Intent intent = new Intent(getApplicationContext(), MatchedPortfolio.class);
+                final Intent serviceIntent = new Intent(getApplicationContext(), MessageService.class);
                 startActivity(intent);
+                startService(serviceIntent);
             }
         });
 
@@ -247,13 +250,13 @@ public class PreProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(classes[currentClass].getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "bruh its empty", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "The Class is Empty", Toast.LENGTH_LONG).show();
                 }
                 else {
                     removeClasses[currentClass].setVisibility(View.VISIBLE);
                     if (currentClass == (MAX_CLASSES - 1)) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(PreProfileActivity.this);
-                        builder.setMessage("Stahp. No more classes pls.")
+                        builder.setMessage("Limit is 5 class.")
                                 .setTitle(R.string.login_error_title)
                                 .setPositiveButton(android.R.string.ok, null);
                         addClassButton.setVisibility(View.INVISIBLE);
@@ -271,8 +274,25 @@ public class PreProfileActivity extends AppCompatActivity {
             }
         });
 
-        profilePic = (ImageView) findViewById(R.id.profileImage);
-        profilePic.setOnClickListener(new View.OnClickListener() {
+        uploadedPic = user.getParseFile("ProfPic");
+        System.out.println("Am i null? " + (uploadedPic == null));
+        if (uploadedPic != null) {
+            profilePicture = (ParseImageView) findViewById(R.id.profileImage);
+            profilePicture.setParseFile(uploadedPic);
+            profilePicture.loadInBackground(new GetDataCallback() {
+                public void done(byte[] data, ParseException e) {
+                    System.out.println("yay it loaded");
+                    // The image is loaded and displayed!
+                }
+            });
+        }
+        else {
+            nonParsePic = (ImageView) findViewById(R.id.profileImage);
+            nonParsePic.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.default_profpic));
+        }
+
+        profilePicture = (ParseImageView) findViewById(R.id.profileImage);
+        profilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
@@ -280,6 +300,20 @@ public class PreProfileActivity extends AppCompatActivity {
                 startActivityForResult(photoPickerIntent, SELECT_PHOTO);
             }
         });
+
+        // If the user has not matched with anyone, do not show matched button
+        List<ParseObject> file = (List<ParseObject>) user.get("MatchedProfiles");
+        if(file == null) {
+            matchButton.setVisibility(View.INVISIBLE);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams
+                    (RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
+            layoutParams.removeRule(RelativeLayout.ALIGN_LEFT);
+            layoutParams.removeRule(RelativeLayout.ALIGN_START);
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+            layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+            submitButton.setLayoutParams(layoutParams);
+        }
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -308,7 +342,7 @@ public class PreProfileActivity extends AppCompatActivity {
             // Compress image to lower quality scale 1 - 100
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             byte[] image = stream.toByteArray();
-
+            profilePicture.setImageBitmap(bitmap);
             // Create the ParseFile
             ParseFile file = new ParseFile("profpic.png", image);
             // Upload the image into Parse Cloud
@@ -328,7 +362,7 @@ public class PreProfileActivity extends AppCompatActivity {
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
         for (int i = 0; i < currentClass; i++) {
             String course = classes[i].getText().toString();
-            course = course.trim();
+            course = course.replaceAll("\\s+", "").toUpperCase();
             profile.put("class" + i, course);
         }
         for(int i = currentClass; i < MAX_CLASSES; i++) {
@@ -339,7 +373,7 @@ public class PreProfileActivity extends AppCompatActivity {
         profile.put("user", user);
         profile.put("currentClass", currentClass);
         profile.saveInBackground();
-        Toast.makeText(getApplicationContext(), "pls go", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Fill out your Profile", Toast.LENGTH_SHORT).show();
     }
 
     //fixes the layout of the program given number of classes
@@ -360,6 +394,32 @@ public class PreProfileActivity extends AppCompatActivity {
     public void hideKeyboard(View view) {
         InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_logout) {
+            stopService(new Intent(getApplicationContext(), MessageService.class));
+            ParseUser.logOut();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

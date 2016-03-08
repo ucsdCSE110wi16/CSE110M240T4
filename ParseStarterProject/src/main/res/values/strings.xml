@@ -33,4 +33,5 @@
     <string name="classes_text_three">CSE101, CSE110, ECON420</string>
     <string name="classes_text_two">CSE101, CSE110, MCWP50</string>
     <string name="title_activity_image">ImageActivity</string>
+    <string name="title_activity_pre_profile2">PreProfile2</string>
 </resources>

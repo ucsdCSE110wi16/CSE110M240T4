@@ -9,6 +9,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.parse.starter">
 
+    <uses-sdk android:minSdkVersion="17" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -16,11 +18,13 @@
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".StarterApplication"
         android:allowBackup="true"
         android:debuggable="true"
-        android:icon="@mipmap/jarnin"
+        android:icon="@mipmap/stinder_logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         >
@@ -65,6 +69,16 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity android:name=".MatchedPortfolio">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -75,13 +89,16 @@
 
         <activity
             android:name=".PreProfileActivity"
-            android:label="@string/title_activity_pre_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ListUsersActivity"
-            android:screenOrientation="portrait"></activity>
-        <service android:name=".MessageService"></service>
-        <activity android:name=".MessagingActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ListUsersActivity"
+            android:screenOrientation="portrait" />
+
+        <service android:name=".MessageService" />
+
+        <activity
+            android:name=".MessagingActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
