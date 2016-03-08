@@ -64,19 +64,13 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
      */
     private GoogleApiClient client;
 
-    private int[] nameID;
-    private int[] photoID;
-    private int[] classesID;
-
-
     protected void onCreate(Bundle savedInstanceState) {
         //Set Content View?
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.matching);
         Intent intent = getIntent();
-       /*counter = 0;
-       counter = intent.getIntExtra("currentCount", 0);*/
+
         name = (TextView) findViewById(R.id.nameText);
         classes = (TextView) findViewById(R.id.classesList);
         user = ParseUser.getCurrentUser();
@@ -184,55 +178,20 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
 
         likeButton.setOnClickListener(new View.OnClickListener() {
                                           public void onClick(View v) {
-                                              //Do something when button is clicked
-                                              //name.setText("Testing1");
-                                              //likeButton.setText("Yay");
-                                              //Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
-
-                                              //nameID = null;
-                                              //classesID = null;
-                                              //photoID = null;
-                                              setMatch();
-                                              displayNextProfile();
-                                              //name.setVisibility(View.INVISIBLE);
-                                              //classes.setVisibility(View.INVISIBLE);
-                                              //profilePicture.setVisibility(View.INVISIBLE);
-                                              //WOW I VIOLATED DRY PRINCIPLE IMMA FAIL CS110
-                                              //nextIntent.putExtra("currentCount", counter+1);
-                                              //startActivity(nextIntent);
-                                              //TODO: Provide an indicator that the displayed person got liked
-                                              //ToDO: Send information that the current user is interested in current displayed person
-                                              //ToDO: Figure out data structure to hold profiles, are we going to just add to end of
-                                              //TODO: data structure each time? Or are we able to delete viewable profiles?
-                                          }
+              setMatch();
+              displayNextProfile();
+          }
                                       }
         );
 
         dislikeButton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View w) {
-                                                 //Do something when button is clicked
-                                                 //name.setText("Testing2");
-                                                 //dislikeButton.setText("Yay");
-                                                 //Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
-
-                                                 //nameID = null;
-                                                 //classesID = null;
-                                                 //photoID = null;
-                                                 profileCounter++;
-                                                 displayNextProfile();
-                                                 //name.setVisibility(View.INVISIBLE);
-                                                 //classes.setVisibility(View.INVISIBLE);
-                                                 //profilePicture.setVisibility(View.INVISIBLE);
-
-                                                 //nextIntent.putExtra("currentCount", counter+1);
-                                                 //startActivity(nextIntent);
-                                                 //TODO: Provide an indicator that the displayed person got disliked
-                                             }
-                                         }
+             profileCounter++;
+             displayNextProfile();
+             //TODO: Provide an indicator that the displayed person got disliked
+                }
+            }
         );
-
-
-
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -395,32 +354,11 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
     }
 
     public void onSwipeRight() {
-        // name.setText("Testing");
-        /*Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
-        nameID = null;
-        classesID = null;
-        photoID = null;
-        name.setVisibility(View.INVISIBLE);
-        classes.setVisibility(View.INVISIBLE);
-        profilePicture.setVisibility(View.INVISIBLE);
-        nextIntent.putExtra("currentCount", counter+1);
-        startActivity(nextIntent);
-        */
         setMatch();
         displayNextProfile();
-
     }
 
     public void onSwipeLeft() {
-        /*Intent nextIntent = new Intent(getApplicationContext(), MatchActivity.class );
-        nameID = null;
-        classesID = null;
-        photoID = null;
-        name.setVisibility(View.INVISIBLE);
-        classes.setVisibility(View.INVISIBLE);
-        profilePicture.setVisibility(View.INVISIBLE);
-        nextIntent.putExtra("currentCount", counter+1);
-        startActivity(nextIntent);*/
         profileCounter++;
         displayNextProfile();
     }
@@ -440,7 +378,11 @@ public class MatchActivity extends AppCompatActivity implements GestureDetector.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            stopService(new Intent(getApplicationContext(), MessageService.class));
+            ParseUser.logOut();
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
             return true;
         }
 

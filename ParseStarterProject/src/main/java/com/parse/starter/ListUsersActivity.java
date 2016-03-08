@@ -39,17 +39,6 @@ public class ListUsersActivity extends Activity {
         setContentView(R.layout.activity_list_users);
 
         showSpinner();
-
-        logoutButton = (Button) findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                stopService(new Intent(getApplicationContext(), MessageService.class));
-                ParseUser.logOut();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     //display clickable a list of all users

@@ -33,7 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        Toast.makeText(getApplicationContext(), "PLease Login", Toast.LENGTH_LONG).show();
+
+        Toast.makeText(getApplicationContext(), "Please Login", Toast.LENGTH_LONG).show();
 
         //requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -132,7 +133,7 @@ public class LoginActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+        return id == R.id.action_logout || super.onOptionsItemSelected(item);
     }
     @Override
     public void onDestroy() {
