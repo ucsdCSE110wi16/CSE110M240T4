@@ -22,11 +22,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdfa77af-3262-48f1-bdcf-6e9516953c4b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/LoginTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/PreProfileTest.java" afterPath="$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/PreProfileTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CSE110M240T4.iws" />
@@ -56,11 +56,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PreProfileTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PreProfileTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/PreProfileTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.7521515">
+              <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -88,11 +88,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="LoginTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/LoginTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7710843">
-              <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="32" column="72" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -2503,7 +2503,6 @@
         <option value="$PROJECT_DIR$/ParseStarterProject/src/main/res/layout/blank_screen.xml" />
         <option value="$PROJECT_DIR$/ParseStarterProject/src/main/res/drawable/messagebutton.xml" />
         <option value="$PROJECT_DIR$/ParseStarterProject/build.gradle" />
-        <option value="$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/PreProfileTest.java" />
         <option value="$PROJECT_DIR$/ParseStarterProject/src/main/res/layout/matched_profiles.xml" />
         <option value="$PROJECT_DIR$/ParseStarterProject/src/main/java/com/parse/starter/MatchedActivity.java" />
         <option value="$PROJECT_DIR$/ParseStarterProject/src/main/res/layout/matched_portfolio.xml" />
@@ -2529,6 +2528,7 @@
         <option value="$PROJECT_DIR$/ParseStarterProject/src/main/java/com/parse/starter/ViewActivity.java" />
         <option value="$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/SignUpTest.java" />
         <option value="$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/LoginTest.java" />
+        <option value="$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/PreProfileTest.java" />
       </list>
     </option>
   </component>
@@ -3150,7 +3150,13 @@
       <option name="project" value="LOCAL" />
       <updated>1457467479377</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added successful login test">
+      <created>1457468159286</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1457468159286</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -3214,7 +3220,8 @@
     <MESSAGE value="Matched profiles with images" />
     <MESSAGE value="Remove MainActivity after moving to login screen" />
     <MESSAGE value="Fixed SignUpTest&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed SignUpTest&#10;" />
+    <MESSAGE value="Added successful login test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added successful login test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3603,14 +3610,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/PreProfileTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="26" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/SignUpTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.352941">
@@ -3644,11 +3643,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/LoginTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7710843">
-          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="72" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParseStarterProject/src/androidTest/java/com/parse/starter/PreProfileTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7521515">
+          <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>
