@@ -33,6 +33,5 @@ public class PreProfileTest {
         onView(withId(R.id.AddClass)).perform(click());
         onView(withId(R.id.Class2)).check(matches(isDisplayed()));*/
         onView(withId(R.id.AddClass)).check(matches(isDisplayed()));
-
     }
 }

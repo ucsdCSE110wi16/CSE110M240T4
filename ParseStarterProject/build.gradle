@@ -35,6 +35,9 @@ dependencies {
     compile files('src/main/jniLibs/sinch-android-rtc-3.9.2.jar')
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
     androidTestCompile 'com.android.support.test:runner:0.4.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2'
     androidTestCompile 'com.android.support:support-annotations:23.1.1'
+    compile 'com.android.support.test.espresso:espresso-idling-resource:2.2.1'
+
 
 }
