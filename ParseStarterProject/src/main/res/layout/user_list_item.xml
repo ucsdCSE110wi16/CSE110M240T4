@@ -1,6 +1,6 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/userListItem"
-    android:textColor="#000000"
+    android:textColor="#f5141414"
     android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
