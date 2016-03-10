@@ -404,6 +404,7 @@
     <eat-comment/>
     <string name="title_activity_image">ImageActivity</string>
     <string name="title_activity_pre_profile">PreProfileActivity</string>
+    <string name="title_activity_pre_profile2">PreProfile2</string>
     <string name="username_hint">Username</string>
     <!-- From: file:/C:/Users/Arun/AndroidStudioProjects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values/values.xml -->
     <eat-comment/>

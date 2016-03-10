@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
@@ -53,9 +54,9 @@ public class PreProfileActivity extends AppCompatActivity {
     private int MAX_CLASSES = 5;
     EditText[] classes = new EditText[MAX_CLASSES];
     boolean newProfile;
-    EditText nameText;
+    TextView nameText;
     Button addClassButton;
-    Button matchButton;
+    ImageView messageButton;
     Button[] removeClasses = new Button[MAX_CLASSES];
     Button submitButton;
     int currentClass = 0;
@@ -80,7 +81,7 @@ public class PreProfileActivity extends AppCompatActivity {
         setContentView(R.layout.preprofile);
 
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        nameText = (EditText) findViewById(R.id.PersonName);
+        nameText = (TextView) findViewById(R.id.PersonName);
         nameText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -235,8 +236,8 @@ public class PreProfileActivity extends AppCompatActivity {
             });
         }
 
-        matchButton = (Button) findViewById(R.id.matchbutton);
-        matchButton.setOnClickListener(new View.OnClickListener() {
+        messageButton = (ImageView) findViewById(R.id.messagebutton);
+        messageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Intent intent = new Intent(getApplicationContext(), MatchedPortfolio.class);
@@ -304,7 +305,7 @@ public class PreProfileActivity extends AppCompatActivity {
         // If the user has not matched with anyone, do not show matched button
         List<ParseObject> file = (List<ParseObject>) user.get("MatchedProfiles");
         if(file == null) {
-            matchButton.setVisibility(View.INVISIBLE);
+            messageButton.setVisibility(View.INVISIBLE);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams
                     (RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
             layoutParams.removeRule(RelativeLayout.ALIGN_LEFT);

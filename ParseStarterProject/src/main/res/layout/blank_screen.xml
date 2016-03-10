@@ -35,7 +35,9 @@
 
     <Button
         android:id="@+id/matchedPageButton"
-        android:text="Go to matches"
+        android:text="Start talking!"
+        android:background="@drawable/messagebutton"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:layout_width="220dp"
         android:layout_height="60dp"
