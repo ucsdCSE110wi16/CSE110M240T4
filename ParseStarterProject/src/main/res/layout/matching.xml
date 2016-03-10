@@ -121,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/MessageButton"
-        android:src="@drawable/messagebutton"
+        android:src="@drawable/messenger"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_alignTop="@+id/Stinder"

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -8,23 +10,31 @@
     android:windowSoftInputMode="adjustResize"
     android:clickable="true"
     android:focusableInTouchMode="true"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/activity_vertical_margin" >
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.parse.starter.PreProfileActivity"
+    tools:showIn="@layout/activity_pre_profile">
 
-    <EditText
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/center" />
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="@string/name_hint"
-        android:imeOptions="actionDone"
-        android:ems="10"
+        android:text="Welcome to Stinder!"
         android:id="@+id/PersonName"
-        android:background="@drawable/textborder"
-        android:layout_alignParentTop="true"
+        android:nestedScrollingEnabled="false"
+        android:textColor="#6599FF"
+        android:textSize="36sp"
+        android:typeface="sans"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textStyle="bold"
+        />
 
     <com.parse.ParseImageView
         android:layout_width="200dp"
@@ -37,7 +47,7 @@
         android:baselineAlignBottom="false"
         android:contextClickable="true"
         android:background="@drawable/textborder"
-        android:src="@drawable/exam"
+        android:src="@drawable/default_profpic"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="false" />
 
@@ -55,16 +65,19 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="26dp"
-        android:layout_alignRight="@+id/submitbutton"
-        android:layout_alignEnd="@+id/submitbutton" />
+        android:layout_alignRight="@+id/center"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Remove class"
+        android:text="@string/remove_class"
         android:id="@+id/RemoveClass1"
-        android:layout_alignEnd="@+id/PersonName"
-        android:layout_alignRight="@+id/PersonName"
+        android:background="@drawable/messagebutton"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/profileImage"
+        android:layout_alignTop="@+id/Class1"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_alignBottom="@id/Class1" />
 
     <EditText
@@ -78,16 +91,19 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_alignRight="@+id/submitbutton"
-        android:layout_alignEnd="@+id/submitbutton" />
+        android:layout_alignRight="@+id/center" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Remove class"
+        android:text="@string/remove_class"
         android:id="@+id/RemoveClass2"
-        android:layout_alignEnd="@+id/PersonName"
-        android:layout_alignRight="@+id/PersonName"
+        android:background="@drawable/messagebutton"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/RemoveClass1"
+        android:layout_alignTop="@+id/Class2"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_alignBottom="@id/Class2" />
 
     <EditText
@@ -101,16 +117,19 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_alignRight="@+id/submitbutton"
-        android:layout_alignEnd="@+id/submitbutton" />
+        android:layout_alignRight="@+id/center" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Remove class"
+        android:text="@string/remove_class"
         android:id="@+id/RemoveClass3"
-        android:layout_alignEnd="@+id/PersonName"
-        android:layout_alignRight="@+id/PersonName"
+        android:background="@drawable/messagebutton"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/RemoveClass2"
+        android:layout_alignTop="@+id/Class3"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_alignBottom="@id/Class3" />
 
     <EditText
@@ -124,16 +143,19 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_alignRight="@+id/submitbutton"
-        android:layout_alignEnd="@+id/submitbutton" />
+        android:layout_alignRight="@+id/center" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Remove class"
+        android:text="@string/remove_class"
         android:id="@+id/RemoveClass4"
-        android:layout_alignEnd="@+id/PersonName"
-        android:layout_alignRight="@+id/PersonName"
+        android:background="@drawable/messagebutton"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/RemoveClass3"
+        android:layout_alignTop="@+id/Class4"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_alignBottom="@id/Class4" />
 
     <EditText
@@ -147,42 +169,60 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp"
-        android:layout_alignRight="@+id/submitbutton"
-        android:layout_alignEnd="@+id/submitbutton" />
+        android:layout_alignRight="@+id/center" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Remove class"
+        android:text="@string/remove_class"
         android:id="@+id/RemoveClass5"
-        android:layout_alignEnd="@+id/PersonName"
-        android:layout_alignRight="@+id/PersonName"
+        android:background="@drawable/messagebutton"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/RemoveClass4"
+        android:layout_alignTop="@+id/Class5"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_alignBottom="@id/Class5" />
 
     <Button
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:text="+ Add class"
+        android:id="@+id/AddClass"
+        android:background="@drawable/messagebutton"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@+id/Class1" />
+
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add class"
-        android:id="@+id/AddClass"
-        android:layout_alignEnd="@+id/PersonName"
-        android:layout_alignRight="@+id/PersonName"
-        android:layout_alignBottom="@id/Class1" />
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/PersonName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:text="Submit"
         android:id="@+id/submitbutton"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/messagebutton"
+        android:textColor="#FFFFFF"
         android:layout_alignLeft="@+id/profileImage"
-        android:layout_alignStart="@+id/profileImage" />
-
-    <Button
+        android:layout_alignRight="@+id/profileImage"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Matched Profiles"
-        android:id="@+id/matchbutton"
-        android:layout_alignTop="@+id/submitbutton"
-        android:layout_toRightOf="@+id/submitbutton"
-        android:layout_toEndOf="@+id/submitbutton" />
+        android:id="@+id/messagebutton"
+        android:background="@drawable/messenger"
+        android:layout_alignTop="@+id/profileImage"
+        android:layout_toRightOf="@+id/profileImage" />
+
+
 </RelativeLayout>

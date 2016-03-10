@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/exploded-aar/com.android.support.test.espresso/espresso-intents/2.2/jars/classes.jar"
+        jar="C:\Users\Arun\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\exploded-aar\com.parse\ParseUI-Widget\0.0.1\jars\classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="8fc41bcf43f3f1d4d9e8bbfd451f362f245249de">
-        <dex dex="/home/jarnin/Documents/Projects/CSE110M240T4/ParseStarterProject/build/intermediates/pre-dexed/androidTest/debug/classes-05f5b53704fe82b52f4398a0f1c0ce8cbe988df1.jar" />
+        sha1="202f7bb15f5a8c87378294b7e94a6c6cef8834dc">
+        <dex dex="C:\Users\Arun\AndroidStudioProjects\CSE110M240T4\ParseStarterProject\build\intermediates\pre-dexed\debug\classes-736498ead46920d16901355c246d0a79d3c9de33.jar" />
     </item>
 
 </items>
