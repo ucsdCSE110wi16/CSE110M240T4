@@ -43,15 +43,11 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 public class PreProfileActivity extends AppCompatActivity {
     private int MAX_CLASSES = 5;
+    private TextView uploadText;
     EditText[] classes = new EditText[MAX_CLASSES];
     boolean newProfile;
     TextView nameText;
@@ -66,6 +62,7 @@ public class PreProfileActivity extends AppCompatActivity {
     private ParseImageView profilePicture;
     private ImageView nonParsePic;
     private ParseFile uploadedPic;
+    private String[] greetings = {"Hey", "Sup", "Hello"};
 
     int SELECT_PHOTO = 1;
 
@@ -131,8 +128,9 @@ public class PreProfileActivity extends AppCompatActivity {
 
                     } else {
                         passedInCurrentClass = objects.get(0).getInt("currentClass");
-
-                        nameText.setText(objects.get(0).getString("Name"));
+                        String[] name = objects.get(0).getString("Name").split(" ");
+                        int rand = (int) (Math.random() * 3);
+                        nameText.setText(greetings[rand] + ", " + name[0] + "!");
                         for (int i = 0; i < passedInCurrentClass; i++) {
                             classes[i].setText(objects.get(0).getString("class" + i));
                         }
@@ -275,11 +273,13 @@ public class PreProfileActivity extends AppCompatActivity {
             }
         });
 
+        uploadText = (TextView) findViewById(R.id.uploadText);
+
         uploadedPic = user.getParseFile("ProfPic");
-        System.out.println("Am i null? " + (uploadedPic == null));
         if (uploadedPic != null) {
             profilePicture = (ParseImageView) findViewById(R.id.profileImage);
             profilePicture.setParseFile(uploadedPic);
+            uploadText.setVisibility(View.INVISIBLE);
             profilePicture.loadInBackground(new GetDataCallback() {
                 public void done(byte[] data, ParseException e) {
                     System.out.println("yay it loaded");
@@ -308,8 +308,8 @@ public class PreProfileActivity extends AppCompatActivity {
             messageButton.setVisibility(View.INVISIBLE);
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams
                     (RelativeLayout.LayoutParams.WRAP_CONTENT,RelativeLayout.LayoutParams.WRAP_CONTENT);
-            layoutParams.removeRule(RelativeLayout.ALIGN_LEFT);
-            layoutParams.removeRule(RelativeLayout.ALIGN_START);
+            //layoutParams.removeRule(RelativeLayout.ALIGN_LEFT);
+            //layoutParams.removeRule(RelativeLayout.ALIGN_START);
             layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
             submitButton.setLayoutParams(layoutParams);
