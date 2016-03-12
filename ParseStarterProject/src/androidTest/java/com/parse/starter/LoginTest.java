@@ -15,6 +15,7 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 /**
  * Created by jarnin on 3/8/16.
@@ -39,6 +40,23 @@ public class LoginTest {
         }
 
         onView(withId(R.id.profileImage)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void checkIncorrectLogin() {
+        onView(withId(R.id.emailField)).perform(click()).perform(typeText("asdfasdf@ucla.edu"));
+        onView(withId(R.id.emailField)).perform(closeSoftKeyboard());
+        onView(withId(R.id.passwordField)).perform(click()).perform(typeText("asdf"));
+        onView(withId(R.id.passwordField)).perform(closeSoftKeyboard());
+        onView(withId(R.id.loginButton)).perform(click());
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        onView(withText("invalid login parameters")).check(matches(isDisplayed()));
     }
 
     @Test

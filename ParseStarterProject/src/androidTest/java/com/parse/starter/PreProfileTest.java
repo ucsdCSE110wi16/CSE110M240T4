@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.intent.Intents.intended;
 import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
@@ -43,6 +44,7 @@ public class PreProfileTest {
         }
         onView(withId(R.id.profileImage)).perform(click());
         intended(toPackage("com.android.gallery"));
+        Intents.release();
     }
 
     @Test
@@ -56,17 +58,5 @@ public class PreProfileTest {
     /*
         Test if clicking find a partner causes MatchActivity to show up
      */
-
-    @Test
-    public void checkForMatchActivity() {
-        onView(withId(R.id.submitbutton)).perform(click());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        onView(withId(R.id.Stinder)).check(matches(isDisplayed()));
-    }
 
 }
