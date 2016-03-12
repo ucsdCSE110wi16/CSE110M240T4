@@ -279,7 +279,6 @@ public class PreProfileActivity extends AppCompatActivity {
         if (uploadedPic != null) {
             profilePicture = (ParseImageView) findViewById(R.id.profileImage);
             profilePicture.setParseFile(uploadedPic);
-            uploadText.setVisibility(View.INVISIBLE);
             profilePicture.loadInBackground(new GetDataCallback() {
                 public void done(byte[] data, ParseException e) {
                     System.out.println("yay it loaded");
