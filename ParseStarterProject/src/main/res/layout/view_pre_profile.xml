@@ -17,17 +17,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="@string/name_hint"
-        android:imeOptions="actionDone"
-        android:ems="10"
+        android:text="Welcome to Stinder!"
         android:id="@+id/PersonName"
-        android:background="@drawable/textborder"
-        android:layout_alignParentTop="true"
+        android:nestedScrollingEnabled="false"
+        android:textColor="#6599FF"
+        android:textSize="32sp"
+        android:typeface="sans"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:textStyle="bold" />
 
     <com.parse.ParseImageView
         android:layout_width="200dp"
