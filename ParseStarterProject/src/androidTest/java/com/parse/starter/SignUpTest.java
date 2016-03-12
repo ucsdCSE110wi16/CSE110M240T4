@@ -18,6 +18,7 @@ import static android.support.test.InstrumentationRegistry.getTargetContext;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.action.ViewActions.typeTextIntoFocusedView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -45,7 +46,7 @@ public class SignUpTest {
         @Test
         public void enterInformationAndSignUp() {
                 try {
-                        Thread.sleep(1000);
+                        Thread.sleep(2000);
                 } catch (InterruptedException e) {
                         e.printStackTrace();
                 }

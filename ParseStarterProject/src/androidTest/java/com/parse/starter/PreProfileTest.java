@@ -30,6 +30,21 @@ public class PreProfileTest {
     @Rule
     public ActivityTestRule<PreProfileActivity> mActivityRule = new ActivityTestRule(PreProfileActivity.class);
 
+    /*
+       TEST IF CLICKING THE PROFILE PICTURE IMAGE OPENS UP THE GALLERY
+     */
+    @Test
+    public void checkProfilePicture() {
+        Intents.init();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        onView(withId(R.id.profileImage)).perform(click());
+        intended(toPackage("com.android.gallery"));
+    }
+
     @Test
     public void checkIfButtonsAreThere() {
         /*
@@ -39,12 +54,19 @@ public class PreProfileTest {
     }
 
     /*
-       TEST IF CLICKING THE PROFILE PICTURE IMAGE OPENS UP THE GALLERY
+        Test if clicking find a partner causes MatchActivity to show up
      */
+
     @Test
-    public void checkProfilePicture() {
-        Intents.init();
-        onView(withId(R.id.profileImage)).perform(click());
-        intended(toPackage("com.android.gallery"));
+    public void checkForMatchActivity() {
+        onView(withId(R.id.submitbutton)).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        onView(withId(R.id.Stinder)).check(matches(isDisplayed()));
     }
+
 }

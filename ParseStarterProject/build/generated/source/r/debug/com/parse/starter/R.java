@@ -2256,19 +2256,19 @@ containing a value of this type.
         public static final int textborder=0x7f020057;
     }
     public static final class id {
-        public static final int AddClass=0x7f0c00b6;
-        public static final int Class1=0x7f0c00ac;
-        public static final int Class2=0x7f0c00ae;
-        public static final int Class3=0x7f0c00b0;
-        public static final int Class4=0x7f0c00b2;
-        public static final int Class5=0x7f0c00b4;
+        public static final int AddClass=0x7f0c00b9;
+        public static final int Class1=0x7f0c00af;
+        public static final int Class2=0x7f0c00b1;
+        public static final int Class3=0x7f0c00b3;
+        public static final int Class4=0x7f0c00b5;
+        public static final int Class5=0x7f0c00b7;
         public static final int MessageButton=0x7f0c0099;
         public static final int PersonName=0x7f0c00aa;
-        public static final int RemoveClass1=0x7f0c00ad;
-        public static final int RemoveClass2=0x7f0c00af;
-        public static final int RemoveClass3=0x7f0c00b1;
-        public static final int RemoveClass4=0x7f0c00b3;
-        public static final int RemoveClass5=0x7f0c00b5;
+        public static final int RemoveClass1=0x7f0c00b0;
+        public static final int RemoveClass2=0x7f0c00b2;
+        public static final int RemoveClass3=0x7f0c00b4;
+        public static final int RemoveClass4=0x7f0c00b6;
+        public static final int RemoveClass5=0x7f0c00b8;
         public static final int Stinder=0x7f0c0083;
         public static final int action0=0x7f0c009d;
         public static final int action_bar=0x7f0c005c;
@@ -2280,7 +2280,7 @@ containing a value of this type.
         public static final int action_bar_title=0x7f0c003c;
         public static final int action_context_bar=0x7f0c005d;
         public static final int action_divider=0x7f0c00a1;
-        public static final int action_logout=0x7f0c00c0;
+        public static final int action_logout=0x7f0c00c1;
         public static final int action_menu_divider=0x7f0c0002;
         public static final int action_menu_presenter=0x7f0c0003;
         public static final int action_mode_bar=0x7f0c0059;
@@ -2309,7 +2309,7 @@ containing a value of this type.
         public static final int clip_horizontal=0x7f0c002b;
         public static final int clip_vertical=0x7f0c002c;
         public static final int collapseActionView=0x7f0c0035;
-        public static final int confirmPassword=0x7f0c00bd;
+        public static final int confirmPassword=0x7f0c00be;
         public static final int contentPanel=0x7f0c004c;
         public static final int custom=0x7f0c0052;
         public static final int customPanel=0x7f0c0051;
@@ -2334,7 +2334,7 @@ containing a value of this type.
         public static final int fill=0x7f0c002d;
         public static final int fill_horizontal=0x7f0c002e;
         public static final int fill_vertical=0x7f0c0021;
-        public static final int firstnamefield=0x7f0c00b9;
+        public static final int firstnamefield=0x7f0c00ba;
         public static final int fixed=0x7f0c0039;
         public static final int home=0x7f0c0004;
         public static final int homeAsUp=0x7f0c000f;
@@ -2349,7 +2349,7 @@ containing a value of this type.
         public static final int imageView=0x7f0c0085;
         public static final int info=0x7f0c00a8;
         public static final int item_touch_helper_previous_elevation=0x7f0c0005;
-        public static final int lastnamefield=0x7f0c00bc;
+        public static final int lastnamefield=0x7f0c00bd;
         public static final int left=0x7f0c0022;
         public static final int likeButton=0x7f0c0098;
         public static final int line1=0x7f0c00a2;
@@ -2361,8 +2361,8 @@ containing a value of this type.
         public static final int matchedPageButton=0x7f0c0076;
         public static final int media_actions=0x7f0c00a0;
         public static final int messageBodyField=0x7f0c0072;
-        public static final int messageButton=0x7f0c00bf;
-        public static final int messagebutton=0x7f0c00b8;
+        public static final int messageButton=0x7f0c00c0;
+        public static final int messagebutton=0x7f0c00ab;
         public static final int middle=0x7f0c0031;
         public static final int mini=0x7f0c002f;
         public static final int multiply=0x7f0c0026;
@@ -2380,7 +2380,7 @@ containing a value of this type.
         public static final int parentPanel=0x7f0c0048;
         public static final int passwordField=0x7f0c0081;
         public static final int pin=0x7f0c001b;
-        public static final int profileImage=0x7f0c00ab;
+        public static final int profileImage=0x7f0c00ad;
         public static final int profilepic=0x7f0c0093;
         public static final int progress_circular=0x7f0c0006;
         public static final int progress_horizontal=0x7f0c0007;
@@ -2423,14 +2423,14 @@ containing a value of this type.
         public static final int static_class_text=0x7f0c0095;
         public static final int status_bar_latest_event_content=0x7f0c009f;
         public static final int submit_area=0x7f0c0067;
-        public static final int submitbutton=0x7f0c00b7;
+        public static final int submitbutton=0x7f0c00ac;
         public static final int tabMode=0x7f0c000d;
         public static final int text=0x7f0c00a7;
         public static final int text2=0x7f0c00a5;
         public static final int textSpacerNoButtons=0x7f0c004f;
         public static final int textView=0x7f0c006d;
-        public static final int textView2=0x7f0c00ba;
-        public static final int textView3=0x7f0c00bb;
+        public static final int textView2=0x7f0c00bb;
+        public static final int textView3=0x7f0c00bc;
         public static final int textView4=0x7f0c0075;
         public static final int textView5=0x7f0c0086;
         public static final int textView6=0x7f0c0074;
@@ -2443,8 +2443,9 @@ containing a value of this type.
         public static final int txtMessage=0x7f0c009c;
         public static final int txtSender=0x7f0c009a;
         public static final int up=0x7f0c0009;
+        public static final int uploadText=0x7f0c00ae;
         public static final int useLogo=0x7f0c0014;
-        public static final int userListItem=0x7f0c00be;
+        public static final int userListItem=0x7f0c00bf;
         public static final int usersListView=0x7f0c006c;
         public static final int view_offset_helper=0x7f0c000a;
         public static final int withText=0x7f0c0038;

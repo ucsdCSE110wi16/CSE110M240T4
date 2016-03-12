@@ -40,4 +40,16 @@ public class LoginTest {
 
         onView(withId(R.id.profileImage)).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void goToSignUp() {
+        onView(withId(R.id.signupButton)).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch(InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        onView(withId(R.id.emailField)).check(matches(isDisplayed()));
+    }
 }
