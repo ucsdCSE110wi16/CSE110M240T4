@@ -37,6 +37,7 @@ public class SignUpActivity extends AppCompatActivity{
     protected Button signUpButton;
     protected Drawable background;
     protected TextView signUpTextView;
+    protected Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,15 @@ public class SignUpActivity extends AppCompatActivity{
                 if (!hasFocus || !passwordEditText.hasFocus()) {
                     hideKeyboard(v);
                 }
+            }
+        });
+
+        backButton = (Button) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -55,13 +55,21 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_marginTop="20dp" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/or"
+        android:text="OR"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="16dp"
+/>
     <Button
         android:id="@+id/signupButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click Here to get started"
-        android:layout_below="@+id/loginButton"
+        android:text="Create a new account"
+        android:layout_below="@+id/or"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textColor="#FFFFFF"
         android:background="@drawable/messagebutton"

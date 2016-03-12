@@ -57,30 +57,29 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Sign up"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="48dp"
-        android:layout_marginTop="32dp"
+        android:textAppearance="@android:style/TextAppearance.Holo.Widget.TabWidget"
+        android:text="Stinder"
+        android:id="@+id/Stinder"
+        android:nestedScrollingEnabled="false"
+        android:textSize="@dimen/design_fab_size_normal"
         android:textColor="#6599FF"
-        android:textStyle="bold|italic"
+        android:typeface="sans"
+        android:layout_centerHorizontal="true"
         android:textIsSelectable="false"
-        android:typeface="serif" />
+        android:textStyle="bold"  />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Please enter the correct information"
+        android:text="Enter your information"
         android:id="@+id/textView3"
         android:layout_marginTop="46dp"
         android:textSize="22dp"
         android:textColor="#6599FF"
         android:textStyle="italic"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentRight="true"
+        android:layout_below="@+id/Stinder"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true" />
 
     <EditText
@@ -120,5 +119,15 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/backButton"
+        android:background="@drawable/backbutton"
+        android:layout_alignBottom="@+id/Stinder"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/Stinder" />
 
 </RelativeLayout>

@@ -23,12 +23,25 @@
         android:textColor="#6599FF"
         android:textSize="32sp"
         android:typeface="sans"
-        android:layout_alignParentLeft="true"
+        android:layout_toRightOf="@+id/backButton"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_alignParentTop="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textStyle="bold" />
-
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_below="@+id/PersonName"
+        android:layout_above="@+id/submitbutton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <com.parse.ParseImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -102,13 +115,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
-        android:layout_below="@+id/PersonName"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    </ScrollView>
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -116,15 +124,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/backButton"
         android:background="@drawable/backbutton"
-        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/PersonName"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBottom="@+id/PersonName"/>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="message"
         android:id="@+id/messageButton"
+        android:text="Start talking!"
+        android:background="@drawable/messagebutton"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+ />
 </RelativeLayout>
