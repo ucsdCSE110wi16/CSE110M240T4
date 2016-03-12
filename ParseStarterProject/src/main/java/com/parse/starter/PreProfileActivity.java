@@ -369,11 +369,10 @@ public class PreProfileActivity extends AppCompatActivity {
             profile.put("class" + i, "");
         }
 
-        profile.put("Name",name );
         profile.put("user", user);
         profile.put("currentClass", currentClass);
         profile.saveInBackground();
-        Toast.makeText(getApplicationContext(), "Fill out your Profile", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Start Matching with Others", Toast.LENGTH_SHORT).show();
     }
 
     //fixes the layout of the program given number of classes
