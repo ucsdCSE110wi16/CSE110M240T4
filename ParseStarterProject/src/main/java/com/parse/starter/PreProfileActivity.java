@@ -358,7 +358,7 @@ public class PreProfileActivity extends AppCompatActivity {
         }
     }
 
-    //adds content to each profile
+    //Adds content to each profile
     public void addProfileContent(ParseObject profile, String name, ParseUser user){
         for (int i = 0; i < currentClass; i++) {
             String course = classes[i].getText().toString();
